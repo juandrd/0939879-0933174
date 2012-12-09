@@ -86,6 +86,17 @@ public class ControladorRuta {
         return -1;
     }   
         
+     public Rutas consultar(String id){
+          
+           Rutas r;
+           
+           r=daoRutas.findRutas(id);
+           
+         
+            
+           
+           return r;
+       }
 
         
         public LinkedList consultar(String nombre,String descripcion)
@@ -124,5 +135,15 @@ public class ControladorRuta {
     }
     
     
+    public String[] listar() {
+        LinkedList rutaConsultar = consultar("","");
+        String[] rutas = new String[rutaConsultar.size() + 1];
+        rutas[0] = " ";
+        for (int i = 0; i < rutaConsultar.size(); i++) {
+            rutas[i + 1] = ((Rutas) rutaConsultar.get(i)).getNombre();
+        }
+        return rutas;
+    }
+
     
 }

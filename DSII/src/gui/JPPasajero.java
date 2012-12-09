@@ -212,6 +212,13 @@ public class JPPasajero extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(jTResultados);
+        jTResultados.getColumnModel().getColumn(0).setResizable(false);
+        jTResultados.getColumnModel().getColumn(1).setResizable(false);
+        jTResultados.getColumnModel().getColumn(2).setResizable(false);
+        jTResultados.getColumnModel().getColumn(3).setResizable(false);
+        jTResultados.getColumnModel().getColumn(4).setResizable(false);
+        jTResultados.getColumnModel().getColumn(5).setResizable(false);
+        jTResultados.getColumnModel().getColumn(6).setResizable(false);
 
         jPanel9.add(jScrollPane1);
         jScrollPane1.setBounds(10, 220, 430, 110);
@@ -368,7 +375,7 @@ public class JPPasajero extends javax.swing.JPanel {
 
         String id;
 
-        int selectedRow = jTResultados.getSelectedRow()+2;
+        int selectedRow = jTResultados.getSelectedRow();
         System.out.println(selectedRow);
         id = jTResultados.getModel().getValueAt(selectedRow, 0).toString();
          Pasajeros p = controladorPasajero.consultar(id);

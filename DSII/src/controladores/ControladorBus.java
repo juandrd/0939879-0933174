@@ -8,6 +8,7 @@ import dao.BusesJpaController;
 import dao.exceptions.NonexistentEntityException;
 import dao.exceptions.PreexistingEntityException;
 import entidades.Buses;
+import entidades.Rutas;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -33,20 +34,20 @@ public class ControladorBus {
     }
     
         public int insertar(String placa,String marca,String nro_chasis,
-                String tipo,int nro_asientos,int capacidad,String ruta)
+                String tipo,int nro_asientos,int capacidad,Rutas ruta)
     {
         if (!placa.isEmpty() && !marca.isEmpty() && !nro_chasis.isEmpty() 
-                && !tipo.isEmpty()  && !ruta.isEmpty()  && nro_asientos>0 
-                && capacidad>0 ) {
+                && !tipo.isEmpty()  && !ruta.getNombre().isEmpty()
+                && nro_asientos>0 && capacidad>0 ) {
             
         Buses bus = new Buses();
         bus.setPlaca( placa );
         bus.setMarca( marca );
         bus.setCapacidad(capacidad);
         bus.setNroAsientos(nro_asientos);
-        bus.getNroChasis();
-        bus.getRuta();
-        bus.getTipo();
+        bus.setNroChasis(nro_chasis);
+        bus.setRuta(ruta.getNombre());
+        bus.setTipo(tipo);
 
         
         try 
@@ -69,23 +70,24 @@ public class ControladorBus {
         
         
     public int modificar(String placa,String marca,String nro_chasis,
-                String tipo,int nro_asientos,int capacidad,String ruta)
+                String tipo,int nro_asientos,int capacidad,Rutas ruta)
     {
         if (!placa.isEmpty() && !marca.isEmpty() && !nro_chasis.isEmpty() 
-                && !tipo.isEmpty()  && !ruta.isEmpty()  && nro_asientos>0 
+                && !tipo.isEmpty()  && !ruta.getNombre().isEmpty()  && nro_asientos>0 
                 && capacidad>0 ) {
-        Buses busEncontrado = daoBuses.findBuses(placa);
+        Buses bus = daoBuses.findBuses(placa);
         
-        busEncontrado.setMarca( marca );
-        busEncontrado.setCapacidad(capacidad);
-        busEncontrado.setNroAsientos(nro_asientos);
-        busEncontrado.getNroChasis();
-        busEncontrado.getRuta();
-        busEncontrado.getTipo();
+         bus.setPlaca( placa );
+        bus.setMarca( marca );
+        bus.setCapacidad(capacidad);
+        bus.setNroAsientos(nro_asientos);
+        bus.setNroChasis(nro_chasis);
+        bus.setRuta(ruta.getNombre());
+        bus.setTipo(tipo);
         
         try 
         {   
-            daoBuses.edit(busEncontrado);
+            daoBuses.edit(bus);
             return 0;
             
         }
@@ -104,47 +106,35 @@ public class ControladorBus {
         
 
         
-        public LinkedList consultar(String placa,String marca,String nro_chasis,
-                String tipo,String nro_asientos,String capacidad,String ruta)
+        public LinkedList consultar(String placa,String tipo,int capacidad,Rutas ruta)
     {
                         //"SELECT r FROM buses r"
             List lista;
             LinkedList listabuses= new LinkedList();
             String sql_select="SELECT b FROM buses b   ";
-                if (!placa.equals("") || !marca.equals("") ||
-                    !nro_chasis.equals("") || !tipo.equals("") ||
-                    !nro_asientos.equals("") || !capacidad.equals("") ||
-                    !ruta.equals("") ) {
+                if (!placa.equals("") || !tipo.equals("") ||
+                     capacidad>0 ||
+                    !ruta.getNombre().equals("") ) {
                 
             sql_select += "WHERE ";
             }
             
         if (!placa.equals("")) {
             sql_select += "b.placa = '" + placa + "' AND ";
-        }
-        
-        if(!marca.equals("")){
-            sql_select += "b.marca LIKE '%"+marca+"%'"+" AND ";
-        }
-         
-        if (!nro_chasis.equals("")) {
-            sql_select += "b.nro_chasis LIKE '%"+nro_chasis+"%'"+" AND ";
-        }
+        }       
+       
         
         if(!tipo.equals("")){
-            sql_select += "b.tipo LIKE '%"+tipo+"%'"+" AND ";
+            sql_select += "b.tipo = '"+tipo+"'"+" AND ";
         }
         
-        if (!nro_asientos.equals("")) {
-            sql_select += "b.nombre = " + nro_asientos + " AND ";
-        }
-        
-        if(!capacidad.equals("")){
-            sql_select += "b.capacidad = " + capacidad + " AND ";
+               
+        if(capacidad>0){
+            sql_select += "b.capacidad < " + capacidad + " AND ";
         }
 
         if (!ruta.equals("")) {
-            sql_select += "b.ruta LIKE '%"+ruta+"%'"+" AND ";
+            sql_select += "b.ruta = '"+ruta.getNombre()+"'"+" AND ";
         }
         
 
