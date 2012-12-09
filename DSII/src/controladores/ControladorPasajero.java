@@ -109,17 +109,12 @@ public class ControladorPasajero {
     }   
        
        public Pasajeros consultar(String id){
-           List lista;
+          
            Pasajeros p;
            
-           String sql_select="SELECT p FROM Pasajeros p WHERE identificacion ='"+id+"'";
-          
-            if(sql_select.contains("WHERE"))
-            lista = manager.createQuery(sql_select).getResultList();
-            else lista = manager.createQuery("SELECT p FROM Pasajeros p").getResultList();
-            
-                      
-             p = (Pasajeros) lista.get(0);
+           p=daoPasajero.findPasajeros(id);
+           
+         
             
            
            return p;
@@ -139,7 +134,7 @@ public class ControladorPasajero {
             sql_select += "WHERE ";
             }
             
-        if (id.equals("")) {
+        if (!id.equals("")) {
             sql_select += "p.identificacion = '" + id + "' AND ";
         }
         
@@ -159,7 +154,7 @@ public class ControladorPasajero {
             
             
             sql_select = sql_select.substring(0, sql_select.length() - 5);
-            
+            System.out.println(sql_select);
             //sirve para ejecutar consultas
             if(sql_select.contains("WHERE"))
             lista = manager.createQuery(sql_select).getResultList();

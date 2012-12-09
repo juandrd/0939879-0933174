@@ -17,22 +17,21 @@ import entidades.Rutas;
  * @author juandapp
  */
 public class JPRuta extends javax.swing.JPanel {
- 
+
     /**
      * Creates new form JPCliente
      */
     ControladorRuta rutaControlador;
-   
 
     public JPRuta() {
         initComponents();
-        
+
         rutaControlador = new ControladorRuta();
-        
-            
-            jTabbedPane1.setSelectedIndex(0);
-            jTResultados.setEnabled(false);
-        
+
+
+        jTabbedPane1.setSelectedIndex(0);
+        jTResultados.setEnabled(false);
+
     }
 
     /**
@@ -243,18 +242,18 @@ public class JPRuta extends javax.swing.JPanel {
 
         if (guardar == -1) {
             JOptionPane.showMessageDialog(this, "No se pudo crear la Ruta", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
-        } 
-        if (guardar == 1) {
-            JOptionPane.showMessageDialog(this, "Ya existe la Ruta", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
-        }
-        else {
-            JOptionPane.showMessageDialog(this, "Ruta Creada correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
-            limpiarCamposConsultar();
-            jTFNombre2.setText(jTFNombre.getText());
-            jBConsultar.doClick();
-            jBLimpiarCrear.doClick();
-            jTabbedPane1.setSelectedIndex(1);
+        } else {
+            if (guardar == 1) {
+                JOptionPane.showMessageDialog(this, "Ya existe la Ruta", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Ruta Creada correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+                limpiarCamposConsultar();
+                jTFNombre2.setText(jTFNombre.getText());
+                jBConsultar.doClick();
+                jBLimpiarCrear.doClick();
+                jTabbedPane1.setSelectedIndex(1);
 
+            }
         }
 
 
@@ -264,33 +263,34 @@ public class JPRuta extends javax.swing.JPanel {
 
         LinkedList consulta = new LinkedList();
         try {
-            consulta = rutaControlador.consultar(jTFNombre2.getText(), jTFDescripcion2.getText()); 
-                Object[][] s = new Object[consulta.size()][2];
-                for (int i = 0; i < consulta.size(); i++) {
-                    Rutas ruta = (Rutas) consulta.get(i);
-                    if (ruta.getNombre() != null) {
-                        s[i][0] = ruta.getNombre();
-                        s[i][1] = ruta.getDescripcion();
+            consulta = rutaControlador.consultar(jTFNombre2.getText(), jTFDescripcion2.getText());
+            Object[][] s = new Object[consulta.size()][2];
+            for (int i = 0; i < consulta.size(); i++) {
+                Rutas ruta = (Rutas) consulta.get(i);
+                if (ruta.getNombre() != null) {
+                    s[i][0] = ruta.getNombre();
+                    s[i][1] = ruta.getDescripcion();
 
-                    } else {
-                        s = null;
-                    }
+                } else {
+                    s = null;
                 }
-                TableModel myModel = new DefaultTableModel(s, new String[]{ "Nombre", "Descripcion"}) {
-                    boolean[] canEdit = new boolean[]{false, false
-                    };
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Nombre", "Descripcion"}) {
 
-                    @Override
-                    public boolean isCellEditable(int rowIndex, int columnIndex) {
-                        return canEdit[columnIndex];
-                    }
+                boolean[] canEdit = new boolean[]{false, false
                 };
-                ///remover filas
-                jTResultados.setModel(myModel);
-                jTResultados.setRowSorter(new TableRowSorter(myModel));
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));
         } catch (Exception e) {
             e.printStackTrace();
-        }   
+        }
     }//GEN-LAST:event_jBConsultarActionPerformed
 
     private void limpiarCamposModificar() {
@@ -310,15 +310,15 @@ public class JPRuta extends javax.swing.JPanel {
     }
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-        
-        
-        int selectedRow = jTResultados.getSelectedRow()+1;
-        
+
+
+        int selectedRow = jTResultados.getSelectedRow() + 1;
+
         jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
         jTPDescripcion1.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
 
         jTabbedPane1.setSelectedIndex(2);
-        
+
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBLimpiarConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarConsultarActionPerformed

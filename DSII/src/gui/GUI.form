@@ -4,35 +4,26 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMInventario">
+        <Menu class="javax.swing.JMenu" name="jMPasajeros">
           <Properties>
-            <Property name="text" type="java.lang.String" value=" Inventario "/>
-            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="Pasajeros"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMICrearAccesorio">
+            <MenuItem class="javax.swing.JMenuItem" name="jMILoginPasajeros">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Accesorio"/>
+                <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMICrearAccesorioActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMILoginPasajerosActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMIVehiculo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Vehiculo"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIVehiculoActionPerformed"/>
-              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMOpciones">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Opciones  "/>
+            <Property name="text" type="java.lang.String" value="Empleados"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMIModificarDatosPersonales">

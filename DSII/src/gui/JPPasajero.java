@@ -195,11 +195,11 @@ public class JPPasajero extends javax.swing.JPanel {
 
             },
             new String [] {
-                "id", "Nombre", "Direccion", "Telefono", "Direccion", "Genero", "Email"
+                "id", "Nombre", "Apellidos", "Telefono", "Direccion", "Genero", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, true, false, false, true, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -368,8 +368,12 @@ public class JPPasajero extends javax.swing.JPanel {
 
         String id;
 
-        int selectedRow = jTResultados.getSelectedRow();
+        int selectedRow = jTResultados.getSelectedRow()+2;
+        System.out.println(selectedRow);
         id = jTResultados.getModel().getValueAt(selectedRow, 0).toString();
+         Pasajeros p = controladorPasajero.consultar(id);
+        jPFPassword3.setText(p.getPassword());
+      
         jTFId3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
         jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
         jTFApellido3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
@@ -377,11 +381,7 @@ public class JPPasajero extends javax.swing.JPanel {
         jTFDireccion3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
         jCBGenero3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 5));
         jTFEmail3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 6));
-       
-        Pasajeros p=controladorPasajero.consultar(id);
-        jPFPassword3.setText(p.getPassword());
-        
-      
+
         jTPPasajero.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
 
@@ -468,22 +468,23 @@ public class JPPasajero extends javax.swing.JPanel {
         } catch (Exception e) {
         }
         if (guardar == -1) {
-            JOptionPane.showMessageDialog(this, "No se pudo crear la Ruta", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
-        }
-
-        if (guardar == 1) {
-
-            JOptionPane.showMessageDialog(this, "Ya existe el Pasajero ", "Error", ERROR);
-
-
+            JOptionPane.showMessageDialog(this, "No se pudo crear ", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Pasajero Creado correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
 
-            limpiarCamposConsultar();
-            jTFId2.setText(jTFId1.getText());
-            jBConsultar1.doClick();
-            jTPPasajero.setSelectedIndex(1);
-            limpiarCamposCrear();
+            if (guardar == 1) {
+
+                JOptionPane.showMessageDialog(this, "Ya existe el Pasajero ", "Error", ERROR);
+
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Pasajero Creado correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+
+                limpiarCamposConsultar();
+                jTFId2.setText(jTFId1.getText());
+                jBConsultar1.doClick();
+                jTPPasajero.setSelectedIndex(1);
+                limpiarCamposCrear();
+            }
         }
     }//GEN-LAST:event_jBCrear1ActionPerformed
     private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed

@@ -66,10 +66,9 @@ public class GUI extends javax.swing.JFrame {
         jPPrincipal = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMInventario = new javax.swing.JMenu();
-        jMICrearAccesorio = new javax.swing.JMenuItem();
+        jMPasajeros = new javax.swing.JMenu();
+        jMILoginPasajeros = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMIVehiculo = new javax.swing.JMenuItem();
         jMOpciones = new javax.swing.JMenu();
         jMIModificarDatosPersonales = new javax.swing.JMenuItem();
         jMIRutas = new javax.swing.JMenuItem();
@@ -90,29 +89,20 @@ public class GUI extends javax.swing.JFrame {
         jPPrincipal.add(jLabel2);
         jLabel2.setBounds(0, 0, 670, 480);
 
-        jMInventario.setText(" Inventario ");
-        jMInventario.setEnabled(false);
+        jMPasajeros.setText("Pasajeros");
 
-        jMICrearAccesorio.setText("Accesorio");
-        jMICrearAccesorio.addActionListener(new java.awt.event.ActionListener() {
+        jMILoginPasajeros.setText("Login");
+        jMILoginPasajeros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMICrearAccesorioActionPerformed(evt);
+                jMILoginPasajerosActionPerformed(evt);
             }
         });
-        jMInventario.add(jMICrearAccesorio);
-        jMInventario.add(jSeparator2);
+        jMPasajeros.add(jMILoginPasajeros);
+        jMPasajeros.add(jSeparator2);
 
-        jMIVehiculo.setText("Vehiculo");
-        jMIVehiculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIVehiculoActionPerformed(evt);
-            }
-        });
-        jMInventario.add(jMIVehiculo);
+        jMenuBar1.add(jMPasajeros);
 
-        jMenuBar1.add(jMInventario);
-
-        jMOpciones.setText("Opciones  ");
+        jMOpciones.setText("Empleados");
 
         jMIModificarDatosPersonales.setText("Modificar Datos Personales");
         jMIModificarDatosPersonales.setEnabled(false);
@@ -282,33 +272,18 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMIModificarDatosPersonalesActionPerformed
 
-    private void jMIVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIVehiculoActionPerformed
-        ///interfaz completa
-        try {
-
-            jPPrincipal.removeAll();
-
-        } catch (Exception e) {
-        }
-        
-        //JPVehiculo jPV = new JPVehiculo(tipo_e);
-        //jPPrincipal.add(jPV, BorderLayout.CENTER);        
-        jPPrincipal.updateUI();
-        this.pack();
-    }//GEN-LAST:event_jMIVehiculoActionPerformed
-
-    private void jMICrearAccesorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICrearAccesorioActionPerformed
+    private void jMILoginPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMILoginPasajerosActionPerformed
         ///interfaz completa
         try {
             jPPrincipal.removeAll();
         } catch (Exception e) {
         }
-       // JPAccesorio jPCA = new JPAccesorio(tipo_e);
-       // jPCA.setBounds(jPPrincipal.getBounds());
-       // jPPrincipal.add(jPCA, BorderLayout.CENTER);
+        JPPasajero g = new JPPasajero();
+        g.setBounds(jPPrincipal.getBounds());
+        jPPrincipal.add(g, BorderLayout.CENTER);
         jPPrincipal.updateUI();
         this.pack();
-    }//GEN-LAST:event_jMICrearAccesorioActionPerformed
+    }//GEN-LAST:event_jMILoginPasajerosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,17 +329,16 @@ public class GUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenuItem jMICrearAccesorio;
     private javax.swing.JMenuItem jMICrearCotizacion;
     private javax.swing.JMenuItem jMICrearUsuario;
     private javax.swing.JMenuItem jMIGenerarReporte;
+    private javax.swing.JMenuItem jMILoginPasajeros;
     private javax.swing.JMenuItem jMIModificarDatosPersonales;
     private javax.swing.JMenuItem jMIOrdenes;
     private javax.swing.JMenuItem jMIRegistrarVenta;
     private javax.swing.JMenuItem jMIRutas;
-    private javax.swing.JMenuItem jMIVehiculo;
-    private javax.swing.JMenu jMInventario;
     private javax.swing.JMenu jMOpciones;
+    private javax.swing.JMenu jMPasajeros;
     private javax.swing.JMenu jMReportes;
     private javax.swing.JMenu jMVentas;
     private javax.swing.JMenuBar jMenuBar1;
