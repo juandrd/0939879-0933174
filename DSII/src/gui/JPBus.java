@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package gui;
+
 import controladores.ControladorRuta;
 
 import controladores.ControladorBus;
@@ -22,15 +23,14 @@ public class JPBus extends javax.swing.JPanel {
     /**
      * Creates new form JPBus
      */
-    
-    
     ControladorBus controladorBus;
     ControladorRuta controladorRuta;
+
     public JPBus() {
         initComponents();
-        controladorBus=new ControladorBus();
-        controladorRuta=new ControladorRuta();
-        
+        controladorBus = new ControladorBus();
+        controladorRuta = new ControladorRuta();
+
     }
 
     /**
@@ -388,27 +388,40 @@ public class JPBus extends javax.swing.JPanel {
     }//GEN-LAST:event_jBLimpiar1ActionPerformed
 
     private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
+
+        int guardar = -1;
         try {
 
             String placa = jTFPlaca1.getText();
             String marca = jTFMarca1.getText();
             String chasis = jTFChasis1.getText();
             String tipo = jCBTipo1.getSelectedItem().toString();
-            int asientos= Integer.parseInt(jTFAsientos1.getText());
-            int capacidad =Integer.parseInt( jTFCapacidad1.getText());
+            int asientos = Integer.parseInt(jTFAsientos1.getText());
+            int capacidad = Integer.parseInt(jTFCapacidad1.getText());
             String r = jCBRuta1.getSelectedItem().toString();
-            Rutas ruta=controladorRuta.consultar(r);
-            controladorBus.insertar(placa, marca, chasis, tipo,asientos, capacidad,ruta);
+            Rutas ruta = controladorRuta.consultar(r);
+            guardar = controladorBus.insertar(placa, marca, chasis, tipo, asientos, capacidad, ruta);
 
-
-            limpiarCamposConsultar();
-            jTFPlaca2.setText(jTFPlaca1.getText());
-            jBConsultar1.doClick();
-            jTPBus.setSelectedIndex(1);
-            limpiarCamposCrear();
         } catch (Exception e) {
+        }
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No se pudo crear ", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
 
-            JOptionPane.showMessageDialog(this, "No se pudo insertar el bus", "Error", ERROR);
+            if (guardar == 1) {
+
+                JOptionPane.showMessageDialog(this, "Ya existe el Bus ", "Error", ERROR);
+
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Bus Creado correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+
+                limpiarCamposConsultar();
+                jTFPlaca2.setText(jTFPlaca1.getText());
+                jBConsultar1.doClick();
+                jTPBus.setSelectedIndex(1);
+                limpiarCamposCrear();
+            }
         }
     }//GEN-LAST:event_jBCrear1ActionPerformed
 
@@ -418,8 +431,8 @@ public class JPBus extends javax.swing.JPanel {
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
 
-         int selectedRow = jTResultados.getSelectedRow();
-       jCBRuta3.setModel(
+        int selectedRow = jTResultados.getSelectedRow();
+        jCBRuta3.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorRuta.listar()));
         jTFPlaca3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
         jTFMarca3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
@@ -428,7 +441,7 @@ public class JPBus extends javax.swing.JPanel {
         jTFAsientos3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
         jTFCapacidad3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 5));
         jCBRuta3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 6));
-     
+
 
         jTPBus.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
@@ -437,21 +450,19 @@ public class JPBus extends javax.swing.JPanel {
         LinkedList consulta = new LinkedList();
 
         try {
-            int capacidad=0;
-            try{
-              capacidad=  Integer.parseInt(jTFCapacidad2.getText());
+            int capacidad = 0;
+            try {
+                capacidad = Integer.parseInt(jTFCapacidad2.getText());
+            } catch (Exception e) {
+                capacidad = 0;
             }
-            catch(Exception e){
-                capacidad=0;
-            }
-            String  ruta=jCBRuta2.getSelectedItem().toString();
-             Rutas r=controladorRuta.consultar(ruta);
+            String ruta = jCBRuta2.getSelectedItem().toString();
+            
             consulta = controladorBus.consultar(
                     jTFPlaca2.getText(),
                     jCBTipo2.getSelectedItem().toString(),
                     capacidad,
-                    r
-                    );
+                    ruta);
 
             Object[][] s = new Object[consulta.size()][7];
             for (int i = 0; i < consulta.size(); i++) {
@@ -470,7 +481,7 @@ public class JPBus extends javax.swing.JPanel {
                 }
             }
             TableModel myModel = new DefaultTableModel(s, new String[]{
-                "Placa", "Marca", "Chasis",
+                        "Placa", "Marca", "Chasis",
                         "Tipo", "Nro. Asientos", "Capacidad", "Ruta"}) {
 
                 boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false};
@@ -492,8 +503,8 @@ public class JPBus extends javax.swing.JPanel {
         int editar = -1;
 
         try {
-            
-            Rutas r=controladorRuta.consultar(jCBRuta3.getSelectedItem().toString());
+
+            Rutas r = controladorRuta.consultar(jCBRuta3.getSelectedItem().toString());
             editar = controladorBus.modificar(
                     jTFPlaca3.getText(),
                     jTFMarca3.getText(),
@@ -512,42 +523,43 @@ public class JPBus extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "modificado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposConsultar();
+            jTResultados.removeAll();
             jTFPlaca2.setText(jTFPlaca3.getText());
             jBConsultar1.doClick();
             jTPBus.setSelectedIndex(1);
             limpiarCamposModificar();
         }
     }//GEN-LAST:event_jBModificarActionPerformed
-public void limpiarCamposCrear(){
-     jTFPlaca1.setText("");
-     jTFMarca1.setText("");
-     jTFChasis1.setText("");
-     jTFAsientos1.setText("");
-     jTFCapacidad1.setText("");
-     jCBTipo1.setSelectedIndex(0);
-     jCBRuta1.setSelectedIndex(0);
-                    
-}
+    public void limpiarCamposCrear() {
+        jTFPlaca1.setText("");
+        jTFMarca1.setText("");
+        jTFChasis1.setText("");
+        jTFAsientos1.setText("");
+        jTFCapacidad1.setText("");
+        jCBTipo1.setSelectedIndex(0);
+        jCBRuta1.setSelectedIndex(0);
 
-public void limpiarCamposModificar(){
-     jTFPlaca3.setText("");
-     jTFMarca3.setText("");
-     jTFChasis3.setText("");
-     jTFAsientos3.setText("");
-     jTFCapacidad3.setText("");
-     jCBTipo3.setSelectedIndex(0);
-     jCBRuta3.setSelectedIndex(0);
-                    
-}
+    }
 
-public void limpiarCamposConsultar(){
-    jTFPlaca2.setText("");
-     jTFCapacidad2.setText("");
-     jCBTipo2.setSelectedIndex(0);
-     jCBRuta2.setSelectedIndex(0);
-}
+    public void limpiarCamposModificar() {
+        jTFPlaca3.setText("");
+        jTFMarca3.setText("");
+        jTFChasis3.setText("");
+        jTFAsientos3.setText("");
+        jTFCapacidad3.setText("");
+        jCBTipo3.setSelectedIndex(0);
+        jCBRuta3.setSelectedIndex(0);
+
+    }
+
+    public void limpiarCamposConsultar() {
+        jTFPlaca2.setText("");
+        jTFCapacidad2.setText("");
+        jCBTipo2.setSelectedIndex(0);
+        jCBRuta2.setSelectedIndex(0);
+    }
     private void jCBRuta1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBRuta1PopupMenuWillBecomeVisible
-          jCBRuta1.setModel(
+        jCBRuta1.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorRuta.listar()));
     }//GEN-LAST:event_jCBRuta1PopupMenuWillBecomeVisible
 
@@ -563,7 +575,6 @@ public void limpiarCamposConsultar(){
     private void jCBRuta3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBRuta3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBRuta3ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar1;
     private javax.swing.JButton jBCrear1;

@@ -40,14 +40,14 @@ public class GUI extends javax.swing.JFrame {
 
         if (tipo_e == 2) { //El usuario es Vendedor
             jMReportes.setEnabled(false);
-            jMICrearUsuario.setEnabled(false);
+            jMIBuses.setEnabled(false);
             jMIOrdenes.setEnabled(false);
         }
         if (tipo_e == 3) { //El usuario es jefe de taller
             jMReportes.setEnabled(false);
             jMVentas.setEnabled(false);
             jMIRutas.setEnabled(false);
-            jMICrearUsuario.setEnabled(false);
+            jMIBuses.setEnabled(false);
 
         }
 
@@ -72,7 +72,7 @@ public class GUI extends javax.swing.JFrame {
         jMOpciones = new javax.swing.JMenu();
         jMIModificarDatosPersonales = new javax.swing.JMenuItem();
         jMIRutas = new javax.swing.JMenuItem();
-        jMICrearUsuario = new javax.swing.JMenuItem();
+        jMIBuses = new javax.swing.JMenuItem();
         jMIOrdenes = new javax.swing.JMenuItem();
         jMVentas = new javax.swing.JMenu();
         jMICrearCotizacion = new javax.swing.JMenuItem();
@@ -121,14 +121,13 @@ public class GUI extends javax.swing.JFrame {
         });
         jMOpciones.add(jMIRutas);
 
-        jMICrearUsuario.setText("Usuario");
-        jMICrearUsuario.setEnabled(false);
-        jMICrearUsuario.addActionListener(new java.awt.event.ActionListener() {
+        jMIBuses.setText("Buses");
+        jMIBuses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMICrearUsuarioActionPerformed(evt);
+                jMIBusesActionPerformed(evt);
             }
         });
-        jMOpciones.add(jMICrearUsuario);
+        jMOpciones.add(jMIBuses);
 
         jMIOrdenes.setText("Ordenes de Trabajo");
         jMIOrdenes.setEnabled(false);
@@ -238,17 +237,17 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMIRegistrarVentaActionPerformed
 
-    private void jMICrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICrearUsuarioActionPerformed
+    private void jMIBusesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIBusesActionPerformed
         ///interfaz completa
         try {
             jPPrincipal.removeAll();
         } catch (Exception e) {
         }
-        //JPUsuario jPU = new JPUsuario();
-        //jPPrincipal.add(jPU, BorderLayout.CENTER);
+        JPBus jPB = new JPBus();
+        jPPrincipal.add(jPB, BorderLayout.CENTER);
         jPPrincipal.updateUI();
         this.pack();
-    }//GEN-LAST:event_jMICrearUsuarioActionPerformed
+    }//GEN-LAST:event_jMIBusesActionPerformed
 
     private void jMIGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIGenerarReporteActionPerformed
         try {
@@ -329,8 +328,8 @@ public class GUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuItem jMIBuses;
     private javax.swing.JMenuItem jMICrearCotizacion;
-    private javax.swing.JMenuItem jMICrearUsuario;
     private javax.swing.JMenuItem jMIGenerarReporte;
     private javax.swing.JMenuItem jMILoginPasajeros;
     private javax.swing.JMenuItem jMIModificarDatosPersonales;

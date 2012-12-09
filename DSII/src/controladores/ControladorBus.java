@@ -106,15 +106,16 @@ public class ControladorBus {
         
 
         
-        public LinkedList consultar(String placa,String tipo,int capacidad,Rutas ruta)
+        public LinkedList consultar(String placa,String tipo,int capacidad,String ruta)
     {
                         //"SELECT r FROM buses r"
             List lista;
             LinkedList listabuses= new LinkedList();
-            String sql_select="SELECT b FROM buses b   ";
+            String sql_select="SELECT b FROM Buses b   ";
                 if (!placa.equals("") || !tipo.equals("") ||
                      capacidad>0 ||
-                    !ruta.getNombre().equals("") ) {
+                    (!ruta.equals("Cargar") && 
+                    !ruta.equals(" ") )) {
                 
             sql_select += "WHERE ";
             }
@@ -133,19 +134,20 @@ public class ControladorBus {
             sql_select += "b.capacidad < " + capacidad + " AND ";
         }
 
-        if (!ruta.equals("")) {
-            sql_select += "b.ruta = '"+ruta.getNombre()+"'"+" AND ";
+        if (!ruta.equals("Cargar")) {
+            sql_select += "b.ruta = '"+ruta+"'"+" AND ";
         }
         
 
             
             
             sql_select = sql_select.substring(0, sql_select.length() - 5);
+            System.out.println(sql_select);
             
             //sirve para ejecutar consultas
             if(sql_select.contains("WHERE"))
             lista = manager.createQuery(sql_select).getResultList();
-            else lista = manager.createQuery("SELECT b FROM buses b").getResultList();
+            else lista = manager.createQuery("SELECT b FROM Buses b").getResultList();
             
             for(int i=0;i<lista.size();i++)
             {
