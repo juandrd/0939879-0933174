@@ -42,6 +42,8 @@ public class Pasajeros implements Serializable {
     private String genero;
     @Column(name = "email")
     private String email;
+    @Column (name= "password")
+    private String password;
 
     public Pasajeros() {
     }
@@ -50,6 +52,14 @@ public class Pasajeros implements Serializable {
         this.identificacion = identificacion;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     public String getIdentificacion() {
         return identificacion;
     }
