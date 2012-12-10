@@ -111,31 +111,31 @@ public class ControladorBus {
                         //"SELECT r FROM buses r"
             List lista;
             LinkedList listabuses= new LinkedList();
-            String sql_select="SELECT b FROM Buses b   ";
+            String sql_select="SELECT b FROM Buses b     ";
                 if (!placa.equals("") || !tipo.equals("") ||
                      capacidad>0 ||
                     (!ruta.equals("Cargar") && 
                     !ruta.equals(" ") )) {
                 
-            sql_select += "WHERE ";
+            sql_select += "WHERE";
             }
             
         if (!placa.equals("")) {
-            sql_select += "b.placa = '" + placa + "' AND ";
+            sql_select += " b.placa = '" + placa + "' AND ";
         }       
        
         
         if(!tipo.equals("")){
-            sql_select += "b.tipo = '"+tipo+"'"+" AND ";
+            sql_select += " b.tipo = '"+tipo+"'"+" AND ";
         }
         
                
         if(capacidad>0){
-            sql_select += "b.capacidad < " + capacidad + " AND ";
+            sql_select += " b.capacidad < " + capacidad + " AND ";
         }
 
-        if (!ruta.equals("Cargar")) {
-            sql_select += "b.ruta = '"+ruta+"'"+" AND ";
+        if (!ruta.equals("Cargar") && !ruta.equals(" ")) {
+            sql_select += " b.ruta = '"+ruta+"'"+" AND ";
         }
         
 
@@ -145,9 +145,9 @@ public class ControladorBus {
             System.out.println(sql_select);
             
             //sirve para ejecutar consultas
-            if(sql_select.contains("WHERE"))
-            lista = manager.createQuery(sql_select).getResultList();
-            else lista = manager.createQuery("SELECT b FROM Buses b").getResultList();
+//            if(sql_select.contains("WHERE"))
+               lista = manager.createQuery(sql_select).getResultList();
+            //else lista = manager.createQuery("SELECT b FROM Buses b ").getResultList();
             
             for(int i=0;i<lista.size();i++)
             {
