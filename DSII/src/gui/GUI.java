@@ -70,7 +70,7 @@ public class GUI extends javax.swing.JFrame {
         jMILoginPasajeros = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMOpciones = new javax.swing.JMenu();
-        jMIModificarDatosPersonales = new javax.swing.JMenuItem();
+        jMICrearEmpleado = new javax.swing.JMenuItem();
         jMIRutas = new javax.swing.JMenuItem();
         jMIBuses = new javax.swing.JMenuItem();
         jMIOrdenes = new javax.swing.JMenuItem();
@@ -104,14 +104,13 @@ public class GUI extends javax.swing.JFrame {
 
         jMOpciones.setText("Empleados");
 
-        jMIModificarDatosPersonales.setText("Modificar Datos Personales");
-        jMIModificarDatosPersonales.setEnabled(false);
-        jMIModificarDatosPersonales.addActionListener(new java.awt.event.ActionListener() {
+        jMICrearEmpleado.setText("Crear");
+        jMICrearEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIModificarDatosPersonalesActionPerformed(evt);
+                jMICrearEmpleadoActionPerformed(evt);
             }
         });
-        jMOpciones.add(jMIModificarDatosPersonales);
+        jMOpciones.add(jMICrearEmpleado);
 
         jMIRutas.setText("Rutas");
         jMIRutas.addActionListener(new java.awt.event.ActionListener() {
@@ -260,16 +259,16 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMIGenerarReporteActionPerformed
 
-    private void jMIModificarDatosPersonalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIModificarDatosPersonalesActionPerformed
+    private void jMICrearEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICrearEmpleadoActionPerformed
         try {
             jPPrincipal.removeAll();
         } catch (Exception e) {
         }
-       // JPModificarDatosPersonales jPMDP = new JPModificarDatosPersonales(usuario_id);
-        //jPPrincipal.add(jPMDP, BorderLayout.CENTER);
+        JPEmpleado jPE = new JPEmpleado();
+        jPPrincipal.add(jPE, BorderLayout.CENTER);
         jPPrincipal.updateUI();
         this.pack();
-    }//GEN-LAST:event_jMIModificarDatosPersonalesActionPerformed
+    }//GEN-LAST:event_jMICrearEmpleadoActionPerformed
 
     private void jMILoginPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMILoginPasajerosActionPerformed
         ///interfaz completa
@@ -330,9 +329,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMIBuses;
     private javax.swing.JMenuItem jMICrearCotizacion;
+    private javax.swing.JMenuItem jMICrearEmpleado;
     private javax.swing.JMenuItem jMIGenerarReporte;
     private javax.swing.JMenuItem jMILoginPasajeros;
-    private javax.swing.JMenuItem jMIModificarDatosPersonales;
     private javax.swing.JMenuItem jMIOrdenes;
     private javax.swing.JMenuItem jMIRegistrarVenta;
     private javax.swing.JMenuItem jMIRutas;
