@@ -45,12 +45,22 @@ public class Empleados implements Serializable {
     private String email;
     @Column(name = "salario")
     private Integer salario;
+    @Column(name = "password")
+    private String password;
 
     public Empleados() {
     }
 
     public Empleados(String identificacion) {
         this.identificacion = identificacion;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getIdentificacion() {
