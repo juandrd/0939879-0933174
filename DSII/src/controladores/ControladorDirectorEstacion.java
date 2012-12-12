@@ -9,6 +9,7 @@ import dao.exceptions.NonexistentEntityException;
 import dao.exceptions.PreexistingEntityException;
 import entidades.Empleados;
 import entidades.DirectoresEstacion;
+import entidades.Estaciones;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -82,5 +83,39 @@ public class ControladorDirectorEstacion {
         }
         return -1;
     }   
+      
+      public DirectoresEstacion consultar(String id){
+          DirectoresEstacion e=daoDirectorEst.findDirectoresEstacion(id);
+          
+          return e;
+      }
+        public LinkedList consultarAll()
+    {
+                        //"SELECT r FROM Rutas r"
+         List lista;
+            LinkedList listaDirectores= new LinkedList();
+           
+            lista=daoDirectorEst.findDirectoresEstacionEntities();
+            
+            for(int i=0;i<lista.size();i++)
+            {
+                DirectoresEstacion r = (DirectoresEstacion) lista.get(i);
+                listaDirectores.add(r);
+            }
+            
+            return listaDirectores;
+           
+    }
+      
+       public String[] listar() {
+        LinkedList directoresConsultar = consultarAll();
+        String[] directores = new String[directoresConsultar.size() + 1];
+        directores[0] = " ";
+        for (int i = 0; i < directoresConsultar.size(); i++) {
+            directores[i + 1] = ((DirectoresEstacion) directoresConsultar.get(i)).getIdentificacion();
+        }
+        return directores;
+    }
+
         
 }
