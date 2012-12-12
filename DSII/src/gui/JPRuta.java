@@ -22,6 +22,7 @@ public class JPRuta extends javax.swing.JPanel {
      * Creates new form JPCliente
      */
     ControladorRuta rutaControlador;
+     int selectedRow;
 
     public JPRuta() {
         initComponents();
@@ -30,7 +31,10 @@ public class JPRuta extends javax.swing.JPanel {
 
 
         jTabbedPane1.setSelectedIndex(0);
-        jTResultados.setEnabled(false);
+        
+        
+
+        
 
     }
 
@@ -55,13 +59,13 @@ public class JPRuta extends javax.swing.JPanel {
         jBCrear = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jBConsultar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTResultados = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jTFNombre2 = new javax.swing.JTextField();
         jTFDescripcion2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jBLimpiarConsultar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTResultados = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jBModificar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -116,32 +120,6 @@ public class JPRuta extends javax.swing.JPanel {
         });
         jPanel2.add(jBConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 90, -1));
 
-        jTResultados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre", "Descripcion"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTResultados.setCellSelectionEnabled(true);
-        jTResultados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTResultadosMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTResultados);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 470, 125));
-
         jLabel5.setText("Nombre");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
@@ -161,6 +139,31 @@ public class JPRuta extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jBLimpiarConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 90, -1));
+
+        jTResultados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Descripcion"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTResultadosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTResultados);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 420, 120));
 
         jTabbedPane1.addTab("Consultar", jPanel2);
 
@@ -286,12 +289,15 @@ public class JPRuta extends javax.swing.JPanel {
                     return canEdit[columnIndex];
                 }
             };
+            
             ///remover filas
             jTResultados.setModel(myModel);
             jTResultados.setRowSorter(new TableRowSorter(myModel));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+            
+        }catch(Exception e)
+        {e.printStackTrace();}
+       
     }//GEN-LAST:event_jBConsultarActionPerformed
 
     private void limpiarCamposModificar() {
@@ -310,22 +316,22 @@ public class JPRuta extends javax.swing.JPanel {
         jTFNombre2.setText("");
     }
 
-    private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-
-
-        int selectedRow = jTResultados.getSelectedRow() + 1;
-
-        jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
-        jTPDescripcion1.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
-
-        jTabbedPane1.setSelectedIndex(2);
-
-    }//GEN-LAST:event_jTResultadosMouseClicked
-
     private void jBLimpiarConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarConsultarActionPerformed
         limpiarCamposConsultar();
         jBConsultar.doClick();
     }//GEN-LAST:event_jBLimpiarConsultarActionPerformed
+
+    private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
+
+        int selectedRow = jTResultados.getSelectedRow();
+        jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTPDescripcion1.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        
+
+
+        jTabbedPane1.setSelectedIndex(2);
+    }//GEN-LAST:event_jTResultadosMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar;
     private javax.swing.JButton jBCrear;
