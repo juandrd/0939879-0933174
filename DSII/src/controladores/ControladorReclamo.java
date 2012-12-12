@@ -102,8 +102,8 @@ public class ControladorReclamo {
             List lista;
             LinkedList listabuses= new LinkedList();
             String sql_select="SELECT r FROM Reclamos r     ";
-                if (!codigo.equals("") || !pasajero.equals(" ") ||                   
-                              !estacion.equals(" ") ) {
+                if (!codigo.equals("") || (!pasajero.equals(" ")&&!pasajero.equals("")) ||                   
+                             (!estacion.equals("")&& !estacion.equals(" ") )) {
                 
             sql_select += "WHERE";
             }
@@ -113,13 +113,13 @@ public class ControladorReclamo {
         }       
        
         
-        if(!pasajero.equals(" ")){
+        if(!pasajero.equals(" ")&&!pasajero.equals("")){
             sql_select += " r.pasajero = '"+pasajero+"'"+" AND ";
         }
         
                
-        if(!estacion.equals(" ")){
-            sql_select += " r.estacion = " + estacion + " AND ";
+        if(!estacion.equals(" ")&&!estacion.equals("")){
+            sql_select += " r.estacion = '" + estacion + "' AND ";
         }
 
                     

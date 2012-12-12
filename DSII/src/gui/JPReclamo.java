@@ -300,7 +300,7 @@ public class JPReclamo extends javax.swing.JPanel {
         jScrollPane3.setViewportView(jTADescripcion3);
 
         jPanel10.add(jScrollPane3);
-        jScrollPane3.setBounds(100, 60, 180, 19);
+        jScrollPane3.setBounds(100, 56, 180, 100);
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Pasajero");
