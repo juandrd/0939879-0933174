@@ -36,11 +36,13 @@ public class ControladorConductor {
      public int insertar(Empleados empleado,Time hora_ent,Time hora_sal
                 )
     {
+        
         if (!empleado.getIdentificacion().isEmpty()
                 && !hora_ent.equals("") && !hora_sal.equals("")) {
             
         Conductores conductor = new Conductores();
         conductor.setIdentificacion(empleado.getIdentificacion());
+        
         conductor.setHoraEntrada(hora_ent);
         conductor.setHoraSalida(hora_sal);
         
@@ -58,7 +60,8 @@ public class ControladorConductor {
         }
         catch (Exception ex) 
         {
-            System.out.println(ex.getMessage());
+            
+            ex.printStackTrace();
         }
         }
         return -1;

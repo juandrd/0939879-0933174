@@ -114,7 +114,7 @@ public class ControladoresTarjetasGenericas {
         }
         
         if(!nro_pasajes.equals("")){
-            sql_select += "tg.nro_pasajes LIKE '%"+nro_pasajes+"%'"+" AND ";
+            sql_select += "tg.nro_pasajes = "+nro_pasajes+"  AND ";
         }
         
         if(!estado.equals("")){

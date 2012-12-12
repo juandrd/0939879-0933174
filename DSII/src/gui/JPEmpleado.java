@@ -9,7 +9,10 @@ import entidades.Empleados;
 import entidades.Estaciones;
 import java.sql.Time;
 import java.util.LinkedList;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -27,6 +30,8 @@ public class JPEmpleado extends javax.swing.JPanel {
     ControladorDirectorEstacion controladorDirEstacion;
     ControladorDirectorOperativo controladorDirOperativo;
     ControladorEstacion controladorEstacion;
+    ControladorConductor controladorConductor;
+   
 
     public JPEmpleado() {
         initComponents();
@@ -35,6 +40,38 @@ public class JPEmpleado extends javax.swing.JPanel {
         controladorDirEstacion = new ControladorDirectorEstacion();
         controladorDirOperativo = new ControladorDirectorOperativo();
         controladorEstacion=new ControladorEstacion();
+        controladorConductor =  new ControladorConductor();
+        
+        
+        
+        
+        
+        //SPINNERS RESTRINGIR HORA Y MINUTOS
+        SpinnerNumberModel modeloSpinnersHE= new SpinnerNumberModel(0, 0, 23, 1);
+        SpinnerNumberModel modeloSpinnersHS= new SpinnerNumberModel(0, 0, 23, 1);
+        SpinnerNumberModel modeloSpinnersME= new SpinnerNumberModel(0, 0, 59, 1);
+        SpinnerNumberModel modeloSpinnersMS= new SpinnerNumberModel(0, 0, 59, 1);
+        jSHoraEntrada.setModel(modeloSpinnersHE);
+        jSHoraSalida.setModel(modeloSpinnersHS);
+        jSMinutosEntrada.setModel(modeloSpinnersME);
+        jSMinutosSalida.setModel(modeloSpinnersMS);
+        JFormattedTextField tfHE = ((JSpinner.DefaultEditor)jSHoraEntrada.getEditor())
+        .getTextField();
+        tfHE.setEditable(false);
+        //----------------------
+         JFormattedTextField tfHS = ((JSpinner.DefaultEditor)jSHoraSalida.getEditor())
+        .getTextField();
+        tfHS.setEditable(false);
+        //----------------------
+          JFormattedTextField tfME = ((JSpinner.DefaultEditor)jSMinutosEntrada.getEditor())
+        .getTextField();
+        tfME.setEditable(false);
+        //----------------------
+         JFormattedTextField tfMS = ((JSpinner.DefaultEditor)jSMinutosSalida.getEditor())
+        .getTextField();
+        tfMS.setEditable(false);
+        //----------------------
+        
     }
 
     /**
@@ -74,11 +111,13 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBEstaciones1 = new javax.swing.JComboBox();
         jBCrearAuxiliar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jTFHoraEntrada1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTHoraSalida1 = new javax.swing.JTextField();
         jBCrearConductor = new javax.swing.JButton();
+        jSHoraEntrada = new javax.swing.JSpinner();
+        jSMinutosEntrada = new javax.swing.JSpinner();
+        jSMinutosSalida = new javax.swing.JSpinner();
+        jSHoraSalida = new javax.swing.JSpinner();
         jPanel5 = new javax.swing.JPanel();
         jBCrearDirectorEstacion = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -170,7 +209,7 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jBLimpiar1);
-        jBLimpiar1.setBounds(420, 450, 70, 23);
+        jBLimpiar1.setBounds(420, 450, 70, 33);
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Apellidos");
@@ -185,7 +224,7 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jCBGenero1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino" }));
         jPanel8.add(jCBGenero1);
-        jCBGenero1.setBounds(100, 260, 130, 20);
+        jCBGenero1.setBounds(100, 260, 130, 27);
 
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Email");
@@ -194,7 +233,7 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jLabel1.setText("Salario");
         jPanel8.add(jLabel1);
-        jLabel1.setBounds(30, 300, 34, 14);
+        jLabel1.setBounds(30, 300, 34, 17);
 
         jTFSalario1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,7 +247,7 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jLabel2.setText("Tipo");
         jPanel8.add(jLabel2);
-        jLabel2.setBounds(30, 340, 34, 14);
+        jLabel2.setBounds(30, 340, 34, 17);
 
         jCBTipo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Auxiliar", "Conductor", "Director Estacion", "Director Operativo", "" }));
         jCBTipo1.addItemListener(new java.awt.event.ItemListener() {
@@ -217,19 +256,19 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jCBTipo1);
-        jCBTipo1.setBounds(100, 340, 130, 20);
+        jCBTipo1.setBounds(100, 340, 130, 27);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Auxiliar"));
 
         jLabel3.setText("Estacion");
 
         jCBEstaciones1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBEstaciones1PopupMenuWillBecomeVisible(evt);
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
             }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                jCBEstaciones1PopupMenuWillBecomeVisible(evt);
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
         });
 
@@ -250,7 +289,7 @@ public class JPEmpleado extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addComponent(jCBEstaciones1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -265,7 +304,7 @@ public class JPEmpleado extends javax.swing.JPanel {
                     .addComponent(jCBEstaciones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBCrearAuxiliar)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel1);
@@ -285,6 +324,14 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
 
+        jSHoraEntrada.setToolTipText("hora");
+
+        jSMinutosEntrada.setToolTipText("minutos");
+
+        jSMinutosSalida.setToolTipText("minutos");
+
+        jSHoraSalida.setToolTipText("hora");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -292,36 +339,38 @@ public class JPEmpleado extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFHoraEntrada1, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(jTHoraSalida1)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBCrearConductor)))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSHoraSalida, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                    .addComponent(jSHoraEntrada))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSMinutosEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                    .addComponent(jBCrearConductor)
+                    .addComponent(jSMinutosSalida))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFHoraEntrada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jSHoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSMinutosEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTHoraSalida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(jSMinutosSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBCrearConductor)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel2);
-        jPanel2.setBounds(250, 120, 240, 160);
+        jPanel2.setBounds(250, 120, 270, 160);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Director de Estacion"));
 
@@ -338,7 +387,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(159, Short.MAX_VALUE)
+                .addContainerGap(165, Short.MAX_VALUE)
                 .addComponent(jBCrearDirectorEstacion)
                 .addContainerGap())
         );
@@ -347,7 +396,7 @@ public class JPEmpleado extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jBCrearDirectorEstacion)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel5);
@@ -368,7 +417,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(159, Short.MAX_VALUE)
+                .addContainerGap(165, Short.MAX_VALUE)
                 .addComponent(jBCrearDirectorOperativo)
                 .addContainerGap())
         );
@@ -376,7 +425,7 @@ public class JPEmpleado extends javax.swing.JPanel {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jBCrearDirectorOperativo)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel6);
@@ -399,7 +448,7 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
         jPanel9.add(jBLimpiarConsultar);
-        jBLimpiarConsultar.setBounds(310, 180, 90, 23);
+        jBLimpiarConsultar.setBounds(310, 180, 90, 33);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -455,7 +504,7 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jCBGenero2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Masculino", "Femenino" }));
         jPanel9.add(jCBGenero2);
-        jCBGenero2.setBounds(100, 130, 130, 20);
+        jCBGenero2.setBounds(100, 130, 130, 27);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel30.setText("Email");
@@ -471,7 +520,7 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
         jPanel9.add(jBConsultar1);
-        jBConsultar1.setBounds(400, 180, 90, 23);
+        jBConsultar1.setBounds(400, 180, 90, 33);
 
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("Salario");
@@ -480,7 +529,7 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Auxiliar", "Conductor", "Director Estacion", "Director Operativo", "" }));
         jPanel9.add(jComboBox2);
-        jComboBox2.setBounds(100, 340, 130, 20);
+        jComboBox2.setBounds(100, 340, 130, 27);
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Auxiliar", "Conductor", "Director Estacion", "Director Operativo", "" }));
         jPanel9.add(jComboBox3);
@@ -488,7 +537,7 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Auxiliar", "Conductor", "Director de Estacion", "Director Operativo" }));
         jPanel9.add(jComboBox4);
-        jComboBox4.setBounds(350, 20, 130, 20);
+        jComboBox4.setBounds(350, 20, 130, 27);
 
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setText("Tipo");
@@ -514,7 +563,7 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
         jPanel10.add(jBModificar);
-        jBModificar.setBounds(250, 290, 110, 23);
+        jBModificar.setBounds(250, 290, 110, 33);
 
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Identificación");
@@ -546,7 +595,7 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jCBGenero3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino" }));
         jPanel10.add(jCBGenero3);
-        jCBGenero3.setBounds(100, 130, 80, 20);
+        jCBGenero3.setBounds(100, 130, 80, 27);
         jPanel10.add(jTFTelefono3);
         jTFTelefono3.setBounds(280, 130, 80, 30);
 
@@ -802,6 +851,7 @@ public class JPEmpleado extends javax.swing.JPanel {
     private void jBCrearConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearConductorActionPerformed
         // TODO add your handling code here:
        int guardar = -1;
+       
         try {
 
             String id = jTFId1.getText();
@@ -812,17 +862,31 @@ public class JPEmpleado extends javax.swing.JPanel {
             String email = jTFEmail1.getText();
             String genero = jCBGenero1.getSelectedItem().toString();
             int salario = Integer.parseInt(jTFSalario1.getText());
+
+            
+           
+            int horaSalida=(Integer)jSHoraSalida.getValue();
+            int horaEntrada=(Integer)jSHoraEntrada.getValue();
+            int minutoSalida=(Integer)jSMinutosSalida.getValue();
+            int minutoEntrada=(Integer)jSMinutosEntrada.getValue();
+            Time hora_inicio= new Time(horaEntrada, minutoEntrada, 0);
+            Time hora_salida= new Time(horaSalida, minutoSalida, 0);
+                    
+  
             controladorEmpleado.insertar(id, nombre, apellido, telefono, direccion, genero, email, salario);
             Empleados e = controladorEmpleado.consultar(id);
+             
             
           //  Time hora_inicio=(Time)jTFHoraEntrada1.getText();
             
-//            guardar = ControladorConductor.insertar(e,hora_inicio,
-//                    hora_salido);
+            
+             guardar = controladorConductor.insertar(e, hora_inicio, hora_salida);
 
         } catch (Exception e) {
+            e.printStackTrace();
         }
         if (guardar == -1) {
+            
             JOptionPane.showMessageDialog(this, "No se pudo crear ", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
         } else {
 
@@ -989,6 +1053,10 @@ public class JPEmpleado extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JSpinner jSHoraEntrada;
+    private javax.swing.JSpinner jSHoraSalida;
+    private javax.swing.JSpinner jSMinutosEntrada;
+    private javax.swing.JSpinner jSMinutosSalida;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFApellido1;
     private javax.swing.JTextField jTFApellido2;
@@ -998,7 +1066,6 @@ public class JPEmpleado extends javax.swing.JPanel {
     private javax.swing.JTextField jTFEmail1;
     private javax.swing.JTextField jTFEmail2;
     private javax.swing.JTextField jTFEmail3;
-    private javax.swing.JTextField jTFHoraEntrada1;
     private javax.swing.JTextField jTFId1;
     private javax.swing.JTextField jTFId2;
     private javax.swing.JTextField jTFId3;
@@ -1009,7 +1076,6 @@ public class JPEmpleado extends javax.swing.JPanel {
     private javax.swing.JTextField jTFSalario1;
     private javax.swing.JTextField jTFTelefono1;
     private javax.swing.JTextField jTFTelefono3;
-    private javax.swing.JTextField jTHoraSalida1;
     private javax.swing.JTabbedPane jTPEmpleado;
     private javax.swing.JTable jTResultados;
     // End of variables declaration//GEN-END:variables
