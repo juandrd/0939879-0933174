@@ -83,5 +83,27 @@ public class ControladorDirectorOperativo {
         }
         return -1;
     }   
+        public DirectoresOperativos consultar(String id){
+            DirectoresOperativos d=daoDirectorOp.findDirectoresOperativos(id);
+            
+            return d;
+        }
         
+           public LinkedList consultarAll()
+    {
+                        //"SELECT r FROM Rutas r"
+         List lista;
+            LinkedList listaDirectores= new LinkedList();
+           
+            lista=daoDirectorOp.findDirectoresOperativosEntities();
+            
+            for(int i=0;i<lista.size();i++)
+            {
+                DirectoresOperativos r = (DirectoresOperativos) lista.get(i);
+                listaDirectores.add(r);
+            }
+            
+            return listaDirectores;
+           
+    }
 }

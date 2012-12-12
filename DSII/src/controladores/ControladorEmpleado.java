@@ -122,7 +122,7 @@ public class ControladorEmpleado {
                 if (!id.equals("") || !nombre.equals("") ||
                      salario>0 ||
                     !apellido.equals("") ||
-                    !genero.equals(" ") ) {
+                    !genero.equals("") ) {
                 
             sql_select += "WHERE";
             }
@@ -141,11 +141,11 @@ public class ControladorEmpleado {
             sql_select += " e.apellidos LIKE '%" + apellido+"%'"+ " AND ";
         }
 
-        if (!genero.equals(" ")) {
+        if (!genero.equals("")) {
             sql_select += " e.genero = '"+genero+"'"+" AND ";
         }
         if (salario>0) {
-            sql_select += " e.salario = '"+salario+"'"+" AND ";
+            sql_select += " e.salario < '"+salario+"'"+" AND ";
         }
 
             

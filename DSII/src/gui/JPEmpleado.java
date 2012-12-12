@@ -5,8 +5,7 @@
 package gui;
 
 import controladores.*;
-import entidades.Empleados;
-import entidades.Estaciones;
+import entidades.*;
 import java.sql.Time;
 import java.util.LinkedList;
 import javax.swing.JFormattedTextField;
@@ -15,6 +14,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -130,20 +130,17 @@ public class JPEmpleado extends javax.swing.JPanel {
         jLabel24 = new javax.swing.JLabel();
         jTFId2 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        jTFNombre2 = new javax.swing.JTextField();
+        jTFSalario2 = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jTFApellido2 = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jCBGenero2 = new javax.swing.JComboBox();
-        jLabel30 = new javax.swing.JLabel();
-        jTFEmail2 = new javax.swing.JTextField();
         jBConsultar1 = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
-        jComboBox3 = new javax.swing.JComboBox();
-        jComboBox4 = new javax.swing.JComboBox();
+        jCBTipo2 = new javax.swing.JComboBox();
         jLabel34 = new javax.swing.JLabel();
-        jTFNombre4 = new javax.swing.JTextField();
+        jTFNombre2 = new javax.swing.JTextField();
+        jBConsultarPorTipo = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jBModificar = new javax.swing.JButton();
@@ -163,6 +160,18 @@ public class JPEmpleado extends javax.swing.JPanel {
         jLabel32 = new javax.swing.JLabel();
         jTFEmail3 = new javax.swing.JTextField();
         jPFPassword3 = new javax.swing.JPasswordField();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jCBEstaciones2 = new javax.swing.JComboBox();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jSHoraEntrada1 = new javax.swing.JSpinner();
+        jSMinutosEntrada1 = new javax.swing.JSpinner();
+        jSMinutosSalida1 = new javax.swing.JSpinner();
+        jSHoraSalida1 = new javax.swing.JSpinner();
+        jLabel9 = new javax.swing.JLabel();
+        jTFSalario3 = new javax.swing.JTextField();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Empleado"));
 
@@ -209,7 +218,7 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jBLimpiar1);
-        jBLimpiar1.setBounds(420, 450, 70, 33);
+        jBLimpiar1.setBounds(420, 450, 70, 23);
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Apellidos");
@@ -224,7 +233,7 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jCBGenero1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino" }));
         jPanel8.add(jCBGenero1);
-        jCBGenero1.setBounds(100, 260, 130, 27);
+        jCBGenero1.setBounds(100, 260, 130, 20);
 
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Email");
@@ -233,7 +242,7 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jLabel1.setText("Salario");
         jPanel8.add(jLabel1);
-        jLabel1.setBounds(30, 300, 34, 17);
+        jLabel1.setBounds(20, 300, 70, 14);
 
         jTFSalario1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,7 +256,7 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jLabel2.setText("Tipo");
         jPanel8.add(jLabel2);
-        jLabel2.setBounds(30, 340, 34, 17);
+        jLabel2.setBounds(30, 340, 34, 14);
 
         jCBTipo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Auxiliar", "Conductor", "Director Estacion", "Director Operativo", "" }));
         jCBTipo1.addItemListener(new java.awt.event.ItemListener() {
@@ -256,19 +265,19 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jCBTipo1);
-        jCBTipo1.setBounds(100, 340, 130, 27);
+        jCBTipo1.setBounds(100, 340, 130, 20);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Auxiliar"));
 
         jLabel3.setText("Estacion");
 
         jCBEstaciones1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                jCBEstaciones1PopupMenuWillBecomeVisible(evt);
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
             }
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBEstaciones1PopupMenuWillBecomeVisible(evt);
             }
         });
 
@@ -289,7 +298,7 @@ public class JPEmpleado extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addComponent(jCBEstaciones1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -304,7 +313,7 @@ public class JPEmpleado extends javax.swing.JPanel {
                     .addComponent(jCBEstaciones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBCrearAuxiliar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel1);
@@ -345,7 +354,7 @@ public class JPEmpleado extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSHoraSalida, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                     .addComponent(jSHoraEntrada))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSMinutosEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
                     .addComponent(jBCrearConductor)
@@ -366,7 +375,7 @@ public class JPEmpleado extends javax.swing.JPanel {
                     .addComponent(jSHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBCrearConductor)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel2);
@@ -387,7 +396,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(165, Short.MAX_VALUE)
+                .addContainerGap(159, Short.MAX_VALUE)
                 .addComponent(jBCrearDirectorEstacion)
                 .addContainerGap())
         );
@@ -396,7 +405,7 @@ public class JPEmpleado extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jBCrearDirectorEstacion)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel5);
@@ -417,7 +426,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(165, Short.MAX_VALUE)
+                .addContainerGap(159, Short.MAX_VALUE)
                 .addComponent(jBCrearDirectorOperativo)
                 .addContainerGap())
         );
@@ -425,7 +434,7 @@ public class JPEmpleado extends javax.swing.JPanel {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jBCrearDirectorOperativo)
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel6);
@@ -448,18 +457,18 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
         jPanel9.add(jBLimpiarConsultar);
-        jBLimpiarConsultar.setBounds(310, 180, 90, 33);
+        jBLimpiarConsultar.setBounds(410, 220, 90, 23);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "id", "Nombre", "Apellidos", "Telefono", "Direccion", "Genero", "Email", "Salario", "Tipo"
+                "id", "Nombre", "Apellidos", "Telefono", "Direccion", "Genero", "Email", "Salario"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -474,7 +483,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel9.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 220, 490, 110);
+        jScrollPane1.setBounds(30, 300, 490, 110);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("Identificación");
@@ -487,8 +496,8 @@ public class JPEmpleado extends javax.swing.JPanel {
         jLabel25.setText("Nombres");
         jPanel9.add(jLabel25);
         jLabel25.setBounds(-20, 50, 120, 30);
-        jPanel9.add(jTFNombre2);
-        jTFNombre2.setBounds(350, 50, 130, 30);
+        jPanel9.add(jTFSalario2);
+        jTFSalario2.setBounds(100, 170, 130, 30);
 
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("Apellidos");
@@ -504,14 +513,7 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jCBGenero2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Masculino", "Femenino" }));
         jPanel9.add(jCBGenero2);
-        jCBGenero2.setBounds(100, 130, 130, 27);
-
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setText("Email");
-        jPanel9.add(jLabel30);
-        jLabel30.setBounds(-10, 160, 90, 30);
-        jPanel9.add(jTFEmail2);
-        jTFEmail2.setBounds(100, 160, 130, 30);
+        jCBGenero2.setBounds(100, 130, 130, 20);
 
         jBConsultar1.setText("Consultar");
         jBConsultar1.addActionListener(new java.awt.event.ActionListener() {
@@ -520,34 +522,35 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
         jPanel9.add(jBConsultar1);
-        jBConsultar1.setBounds(400, 180, 90, 33);
+        jBConsultar1.setBounds(140, 220, 90, 23);
 
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("Salario");
         jPanel9.add(jLabel33);
-        jLabel33.setBounds(260, 40, 80, 40);
+        jLabel33.setBounds(0, 160, 80, 40);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Auxiliar", "Conductor", "Director Estacion", "Director Operativo", "" }));
-        jPanel9.add(jComboBox2);
-        jComboBox2.setBounds(100, 340, 130, 27);
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Auxiliar", "Conductor", "Director Estacion", "Director Operativo", "" }));
-        jPanel9.add(jComboBox3);
-        jComboBox3.setBounds(100, 340, 130, 60);
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Auxiliar", "Conductor", "Director de Estacion", "Director Operativo" }));
-        jPanel9.add(jComboBox4);
-        jComboBox4.setBounds(350, 20, 130, 27);
+        jCBTipo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Auxiliar", "Conductor", "Director de Estacion", "Director Operativo" }));
+        jPanel9.add(jCBTipo2);
+        jCBTipo2.setBounds(370, 20, 130, 20);
 
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setText("Tipo");
         jPanel9.add(jLabel34);
-        jLabel34.setBounds(250, 10, 80, 40);
-        jPanel9.add(jTFNombre4);
-        jTFNombre4.setBounds(100, 50, 130, 30);
+        jLabel34.setBounds(300, 10, 80, 40);
+        jPanel9.add(jTFNombre2);
+        jTFNombre2.setBounds(100, 50, 130, 30);
+
+        jBConsultarPorTipo.setText("Consultar por Tipo");
+        jBConsultarPorTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultarPorTipoActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jBConsultarPorTipo);
+        jBConsultarPorTipo.setBounds(380, 60, 120, 20);
 
         jPanel3.add(jPanel9);
-        jPanel9.setBounds(0, 0, 590, 340);
+        jPanel9.setBounds(0, 0, 590, 440);
 
         jTPEmpleado.addTab("Consultar", jPanel3);
 
@@ -563,7 +566,7 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
         jPanel10.add(jBModificar);
-        jBModificar.setBounds(250, 290, 110, 33);
+        jBModificar.setBounds(160, 430, 110, 23);
 
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Identificación");
@@ -572,9 +575,9 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jTFId3.setEditable(false);
         jPanel10.add(jTFId3);
-        jTFId3.setBounds(100, 10, 260, 30);
+        jTFId3.setBounds(100, 10, 170, 30);
         jPanel10.add(jTFNombre3);
-        jTFNombre3.setBounds(100, 50, 260, 30);
+        jTFNombre3.setBounds(100, 50, 170, 30);
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("Nombres");
@@ -586,7 +589,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel10.add(jLabel19);
         jLabel19.setBounds(0, 90, 80, 30);
         jPanel10.add(jTFApellido3);
-        jTFApellido3.setBounds(100, 90, 260, 30);
+        jTFApellido3.setBounds(100, 90, 170, 30);
 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("Genero");
@@ -595,38 +598,138 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jCBGenero3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino" }));
         jPanel10.add(jCBGenero3);
-        jCBGenero3.setBounds(100, 130, 80, 27);
+        jCBGenero3.setBounds(100, 130, 170, 20);
         jPanel10.add(jTFTelefono3);
-        jTFTelefono3.setBounds(280, 130, 80, 30);
+        jTFTelefono3.setBounds(100, 260, 170, 30);
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("Telefono");
         jPanel10.add(jLabel21);
-        jLabel21.setBounds(210, 120, 80, 40);
+        jLabel21.setBounds(0, 260, 80, 40);
 
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("Dirección");
         jPanel10.add(jLabel22);
         jLabel22.setBounds(10, 170, 70, 30);
         jPanel10.add(jTFDireccion3);
-        jTFDireccion3.setBounds(100, 170, 260, 30);
+        jTFDireccion3.setBounds(100, 170, 170, 30);
 
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel31.setText("Contraseña");
         jPanel10.add(jLabel31);
-        jLabel31.setBounds(0, 250, 90, 30);
+        jLabel31.setBounds(0, 360, 90, 30);
 
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setText("Email");
         jPanel10.add(jLabel32);
         jLabel32.setBounds(0, 210, 90, 30);
         jPanel10.add(jTFEmail3);
-        jTFEmail3.setBounds(100, 210, 260, 30);
+        jTFEmail3.setBounds(100, 210, 170, 30);
         jPanel10.add(jPFPassword3);
-        jPFPassword3.setBounds(100, 250, 260, 30);
+        jPFPassword3.setBounds(100, 360, 170, 30);
+
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Auxiliar"));
+
+        jLabel6.setText("Estacion");
+
+        jCBEstaciones2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBEstaciones2PopupMenuWillBecomeVisible(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jCBEstaciones2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jCBEstaciones2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+
+        jPanel10.add(jPanel11);
+        jPanel11.setBounds(280, 20, 240, 110);
+
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Conductor"));
+
+        jLabel7.setText("Hora Entrada");
+
+        jLabel8.setText("Hora Salida");
+
+        jSHoraEntrada1.setToolTipText("hora");
+
+        jSMinutosEntrada1.setToolTipText("minutos");
+
+        jSMinutosSalida1.setToolTipText("minutos");
+
+        jSHoraSalida1.setToolTipText("hora");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSHoraSalida1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                    .addComponent(jSHoraEntrada1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSMinutosEntrada1)
+                    .addComponent(jSMinutosSalida1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jSHoraEntrada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSMinutosEntrada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jSMinutosSalida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSHoraSalida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(82, Short.MAX_VALUE))
+        );
+
+        jPanel10.add(jPanel12);
+        jPanel12.setBounds(270, 150, 250, 160);
+
+        jLabel9.setText("Salario");
+        jPanel10.add(jLabel9);
+        jLabel9.setBounds(20, 320, 70, 14);
+
+        jTFSalario3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFSalario3ActionPerformed(evt);
+            }
+        });
+        jPanel10.add(jTFSalario3);
+        jTFSalario3.setBounds(100, 310, 170, 30);
 
         jPanel4.add(jPanel10);
-        jPanel10.setBounds(0, 10, 510, 440);
+        jPanel10.setBounds(0, 10, 540, 470);
 
         jTPEmpleado.addTab("Modificar", jPanel4);
 
@@ -645,106 +748,225 @@ public class JPEmpleado extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
-//        limpiarCamposCrear();
+       limpiarCamposCrear();
     }//GEN-LAST:event_jBLimpiar1ActionPerformed
 
     private void jBLimpiarConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarConsultarActionPerformed
-//        limpiarCamposConsultar();
+        limpiarCamposConsultar();
     }//GEN-LAST:event_jBLimpiarConsultarActionPerformed
 
+    public void limpiarCamposConsultar(){
+    jTFApellido2.setText("");
+    jTFSalario2.setText("");
+    jTFNombre2.setText("");
+    jTFId2.setText("");
+    jCBEstaciones1.setSelectedIndex(0);
+    jCBGenero2.setSelectedIndex(0);
+    jCBTipo2.setSelectedIndex(0);
+    
+}
+    public void limpiarCamposCrear(){
+    jTFApellido1.setText("");
+    jTFNombre1.setText("");
+    jTFDireccion1.setText("");
+    jTFTelefono1.setText("");
+    jTFSalario1.setText("");
+    jTFEmail1.setText("");
+    jTFId1.setText("");
+    jCBEstaciones1.setSelectedIndex(0);
+    jCBGenero1.setSelectedIndex(0);
+    jCBTipo1.setSelectedIndex(0);
+    
+}
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-//        String id;
-//
-//        int selectedRow = jTResultados.getSelectedRow();
-//        System.out.println(selectedRow);
-//        id = jTResultados.getModel().getValueAt(selectedRow, 0).toString();
-//        Pasajeros p = controladorPasajero.consultar(id);
-//        jPFPassword3.setText(p.getPassword());
-//
-//        jTFId3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
-//        jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
-//        jTFApellido3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
-//        jTFTelefono3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 3));
-//        jTFDireccion3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
-//        jCBGenero3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 5));
-//        jTFEmail3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 6));
-//
-//        jTPEmpleado.setSelectedIndex(2);
+      
+        int tipo=0;
+        int selectedRow = jTResultados.getSelectedRow();
+        String id= "" + jTResultados.getModel().getValueAt(selectedRow, 0);
+        String estacion="";
+        Empleados e=controladorEmpleado.consultar(id);
+        try{
+            Auxiliares a=controladorAuxiliar.consultar(id);
+            if(!a.getIdentificacion().equals("")){
+                tipo=1;
+                estacion=""+a.getEstacion();
+            }
+        }
+        catch(Exception exception){
+                      
+        }
+        try{
+            Conductores c=controladorConductor.consultar(id);
+            if(!c.getIdentificacion().equals("")){
+                tipo=2;
+            }
+        }
+        catch(Exception exception){
+                        
+        }
+
+        if(tipo==1){
+            jCBEstaciones2.setSelectedItem(estacion);
+        }
+        if(tipo==2){
+        }
+        
+        jTFId3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        jTFApellido3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+        jTFTelefono3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 3));
+        jTFDireccion3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
+        jCBGenero3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 5));
+        jTFEmail3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 6));
+        jTFSalario3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 7));
+        jPFPassword3.setText(e.getPassword());
+        
+        jTPEmpleado.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed
         LinkedList consulta = new LinkedList();
+ int salario=0;
+         try {
+             
+             try{
+               salario  = Integer.parseInt(jTFSalario2.getText());
+             }
+               catch(Exception exc){
+                   salario=0;
+               }
+                   
+               
+            consulta = controladorEmpleado.consultar(
+                    jTFId2.getText(),
+                    jTFNombre2.getText(),
+                    jTFApellido2.getText(),
+                    jCBGenero2.getSelectedItem().toString(),
+                    salario);
 
-        // try {
-//            consulta = controladorPasajero.consultar(
-//                    jTFId2.getText(),
-//                    jTFNombre2.getText(),
-//                    jTFApellido2.getText(),
-//                    jCBGenero2.getSelectedItem().toString(),
-//                    jTFEmail2.getText());
-//
-//            Object[][] s = new Object[consulta.size()][7];
-//            for (int i = 0; i < consulta.size(); i++) {
-//                Pasajeros pasajero = (Pasajeros) consulta.get(i);
-//                if (pasajero.getNombres() != null) {
-//                    s[i][0] = pasajero.getIdentificacion();
-//                    s[i][1] = pasajero.getNombres();
-//                    s[i][2] = pasajero.getApellidos();
-//                    s[i][3] = pasajero.getTelefono();
-//                    s[i][4] = pasajero.getDireccion();
-//                    s[i][5] = pasajero.getGenero();
-//                    s[i][6] = pasajero.getEmail();
+            Object[][] s = new Object[consulta.size()][8];
+            for (int i = 0; i < consulta.size(); i++) {
+                Empleados emp = (Empleados) consulta.get(i);
+                if (emp.getNombres() != null) {
+                    s[i][0] = emp.getIdentificacion();
+                    s[i][1] = emp.getNombres();
+                    s[i][2] = emp.getApellidos();
+                    s[i][3] = emp.getTelefono();
+                    s[i][4] = emp.getDireccion();
+                    s[i][5] = emp.getGenero();
+                    s[i][6] = emp.getEmail();
+                    s[i][7] = emp.getSalario();
 
-//                } else {
-//                    s = null;
-//                }
-        //    }
-//            TableModel myModel = new DefaultTableModel(s, new String[]{"Id", "Nombres", "Apellidos",
-//                        "Telefono", "Direccion", "Genero", "Email"}) {
-//
-//                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false};
-//
-//                @Override
-//                public boolean isCellEditable(int rowIndex, int columnIndex) {
-//                    return canEdit[columnIndex];
-//                }
-//            };
-//            ///remover filas
-//            jTResultados.setModel(myModel);
-//            jTResultados.setRowSorter(new TableRowSorter(myModel));
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id", "Nombres", "Apellidos",
+                        "Telefono", "Direccion", "Genero", "Email", "Salario"}) {
+
+                boolean[] canEdit = new boolean[]{false,false, false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jBConsultar1ActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-//        int editar = -1;
-//
-//        try {
-//            editar = controladorPasajero.modificar(
-//                    jTFId3.getText(),
-//                    jTFNombre3.getText(),
-//                    jTFApellido3.getText(),
-//                    jTFTelefono3.getText(),
-//                    jTFDireccion3.getText(),
-//                    jCBGenero3.getSelectedItem().toString(),
-//                    jTFEmail3.getText(),
-//                    jPFPassword3.getText());
-//
-//
-//        } catch (Exception e) {
-//            System.out.print(e);
-//        }
-//        if (editar == -1) {
-//            JOptionPane.showMessageDialog(this, "No su pudo modificar el pasajero", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
-//        } else {
-//            JOptionPane.showMessageDialog(this, "modificado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
-//            limpiarCamposConsultar();
-//            jTFId2.setText(jTFId3.getText());
-//            jBConsultar1.doClick();
-//            jTPEmpleado.setSelectedIndex(1);
-//            limpiarCamposModificar();
-//        }
+        int editar = -1;
+        int tipo=0;
+        String id=jTFId3.getText();
+        Empleados e;
+
+        try {
+             editar= controladorEmpleado.modificar(
+                    jTFId3.getText(),
+                    jTFNombre3.getText(),
+                    jTFApellido3.getText(),
+                    jTFTelefono3.getText(),
+                    jTFDireccion3.getText(),
+                    jTFEmail3.getText(),
+                    jCBGenero3.getSelectedItem().toString(),                    
+                    Integer.parseInt(jTFSalario3.getText()),
+                    jPFPassword3.getText());
+
+        } catch (Exception exc) {
+            System.out.print(exc);
+        }
+        
+        e=controladorEmpleado.consultar(id);
+        try{
+            Auxiliares a=controladorAuxiliar.consultar(id);
+            if(!a.getIdentificacion().equals("")){
+                tipo=1;
+                Estaciones estacion=controladorEstacion.consultar(jCBEstaciones2.getSelectedItem().toString());
+                editar=controladorAuxiliar.modificar(e, estacion);
+            }
+        }
+        catch(Exception exception){
+                      
+        }
+        try{
+            Conductores c=controladorConductor.consultar(id);
+            if(!c.getIdentificacion().equals("")){
+                tipo=2;
+                int horaSalida=(Integer)jSHoraSalida1.getValue();
+            int horaEntrada=(Integer)jSHoraEntrada1.getValue();
+            int minutoSalida=(Integer)jSMinutosSalida1.getValue();
+            int minutoEntrada=(Integer)jSMinutosEntrada1.getValue();
+            Time hora_inicio= new Time(horaEntrada, minutoEntrada, 0);
+            Time hora_salida= new Time(horaSalida, minutoSalida, 0);
+                editar=controladorConductor.modificar(e, hora_inicio, 
+                        hora_salida);
+            }
+        }
+        catch(Exception exception){
+                        
+        }
+        
+        try{
+            DirectoresEstacion direc=controladorDirEstacion.consultar(id);
+            if(!direc.getIdentificacion().equals("")){
+                tipo=3;
+              
+                editar=controladorDirEstacion.modificar(e);
+            }
+        }
+        catch(Exception exception){
+                        
+        }
+        
+        try{
+            DirectoresOperativos direc=controladorDirOperativo.consultar(id);
+            if(!direc.getIdentificacion().equals("")){
+                tipo=4;
+              
+                editar=controladorDirOperativo.modificar(e);
+            }
+        }
+        catch(Exception exception){
+                        
+        }
+        
+        
+        System.out.println("El tipo es " +tipo);
+        if (editar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo modificar el pasajero", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "modificado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFId2.setText(jTFId3.getText());
+            jBConsultar1.doClick();
+            jTPEmpleado.setSelectedIndex(1);
+           
+        }
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jTFSalario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFSalario1ActionPerformed
@@ -795,16 +1017,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jCBTipo1ItemStateChanged
 
-    public void limpiarCamposCrear() {
-        jTFId1.setText("");
-        jTFNombre1.setText("");
-        jTFApellido1.setText("");
-        jTFTelefono1.setText("");
-        jTFDireccion1.setText("");
-        jTFEmail1.setText("");
-        jCBGenero1.setSelectedIndex(0);
-        jTFSalario1.setText("");
-    }
+   
     private void jBCrearAuxiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearAuxiliarActionPerformed
         // TODO add your handling code here:
         int guardar = -1;
@@ -997,9 +1210,180 @@ public class JPEmpleado extends javax.swing.JPanel {
                 new javax.swing.DefaultComboBoxModel(controladorEstacion.listar()));
     }//GEN-LAST:event_jCBEstaciones1PopupMenuWillBecomeVisible
 
+    private void jCBEstaciones2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBEstaciones2PopupMenuWillBecomeVisible
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBEstaciones2PopupMenuWillBecomeVisible
+
+    private void jTFSalario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFSalario3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFSalario3ActionPerformed
+
+    private void jBConsultarPorTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarPorTipoActionPerformed
+            LinkedList consulta = new LinkedList();
+     
+         try {         
+          String tipoEmpleado=jCBTipo2.getSelectedItem().toString();                  
+              
+          if(tipoEmpleado.equalsIgnoreCase("Auxiliar")){
+          
+           consulta = controladorAuxiliar.consultarAll();
+
+            Object[][] s = new Object[consulta.size()][9];
+            for (int i = 0; i < consulta.size(); i++) {
+                Auxiliares aux = (Auxiliares) consulta.get(i);
+                if (aux.getIdentificacion() != null) {
+                    Empleados emp=controladorEmpleado.consultar(aux.getIdentificacion());
+                    
+                    s[i][0] = aux.getIdentificacion();
+                    s[i][1] = emp.getNombres();
+                    s[i][2] = emp.getApellidos();
+                    s[i][3] = emp.getTelefono();
+                    s[i][4] = emp.getDireccion();
+                    s[i][5] = emp.getGenero();
+                    s[i][6] = emp.getEmail();
+                    s[i][7] = emp.getSalario();
+                    s[i][8]=  aux.getEstacion();
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id", "Nombres", "Apellidos",
+                        "Telefono", "Direccion", "Genero", "Email", "Salario", "Estacion"}) {
+
+                boolean[] canEdit = new boolean[]{false,false, false, false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));}
+          
+          
+           if(tipoEmpleado.equalsIgnoreCase("Conductor")){
+          
+           consulta = controladorConductor.consultarAll();
+
+            Object[][] s = new Object[consulta.size()][10];
+            for (int i = 0; i < consulta.size(); i++) {
+                Conductores conductor = (Conductores) consulta.get(i);
+                if (conductor.getIdentificacion() != null) {
+                    Empleados emp=controladorEmpleado.consultar(conductor.getIdentificacion());
+                    
+                    s[i][0] = conductor.getIdentificacion();
+                    s[i][1] = emp.getNombres();
+                    s[i][2] = emp.getApellidos();
+                    s[i][3] = emp.getTelefono();
+                    s[i][4] = emp.getDireccion();
+                    s[i][5] = emp.getGenero();
+                    s[i][6] = emp.getEmail();
+                    s[i][7] = emp.getSalario();
+                    s[i][8]=  conductor.getHoraEntrada();                    
+                    s[i][9]=  conductor.getHoraSalida();
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id", "Nombres", "Apellidos",
+                        "Telefono", "Direccion", "Genero", "Email", "Salario", "Entrada", "Salida"}) {
+
+                boolean[] canEdit = new boolean[]{false,false, false, false, false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));}
+          
+          if(tipoEmpleado.equalsIgnoreCase("Director de Estacion")){
+          
+           consulta = controladorDirEstacion.consultarAll();
+
+            Object[][] s = new Object[consulta.size()][8];
+            for (int i = 0; i < consulta.size(); i++) {
+                DirectoresEstacion director = (DirectoresEstacion) consulta.get(i);
+                if (director.getIdentificacion() != null) {
+                    Empleados emp=controladorEmpleado.consultar(director.getIdentificacion());
+                    
+                    s[i][0] = director.getIdentificacion();
+                    s[i][1] = emp.getNombres();
+                    s[i][2] = emp.getApellidos();
+                    s[i][3] = emp.getTelefono();
+                    s[i][4] = emp.getDireccion();
+                    s[i][5] = emp.getGenero();
+                    s[i][6] = emp.getEmail();
+                    s[i][7] = emp.getSalario();
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id", "Nombres", "Apellidos",
+                        "Telefono", "Direccion", "Genero", "Email", "Salario"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));}
+          
+          if(tipoEmpleado.equalsIgnoreCase("Director Operativo")){
+          
+           consulta = controladorDirOperativo.consultarAll();
+
+            Object[][] s = new Object[consulta.size()][8];
+            for (int i = 0; i < consulta.size(); i++) {
+                DirectoresOperativos director = (DirectoresOperativos) consulta.get(i);
+                if (director.getIdentificacion() != null) {
+                    Empleados emp=controladorEmpleado.consultar(director.getIdentificacion());
+                    
+                    s[i][0] = director.getIdentificacion();
+                    s[i][1] = emp.getNombres();
+                    s[i][2] = emp.getApellidos();
+                    s[i][3] = emp.getTelefono();
+                    s[i][4] = emp.getDireccion();
+                    s[i][5] = emp.getGenero();
+                    s[i][6] = emp.getEmail();
+                    s[i][7] = emp.getSalario();
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id", "Nombres", "Apellidos",
+                        "Telefono", "Direccion", "Genero", "Email", "Salario"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jBConsultarPorTipoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jBConsultar1;
+    private javax.swing.JButton jBConsultarPorTipo;
     private javax.swing.JButton jBCrearAuxiliar;
     private javax.swing.JButton jBCrearConductor;
     private javax.swing.JButton jBCrearDirectorEstacion;
@@ -1008,13 +1392,12 @@ public class JPEmpleado extends javax.swing.JPanel {
     private javax.swing.JButton jBLimpiarConsultar;
     private javax.swing.JButton jBModificar;
     private javax.swing.JComboBox jCBEstaciones1;
+    private javax.swing.JComboBox jCBEstaciones2;
     private javax.swing.JComboBox jCBGenero1;
     private javax.swing.JComboBox jCBGenero2;
     private javax.swing.JComboBox jCBGenero3;
     private javax.swing.JComboBox jCBTipo1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBox4;
+    private javax.swing.JComboBox jCBTipo2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1035,16 +1418,21 @@ public class JPEmpleado extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField jPFPassword3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1054,9 +1442,13 @@ public class JPEmpleado extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JSpinner jSHoraEntrada;
+    private javax.swing.JSpinner jSHoraEntrada1;
     private javax.swing.JSpinner jSHoraSalida;
+    private javax.swing.JSpinner jSHoraSalida1;
     private javax.swing.JSpinner jSMinutosEntrada;
+    private javax.swing.JSpinner jSMinutosEntrada1;
     private javax.swing.JSpinner jSMinutosSalida;
+    private javax.swing.JSpinner jSMinutosSalida1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFApellido1;
     private javax.swing.JTextField jTFApellido2;
@@ -1064,7 +1456,6 @@ public class JPEmpleado extends javax.swing.JPanel {
     private javax.swing.JTextField jTFDireccion1;
     private javax.swing.JTextField jTFDireccion3;
     private javax.swing.JTextField jTFEmail1;
-    private javax.swing.JTextField jTFEmail2;
     private javax.swing.JTextField jTFEmail3;
     private javax.swing.JTextField jTFId1;
     private javax.swing.JTextField jTFId2;
@@ -1072,8 +1463,9 @@ public class JPEmpleado extends javax.swing.JPanel {
     private javax.swing.JTextField jTFNombre1;
     private javax.swing.JTextField jTFNombre2;
     private javax.swing.JTextField jTFNombre3;
-    private javax.swing.JTextField jTFNombre4;
     private javax.swing.JTextField jTFSalario1;
+    private javax.swing.JTextField jTFSalario2;
+    private javax.swing.JTextField jTFSalario3;
     private javax.swing.JTextField jTFTelefono1;
     private javax.swing.JTextField jTFTelefono3;
     private javax.swing.JTabbedPane jTPEmpleado;

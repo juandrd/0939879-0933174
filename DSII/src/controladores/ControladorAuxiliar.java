@@ -89,55 +89,29 @@ public class ControladorAuxiliar {
         return -1;
     }   
         
-      // public LinkedList consultar(String empleado,String estacion)
-     //   {
-//                        //"SELECT r FROM buses r"
-//            List lista;
-//            LinkedList listaAuxiliares= new LinkedList();
-//            String sql_select="SELECT aux FROM Auxiliares aux     ";
-//                if (!empleado.equals("") || !tipo.equals("") ||
-//                     capacidad>0 ||
-//                    (!ruta.equals("Cargar") && 
-//                    !ruta.equals(" ") )) {
-//                
-//            sql_select += "WHERE";
-//            }
-//            
-//        if (!placa.equals("")) {
-//            sql_select += " b.placa = '" + placa + "' AND ";
-//        }       
-//       
-//        
-//        if(!tipo.equals("")){
-//            sql_select += " b.tipo = '"+tipo+"'"+" AND ";
-//        }
-//        
-//               
-//        if(capacidad>0){
-//            sql_select += " b.capacidad < " + capacidad + " AND ";
-//        }
-//
-//        if (!ruta.equals("Cargar") && !ruta.equals(" ")) {
-//            sql_select += " b.ruta = '"+ruta+"'"+" AND ";
-//        }
-//        
-//
-//            
-//            
-//            sql_select = sql_select.substring(0, sql_select.length() - 5);
-//            System.out.println(sql_select);
-//            
-//            //sirve para ejecutar consultas
-////            if(sql_select.contains("WHERE"))
-//               lista = manager.createQuery(sql_select).getResultList();
-//            //else lista = manager.createQuery("SELECT b FROM Buses b ").getResultList();
-//            
-//            for(int i=0;i<lista.size();i++)
-//            {
-//                Buses b = (Buses) lista.get(i);
-//                listaAuxiliares.add(b);
-//            }
-//            
-//            return listaAuxiliares;
-   // }
+      public Auxiliares consultar(String id){
+          Auxiliares a=daoAuxiliar.findAuxiliares(id);
+          
+          return a;
+      }
+       public LinkedList consultarAll()
+        {
+                      
+            List lista;
+            LinkedList listaAuxiliares= new LinkedList();
+            
+            
+            //sirve para ejecutar consultas
+//            if(sql_select.contains("WHERE"))
+               lista = daoAuxiliar.findAuxiliaresEntities();
+            //else lista = manager.createQuery("SELECT b FROM Buses b ").getResultList();
+            
+            for(int i=0;i<lista.size();i++)
+            {
+                Auxiliares a = (Auxiliares) lista.get(i);
+                listaAuxiliares.add(a);
+            }
+            
+            return listaAuxiliares;
+    }
 }
