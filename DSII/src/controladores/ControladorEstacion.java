@@ -105,7 +105,7 @@ public class ControladorEstacion {
             LinkedList listaEstaciones= new LinkedList();
             String sql_select="SELECT e FROM Estaciones e     ";
             if (!nombre.equals("") || !ubicacion.equals("")
-                    || !director.equals(" ")) {
+                    || !director.equals("")) {
             sql_select += " WHERE";
             }
             
@@ -116,12 +116,13 @@ public class ControladorEstacion {
         if(!ubicacion.equals("")){
             sql_select += " e.ubicacion LIKE '%"+ubicacion+"%'"+" AND ";
         }
-         if (!director.equals(" ")) {
+         if (!director.equals("")) {
             sql_select += " e.director = '" + director + "' AND ";
         }
             
             
             sql_select = sql_select.substring(0, sql_select.length() - 5);
+            System.out.println(sql_select);
             
             //sirve para ejecutar consultas
             if(sql_select.contains("WHERE"))

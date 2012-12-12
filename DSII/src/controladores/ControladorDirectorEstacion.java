@@ -89,37 +89,26 @@ public class ControladorDirectorEstacion {
           
           return e;
       }
-        public LinkedList consultar()
+        public LinkedList consultarAll()
     {
                         //"SELECT r FROM Rutas r"
-            List lista;
+         List lista;
             LinkedList listaDirectores= new LinkedList();
-            String sql_select="SELECT e FROM directores_estacion e     ";
            
-            sql_select += " WHERE";
-            
-            
-     
-            
-            sql_select = sql_select.substring(0, sql_select.length() - 5);
-            System.out.println(sql_select);
-            
-            //sirve para ejecutar consultas
-            if(sql_select.contains("WHERE"))
-            lista = manager.createQuery(sql_select).getResultList();
-            else lista = manager.createQuery("SELECT e FROM directores_estacion e").getResultList();
+            lista=daoDirectorEst.findDirectoresEstacionEntities();
             
             for(int i=0;i<lista.size();i++)
             {
-                DirectoresEstacion e = (DirectoresEstacion) lista.get(i);
-                listaDirectores.add(e);
+                DirectoresEstacion r = (DirectoresEstacion) lista.get(i);
+                listaDirectores.add(r);
             }
             
             return listaDirectores;
+           
     }
       
        public String[] listar() {
-        LinkedList directoresConsultar = consultar();
+        LinkedList directoresConsultar = consultarAll();
         String[] directores = new String[directoresConsultar.size() + 1];
         directores[0] = " ";
         for (int i = 0; i < directoresConsultar.size(); i++) {
