@@ -28,7 +28,7 @@ public class JPPasajero extends javax.swing.JPanel {
         controladorPasajero = new ControladorPasajero();
 
         jTPPasajero.setSelectedIndex(0);
-        jTResultados.setEnabled(false);
+        
     }
 
     /**
