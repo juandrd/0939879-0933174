@@ -24,7 +24,7 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         jPPrincipal.setLayout(new FlowLayout());
-        setResizable(false);
+//        setResizable(false);
     }
 
     public GUI(int valor, String usuario_id) {

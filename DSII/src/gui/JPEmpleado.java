@@ -52,7 +52,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jTFSalario1 = new javax.swing.JTextField();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 2), new java.awt.Dimension(0, 2), new java.awt.Dimension(32767, 2));
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jCBTipo1 = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jCBEstaciones1 = new javax.swing.JComboBox();
@@ -154,7 +154,7 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jBLimpiar1);
-        jBLimpiar1.setBounds(420, 410, 70, 23);
+        jBLimpiar1.setBounds(420, 450, 70, 23);
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Apellidos");
@@ -194,9 +194,14 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel8.add(jLabel2);
         jLabel2.setBounds(30, 340, 34, 14);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Auxiliar", "Conductor", "Director Estacion", "Director Operativo", "" }));
-        jPanel8.add(jComboBox1);
-        jComboBox1.setBounds(100, 340, 130, 20);
+        jCBTipo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Auxiliar", "Conductor", "Director Estacion", "Director Operativo", "" }));
+        jCBTipo1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBTipo1ItemStateChanged(evt);
+            }
+        });
+        jPanel8.add(jCBTipo1);
+        jCBTipo1.setBounds(100, 340, 130, 20);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Auxiliar"));
 
@@ -216,7 +221,7 @@ public class JPEmpleado extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addComponent(jCBEstaciones1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jBCrearAuxiliar)))
                 .addContainerGap())
@@ -227,13 +232,13 @@ public class JPEmpleado extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jCBEstaciones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBCrearAuxiliar)
-                .addContainerGap())
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel1);
-        jPanel1.setBounds(250, 10, 240, 90);
+        jPanel1.setBounds(250, 10, 240, 110);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Conductor"));
 
@@ -274,13 +279,13 @@ public class JPEmpleado extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTHoraSalida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBCrearConductor)
-                .addContainerGap())
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel2);
-        jPanel2.setBounds(250, 100, 240, 120);
+        jPanel2.setBounds(250, 120, 240, 160);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Director de Estacion"));
 
@@ -298,14 +303,14 @@ public class JPEmpleado extends javax.swing.JPanel {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jBCrearDirectorEstacion)
-                .addContainerGap())
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel5);
-        jPanel5.setBounds(250, 230, 240, 70);
+        jPanel5.setBounds(250, 280, 240, 80);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Director Operativo"));
 
@@ -323,17 +328,16 @@ public class JPEmpleado extends javax.swing.JPanel {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jBCrearDirectorOperativo)
-                .addContainerGap())
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel6);
-        jPanel6.setBounds(250, 320, 240, 70);
+        jPanel6.setBounds(250, 370, 240, 70);
 
         jPanel7.add(jPanel8);
-        jPanel8.setBounds(0, 0, 510, 450);
+        jPanel8.setBounds(0, 0, 540, 500);
 
         jTPEmpleado.addTab("Crear", jPanel7);
 
@@ -537,11 +541,11 @@ public class JPEmpleado extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTPEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
+                .addComponent(jTPEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+            .addComponent(jTPEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -554,7 +558,6 @@ public class JPEmpleado extends javax.swing.JPanel {
     }//GEN-LAST:event_jBLimpiarConsultarActionPerformed
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-
 //        String id;
 //
 //        int selectedRow = jTResultados.getSelectedRow();
@@ -577,7 +580,7 @@ public class JPEmpleado extends javax.swing.JPanel {
     private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed
         LinkedList consulta = new LinkedList();
 
-       // try {
+        // try {
 //            consulta = controladorPasajero.consultar(
 //                    jTFId2.getText(),
 //                    jTFNombre2.getText(),
@@ -653,6 +656,49 @@ public class JPEmpleado extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFSalario1ActionPerformed
 
+    private void jCBTipo1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBTipo1ItemStateChanged
+        // TODO add your handling code here:
+
+        if (jCBTipo1.getSelectedIndex() ==0) {
+
+            jBCrearConductor.setEnabled(false);
+            jBCrearDirectorEstacion.setEnabled(false);
+            jBCrearDirectorOperativo.setEnabled(false);
+            jBCrearAuxiliar.setEnabled(false);
+
+        }
+        if (jCBTipo1.getSelectedItem() == "Auxiliar") {
+
+            jBCrearConductor.setEnabled(false);
+            jBCrearDirectorEstacion.setEnabled(false);
+            jBCrearDirectorOperativo.setEnabled(false);
+            jBCrearAuxiliar.setEnabled(true);
+
+        }
+        if (jCBTipo1.getSelectedItem() == "Conductor") {
+
+            jBCrearDirectorEstacion.setEnabled(false);
+            jBCrearDirectorOperativo.setEnabled(false);
+            jBCrearAuxiliar.setEnabled(false);
+            jBCrearConductor.setEnabled(true);
+        }
+
+        if (jCBTipo1.getSelectedItem() == "Director Estacion") {
+
+            jBCrearDirectorOperativo.setEnabled(false);
+            jBCrearAuxiliar.setEnabled(false);
+            jBCrearConductor.setEnabled(false);
+            jBCrearDirectorEstacion.setEnabled(true);
+        }
+
+        if (jCBTipo1.getSelectedItem() == "Director Operativo") {
+
+            jBCrearAuxiliar.setEnabled(false);
+            jBCrearConductor.setEnabled(false);
+            jBCrearDirectorEstacion.setEnabled(false);
+            jBCrearDirectorOperativo.setEnabled(true);
+        }
+    }//GEN-LAST:event_jCBTipo1ItemStateChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jBConsultar1;
@@ -667,7 +713,7 @@ public class JPEmpleado extends javax.swing.JPanel {
     private javax.swing.JComboBox jCBGenero1;
     private javax.swing.JComboBox jCBGenero2;
     private javax.swing.JComboBox jCBGenero3;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jCBTipo1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
