@@ -108,6 +108,10 @@ public class ControladorEmpleado {
         return -1;
     }   
         
+     public Empleados consultar(String id){
+         Empleados e=daoEmpleado.findEmpleados(id);
+         return e;
+     }
    public LinkedList consultar(String id,String nombre,String apellido,String genero,
            int salario)
     {

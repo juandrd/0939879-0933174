@@ -4,7 +4,11 @@
  */
 package gui;
 
+import controladores.*;
+import entidades.Empleados;
+import java.sql.Time;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -17,8 +21,17 @@ public class JPEmpleado extends javax.swing.JPanel {
     /**
      * Creates new form JPEmpleado
      */
+    ControladorEmpleado controladorEmpleado;
+    ControladorAuxiliar controladorAuxiliar;
+    ControladorDirectorEstacion controladorDirEstacion;
+    ControladorDirectorOperativo controladorDirOperativo;
+
     public JPEmpleado() {
         initComponents();
+        controladorEmpleado = new ControladorEmpleado();
+        controladorAuxiliar = new ControladorAuxiliar();
+        controladorDirEstacion = new ControladorDirectorEstacion();
+        controladorDirOperativo = new ControladorDirectorOperativo();
     }
 
     /**
@@ -209,6 +222,11 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jBCrearAuxiliar.setText("Crear");
         jBCrearAuxiliar.setEnabled(false);
+        jBCrearAuxiliar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrearAuxiliarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -248,6 +266,11 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jBCrearConductor.setText("Crear");
         jBCrearConductor.setEnabled(false);
+        jBCrearConductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrearConductorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -291,6 +314,11 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jBCrearDirectorEstacion.setText("Crear");
         jBCrearDirectorEstacion.setEnabled(false);
+        jBCrearDirectorEstacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrearDirectorEstacionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -316,6 +344,11 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jBCrearDirectorOperativo.setText("Crear");
         jBCrearDirectorOperativo.setEnabled(false);
+        jBCrearDirectorOperativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrearDirectorOperativoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -659,7 +692,7 @@ public class JPEmpleado extends javax.swing.JPanel {
     private void jCBTipo1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBTipo1ItemStateChanged
         // TODO add your handling code here:
 
-        if (jCBTipo1.getSelectedIndex() ==0) {
+        if (jCBTipo1.getSelectedIndex() == 0) {
 
             jBCrearConductor.setEnabled(false);
             jBCrearDirectorEstacion.setEnabled(false);
@@ -699,6 +732,186 @@ public class JPEmpleado extends javax.swing.JPanel {
             jBCrearDirectorOperativo.setEnabled(true);
         }
     }//GEN-LAST:event_jCBTipo1ItemStateChanged
+
+    public void limpiarCamposCrear() {
+        jTFId1.setText("");
+        jTFNombre1.setText("");
+        jTFApellido1.setText("");
+        jTFTelefono1.setText("");
+        jTFDireccion1.setText("");
+        jTFEmail1.setText("");
+        jCBGenero1.setSelectedIndex(0);
+        jTFSalario1.setText("");
+    }
+    private void jBCrearAuxiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearAuxiliarActionPerformed
+        // TODO add your handling code here:
+        int guardar = -1;
+        try {
+
+
+            String id = jTFId1.getText();
+            String nombre = jTFNombre1.getText();
+            String apellido = jTFApellido1.getText();
+            String telefono = jTFTelefono1.getText();
+            String direccion = jTFDireccion1.getText();
+            String email = jTFEmail1.getText();
+            String genero = jCBGenero1.getSelectedItem().toString();
+            int salario = Integer.parseInt(jTFSalario1.getText());
+            controladorEmpleado.insertar(id, nombre, apellido, telefono, direccion, genero, email, salario);
+            Empleados e = controladorEmpleado.consultar(id);
+            // guardar = controladorAuxiliar.insertar(e, /*ESTACION*/);
+
+        } catch (Exception e) {
+        }
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No se pudo crear ", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            if (guardar == 1) {
+
+                JOptionPane.showMessageDialog(this, "Ya existe el Empleado ", "Error", ERROR);
+
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Empleado Creado correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+
+                // limpiarCamposConsultar();
+                jTFId2.setText(jTFId1.getText());
+                jBConsultar1.doClick();
+                jTPEmpleado.setSelectedIndex(1);
+                limpiarCamposCrear();
+            }
+        }
+    }//GEN-LAST:event_jBCrearAuxiliarActionPerformed
+
+    private void jBCrearConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearConductorActionPerformed
+        // TODO add your handling code here:
+       int guardar = -1;
+        try {
+
+            String id = jTFId1.getText();
+            String nombre = jTFNombre1.getText();
+            String apellido = jTFApellido1.getText();
+            String telefono = jTFTelefono1.getText();
+            String direccion = jTFDireccion1.getText();
+            String email = jTFEmail1.getText();
+            String genero = jCBGenero1.getSelectedItem().toString();
+            int salario = Integer.parseInt(jTFSalario1.getText());
+            controladorEmpleado.insertar(id, nombre, apellido, telefono, direccion, genero, email, salario);
+            Empleados e = controladorEmpleado.consultar(id);
+            
+          //  Time hora_inicio=(Time)jTFHoraEntrada1.getText();
+            
+//            guardar = ControladorConductor.insertar(e,hora_inicio,
+//                    hora_salido);
+
+        } catch (Exception e) {
+        }
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No se pudo crear ", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            if (guardar == 1) {
+
+                JOptionPane.showMessageDialog(this, "Ya existe el Empleado ", "Error", ERROR);
+
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Empleado Creado correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+
+                // limpiarCamposConsultar();
+                jTFId2.setText(jTFId1.getText());
+                jBConsultar1.doClick();
+                jTPEmpleado.setSelectedIndex(1);
+                limpiarCamposCrear();
+            }
+        }
+    
+    }//GEN-LAST:event_jBCrearConductorActionPerformed
+
+    private void jBCrearDirectorEstacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearDirectorEstacionActionPerformed
+        // TODO add your handling code here:
+          int guardar = -1;
+        try {
+
+            String id = jTFId1.getText();
+            String nombre = jTFNombre1.getText();
+            String apellido = jTFApellido1.getText();
+            String telefono = jTFTelefono1.getText();
+            String direccion = jTFDireccion1.getText();
+            String email = jTFEmail1.getText();
+            String genero = jCBGenero1.getSelectedItem().toString();
+            int salario = Integer.parseInt(jTFSalario1.getText());
+            controladorEmpleado.insertar(id, nombre, apellido, telefono, direccion, genero, email, salario);
+            Empleados emp = controladorEmpleado.consultar(id);
+            
+                   guardar = controladorDirEstacion.insertar(emp);
+
+        } catch (Exception e) {
+        }
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No se pudo crear ", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            if (guardar == 1) {
+
+                JOptionPane.showMessageDialog(this, "Ya existe el Empleado ", "Error", ERROR);
+
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Empleado Creado correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+
+                // limpiarCamposConsultar();
+                jTFId2.setText(jTFId1.getText());
+                jBConsultar1.doClick();
+                jTPEmpleado.setSelectedIndex(1);
+                limpiarCamposCrear();
+            }
+        }
+    
+    }//GEN-LAST:event_jBCrearDirectorEstacionActionPerformed
+
+    private void jBCrearDirectorOperativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearDirectorOperativoActionPerformed
+        // TODO add your handling code here:
+         int guardar = -1;
+        try {
+
+            String id = jTFId1.getText();
+            String nombre = jTFNombre1.getText();
+            String apellido = jTFApellido1.getText();
+            String telefono = jTFTelefono1.getText();
+            String direccion = jTFDireccion1.getText();
+            String email = jTFEmail1.getText();
+            String genero = jCBGenero1.getSelectedItem().toString();
+            int salario = Integer.parseInt(jTFSalario1.getText());
+            controladorEmpleado.insertar(id, nombre, apellido, telefono, direccion, genero, email, salario);
+            Empleados emp = controladorEmpleado.consultar(id);
+            
+                   guardar = controladorDirOperativo.insertar(emp);
+
+        } catch (Exception e) {
+        }
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No se pudo crear ", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            if (guardar == 1) {
+
+                JOptionPane.showMessageDialog(this, "Ya existe el Empleado ", "Error", ERROR);
+
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Empleado Creado correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+
+                // limpiarCamposConsultar();
+                jTFId2.setText(jTFId1.getText());
+                jBConsultar1.doClick();
+                jTPEmpleado.setSelectedIndex(1);
+                limpiarCamposCrear();
+            }
+        }
+    }//GEN-LAST:event_jBCrearDirectorOperativoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jBConsultar1;
