@@ -14,8 +14,8 @@
     <class>entidades.Rutas</class>
     <class>entidades.Turnos</class>
     <class>entidades.TarjetasGenericas</class>
-    <class>entidades.DirectoresEstacion</class>
     <class>entidades.Conductores</class>
+    <class>entidades.DirectoresEstacion</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/desarrolloII"/>
       <property name="javax.persistence.jdbc.password" value="juandavid"/>

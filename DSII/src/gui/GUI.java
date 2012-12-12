@@ -35,13 +35,13 @@ public class GUI extends javax.swing.JFrame {
         tipo_e = valor;
         this.usuario_id = usuario_id;
         if (tipo_e == 1) { //El usuario es Gerente            
-            jMIOrdenes.setEnabled(false);
+            jMIEstacion.setEnabled(false);
         }
 
         if (tipo_e == 2) { //El usuario es Vendedor
             jMReportes.setEnabled(false);
             jMIBuses.setEnabled(false);
-            jMIOrdenes.setEnabled(false);
+            jMIEstacion.setEnabled(false);
         }
         if (tipo_e == 3) { //El usuario es jefe de taller
             jMReportes.setEnabled(false);
@@ -73,7 +73,7 @@ public class GUI extends javax.swing.JFrame {
         jMICrearEmpleado = new javax.swing.JMenuItem();
         jMIRutas = new javax.swing.JMenuItem();
         jMIBuses = new javax.swing.JMenuItem();
-        jMIOrdenes = new javax.swing.JMenuItem();
+        jMIEstacion = new javax.swing.JMenuItem();
         jMVentas = new javax.swing.JMenu();
         jMICrearCotizacion = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
@@ -128,14 +128,13 @@ public class GUI extends javax.swing.JFrame {
         });
         jMOpciones.add(jMIBuses);
 
-        jMIOrdenes.setText("Ordenes de Trabajo");
-        jMIOrdenes.setEnabled(false);
-        jMIOrdenes.addActionListener(new java.awt.event.ActionListener() {
+        jMIEstacion.setText("Estaciones");
+        jMIEstacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIOrdenesActionPerformed(evt);
+                jMIEstacionActionPerformed(evt);
             }
         });
-        jMOpciones.add(jMIOrdenes);
+        jMOpciones.add(jMIEstacion);
 
         jMenuBar1.add(jMOpciones);
 
@@ -203,16 +202,16 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMIRutasActionPerformed
 
-    private void jMIOrdenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIOrdenesActionPerformed
+    private void jMIEstacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIEstacionActionPerformed
         try {
             jPPrincipal.removeAll();
         } catch (Exception e) {
         }
-        //JPOrdenes jPO = new JPOrdenes();
-        //jPPrincipal.add(jPO, BorderLayout.CENTER);
+      JPEstacion jPO = new JPEstacion();
+        jPPrincipal.add(jPO, BorderLayout.CENTER);
         jPPrincipal.updateUI();
         this.pack();
-    }//GEN-LAST:event_jMIOrdenesActionPerformed
+    }//GEN-LAST:event_jMIEstacionActionPerformed
 
     private void jMICrearCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICrearCotizacionActionPerformed
         try {
@@ -330,9 +329,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIBuses;
     private javax.swing.JMenuItem jMICrearCotizacion;
     private javax.swing.JMenuItem jMICrearEmpleado;
+    private javax.swing.JMenuItem jMIEstacion;
     private javax.swing.JMenuItem jMIGenerarReporte;
     private javax.swing.JMenuItem jMILoginPasajeros;
-    private javax.swing.JMenuItem jMIOrdenes;
     private javax.swing.JMenuItem jMIRegistrarVenta;
     private javax.swing.JMenuItem jMIRutas;
     private javax.swing.JMenu jMOpciones;
