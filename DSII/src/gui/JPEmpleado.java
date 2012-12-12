@@ -6,6 +6,7 @@ package gui;
 
 import controladores.*;
 import entidades.Empleados;
+import entidades.Estaciones;
 import java.sql.Time;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
@@ -25,6 +26,7 @@ public class JPEmpleado extends javax.swing.JPanel {
     ControladorAuxiliar controladorAuxiliar;
     ControladorDirectorEstacion controladorDirEstacion;
     ControladorDirectorOperativo controladorDirOperativo;
+    ControladorEstacion controladorEstacion;
 
     public JPEmpleado() {
         initComponents();
@@ -32,6 +34,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         controladorAuxiliar = new ControladorAuxiliar();
         controladorDirEstacion = new ControladorDirectorEstacion();
         controladorDirOperativo = new ControladorDirectorOperativo();
+        controladorEstacion=new ControladorEstacion();
     }
 
     /**
@@ -219,6 +222,16 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Auxiliar"));
 
         jLabel3.setText("Estacion");
+
+        jCBEstaciones1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBEstaciones1PopupMenuWillBecomeVisible(evt);
+            }
+        });
 
         jBCrearAuxiliar.setText("Crear");
         jBCrearAuxiliar.setEnabled(false);
@@ -759,7 +772,9 @@ public class JPEmpleado extends javax.swing.JPanel {
             int salario = Integer.parseInt(jTFSalario1.getText());
             controladorEmpleado.insertar(id, nombre, apellido, telefono, direccion, genero, email, salario);
             Empleados e = controladorEmpleado.consultar(id);
-            // guardar = controladorAuxiliar.insertar(e, /*ESTACION*/);
+            Estaciones estacion=controladorEstacion.consultar(jCBEstaciones1.getSelectedItem().toString());
+            
+             guardar = controladorAuxiliar.insertar(e, estacion);
 
         } catch (Exception e) {
         }
@@ -911,6 +926,12 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jBCrearDirectorOperativoActionPerformed
+
+    private void jCBEstaciones1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBEstaciones1PopupMenuWillBecomeVisible
+        // TODO add your handling code here:
+         jCBEstaciones1.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorEstacion.listar()));
+    }//GEN-LAST:event_jCBEstaciones1PopupMenuWillBecomeVisible
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;

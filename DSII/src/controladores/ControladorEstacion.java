@@ -140,7 +140,7 @@ public class ControladorEstacion {
     
     
     public String[] listar() {
-        LinkedList estacionConsultar = consultar("",""," ");
+        LinkedList estacionConsultar = consultar("","","");
         String[] estaciones = new String[estacionConsultar.size() + 1];
         estaciones[0] = " ";
         for (int i = 0; i < estacionConsultar.size(); i++) {
