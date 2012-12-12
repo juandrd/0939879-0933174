@@ -168,4 +168,14 @@ public class ControladorPasajero {
             
             return listaPasajeros;
     }
+        
+          public String[] listar() {
+        LinkedList pasajerosConsulta = consultar("","","","","");
+        String[] pasajeros = new String[pasajerosConsulta.size() + 1];
+        pasajeros[0] = " ";
+        for (int i = 0; i < pasajerosConsulta.size(); i++) {
+            pasajeros[i + 1] = ((Pasajeros) pasajerosConsulta.get(i)).getIdentificacion();
+        }
+        return pasajeros;
+    }
 }

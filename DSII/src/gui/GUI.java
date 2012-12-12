@@ -69,6 +69,7 @@ public class GUI extends javax.swing.JFrame {
         jMPasajeros = new javax.swing.JMenu();
         jMILoginPasajeros = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        JMIReclamo = new javax.swing.JMenuItem();
         jMOpciones = new javax.swing.JMenu();
         jMICrearEmpleado = new javax.swing.JMenuItem();
         jMIRutas = new javax.swing.JMenuItem();
@@ -99,6 +100,14 @@ public class GUI extends javax.swing.JFrame {
         });
         jMPasajeros.add(jMILoginPasajeros);
         jMPasajeros.add(jSeparator2);
+
+        JMIReclamo.setText("Reclamos");
+        JMIReclamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMIReclamoActionPerformed(evt);
+            }
+        });
+        jMPasajeros.add(JMIReclamo);
 
         jMenuBar1.add(jMPasajeros);
 
@@ -282,6 +291,18 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMILoginPasajerosActionPerformed
 
+    private void JMIReclamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMIReclamoActionPerformed
+       try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPReclamo g = new JPReclamo();
+        g.setBounds(jPPrincipal.getBounds());
+        jPPrincipal.add(g, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_JMIReclamoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -325,6 +346,7 @@ public class GUI extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JMIReclamo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMIBuses;
     private javax.swing.JMenuItem jMICrearCotizacion;

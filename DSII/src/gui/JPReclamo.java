@@ -4,6 +4,18 @@
  */
 package gui;
 
+import controladores.ControladorEstacion;
+import controladores.ControladorPasajero;
+import controladores.ControladorReclamo;
+import entidades.Pasajeros;
+import entidades.Estaciones;
+import entidades.Reclamos;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author Juan
@@ -13,8 +25,15 @@ public class JPReclamo extends javax.swing.JPanel {
     /**
      * Creates new form JPReclamo
      */
+    ControladorReclamo controladorReclamo;
+    ControladorPasajero controladorPasajero;
+    ControladorEstacion controladorEstacion;
+
     public JPReclamo() {
         initComponents();
+        controladorEstacion = new ControladorEstacion();
+        controladorPasajero = new ControladorPasajero();
+        controladorReclamo = new ControladorReclamo();
     }
 
     /**
@@ -26,7 +45,7 @@ public class JPReclamo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTPBus = new javax.swing.JTabbedPane();
+        jTPReclamo = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -56,19 +75,14 @@ public class JPReclamo extends javax.swing.JPanel {
         jPanel10 = new javax.swing.JPanel();
         jBModificar = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
-        jTFPlaca3 = new javax.swing.JTextField();
-        jTFMarca3 = new javax.swing.JTextField();
+        jTFCod3 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jTFChasis3 = new javax.swing.JTextField();
-        jTFAsientos3 = new javax.swing.JTextField();
-        jTFCapacidad3 = new javax.swing.JTextField();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jCBTipo3 = new javax.swing.JComboBox();
-        jCBRuta3 = new javax.swing.JComboBox();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTADescripcion3 = new javax.swing.JTextArea();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jCBEstacion3 = new javax.swing.JComboBox();
+        jCBPasajero3 = new javax.swing.JComboBox();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Reclamo"));
 
@@ -118,6 +132,15 @@ public class JPReclamo extends javax.swing.JPanel {
         jLabel28.setBounds(0, 220, 90, 30);
 
         jCBPasajero1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Troncal", "Alimentador", "Padron" }));
+        jCBPasajero1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBPasajero1PopupMenuWillBecomeVisible(evt);
+            }
+        });
         jPanel8.add(jCBPasajero1);
         jCBPasajero1.setBounds(100, 170, 180, 30);
 
@@ -142,9 +165,9 @@ public class JPReclamo extends javax.swing.JPanel {
         jScrollPane2.setBounds(100, 60, 180, 96);
 
         jPanel7.add(jPanel8);
-        jPanel8.setBounds(0, 0, 340, 310);
+        jPanel8.setBounds(0, 0, 450, 380);
 
-        jTPBus.addTab("Crear", jPanel7);
+        jTPReclamo.addTab("Crear", jPanel7);
 
         jPanel3.setLayout(null);
 
@@ -208,6 +231,15 @@ public class JPReclamo extends javax.swing.JPanel {
         jLabel15.setBounds(0, 50, 90, 30);
 
         jCBPasajero2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Troncal", "Alimentador", "Padron" }));
+        jCBPasajero2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBPasajero2PopupMenuWillBecomeVisible(evt);
+            }
+        });
         jPanel9.add(jCBPasajero2);
         jCBPasajero2.setBounds(100, 50, 180, 30);
 
@@ -232,7 +264,7 @@ public class JPReclamo extends javax.swing.JPanel {
         jPanel3.add(jPanel9);
         jPanel9.setBounds(0, 0, 590, 340);
 
-        jTPBus.addTab("Consultar", jPanel3);
+        jTPReclamo.addTab("Consultar", jPanel3);
 
         jPanel4.setLayout(null);
 
@@ -249,78 +281,67 @@ public class JPReclamo extends javax.swing.JPanel {
         jBModificar.setBounds(170, 270, 110, 23);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("Placa");
+        jLabel24.setText("Codigo");
         jPanel10.add(jLabel24);
         jLabel24.setBounds(-10, 10, 80, 30);
 
-        jTFPlaca3.setEditable(false);
-        jPanel10.add(jTFPlaca3);
-        jTFPlaca3.setBounds(100, 10, 180, 30);
-        jPanel10.add(jTFMarca3);
-        jTFMarca3.setBounds(100, 50, 180, 30);
+        jTFCod3.setEditable(false);
+        jTFCod3.setEnabled(false);
+        jPanel10.add(jTFCod3);
+        jTFCod3.setBounds(100, 10, 180, 30);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setText("Marca");
+        jLabel25.setText("Descripcion");
         jPanel10.add(jLabel25);
-        jLabel25.setBounds(-30, 50, 120, 30);
+        jLabel25.setBounds(-10, 50, 110, 30);
 
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("Nro. Chasis");
-        jPanel10.add(jLabel26);
-        jLabel26.setBounds(-10, 90, 110, 30);
-        jPanel10.add(jTFChasis3);
-        jTFChasis3.setBounds(100, 90, 180, 30);
-        jPanel10.add(jTFAsientos3);
-        jTFAsientos3.setBounds(100, 130, 50, 30);
-        jPanel10.add(jTFCapacidad3);
-        jTFCapacidad3.setBounds(230, 130, 50, 30);
+        jTADescripcion3.setColumns(20);
+        jTADescripcion3.setRows(5);
+        jScrollPane3.setViewportView(jTADescripcion3);
 
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel29.setText("Nro. Asientos");
-        jPanel10.add(jLabel29);
-        jLabel29.setBounds(10, 130, 80, 40);
+        jPanel10.add(jScrollPane3);
+        jScrollPane3.setBounds(100, 60, 180, 19);
 
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setText("Tipo");
-        jPanel10.add(jLabel30);
-        jLabel30.setBounds(0, 170, 60, 30);
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Pasajero");
+        jPanel10.add(jLabel16);
+        jLabel16.setBounds(0, 170, 90, 30);
 
-        jCBTipo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Troncal", "Alimentador", "Padron" }));
-        jPanel10.add(jCBTipo3);
-        jCBTipo3.setBounds(100, 170, 180, 30);
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("Estacion");
+        jPanel10.add(jLabel32);
+        jLabel32.setBounds(0, 220, 90, 30);
 
-        jCBRuta3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar" }));
-        jCBRuta3.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+        jCBEstacion3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
+        jCBEstacion3.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                jCBRuta3PopupMenuWillBecomeVisible(evt);
+                jCBEstacion3PopupMenuWillBecomeVisible(evt);
             }
         });
-        jCBRuta3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBRuta3ActionPerformed(evt);
+        jPanel10.add(jCBEstacion3);
+        jCBEstacion3.setBounds(100, 220, 180, 30);
+
+        jCBPasajero3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Troncal", "Alimentador", "Padron" }));
+        jCBPasajero3.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBPasajero3PopupMenuWillBecomeVisible(evt);
             }
         });
-        jPanel10.add(jCBRuta3);
-        jCBRuta3.setBounds(100, 220, 180, 30);
-
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel35.setText("Ruta");
-        jPanel10.add(jLabel35);
-        jLabel35.setBounds(-10, 220, 90, 30);
-
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel36.setText("Capacidad");
-        jPanel10.add(jLabel36);
-        jLabel36.setBounds(150, 130, 80, 40);
+        jPanel10.add(jCBPasajero3);
+        jCBPasajero3.setBounds(100, 170, 180, 30);
 
         jPanel4.add(jPanel10);
         jPanel10.setBounds(0, 10, 450, 320);
 
-        jTPBus.addTab("Modificar", jPanel4);
+        jTPReclamo.addTab("Modificar", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -328,12 +349,12 @@ public class JPReclamo extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTPBus, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                .addComponent(jTPReclamo, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPBus, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+            .addComponent(jTPReclamo, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -349,15 +370,12 @@ public class JPReclamo extends javax.swing.JPanel {
         int guardar = -1;
         try {
 
-            String placa = jTFPlaca1.getText();
-            String marca = jTFMarca1.getText();
-            String chasis = jTFChasis1.getText();
-            String tipo = jCBPasajero1.getSelectedItem().toString();
-            int asientos = Integer.parseInt(jTFAsientos1.getText());
-            int capacidad = Integer.parseInt(jTFCapacidad1.getText());
-            String r = jCBEstacion1.getSelectedItem().toString();
-            Rutas ruta = controladorRuta.consultar(r);
-            guardar = controladorBus.insertar(placa, marca, chasis, tipo, asientos, capacidad, ruta);
+            String codigo = jTFCod1.getText();
+            String descripcion = jTADescripcion1.getText();
+            Pasajeros pasajero = controladorPasajero.consultar(jCBPasajero1.getSelectedItem().toString());
+            Estaciones estacion = controladorEstacion.consultar(jCBEstacion1.getSelectedItem().toString());
+
+            guardar = controladorReclamo.insertar(codigo, descripcion, pasajero, estacion);
 
         } catch (Exception e) {
         }
@@ -367,86 +385,82 @@ public class JPReclamo extends javax.swing.JPanel {
 
             if (guardar == 1) {
 
-                JOptionPane.showMessageDialog(this, "Ya existe el Bus ", "Error", ERROR);
+                JOptionPane.showMessageDialog(this, "Ya existe el Codigo del Reclamo ", "Error", ERROR);
 
 
             } else {
-                JOptionPane.showMessageDialog(this, "Bus Creado correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Reclamo Creado correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
 
                 limpiarCamposConsultar();
-                jTFPlaca2.setText(jTFPlaca1.getText());
+                jTFCod2.setText(jTFCod1.getText());
                 jBConsultar1.doClick();
-                jTPBus.setSelectedIndex(1);
-                limpiarCamposCrear();
+                jTPReclamo.setSelectedIndex(1);
+                jBLimpiar1.doClick();
             }
         }
     }//GEN-LAST:event_jBCrear1ActionPerformed
 
     private void jCBEstacion1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBEstacion1PopupMenuWillBecomeVisible
         jCBEstacion1.setModel(
-                new javax.swing.DefaultComboBoxModel(controladorRuta.listar()));
+                new javax.swing.DefaultComboBoxModel(controladorEstacion.listar()));
     }//GEN-LAST:event_jCBEstacion1PopupMenuWillBecomeVisible
 
     private void jBLimpiarConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarConsultarActionPerformed
         limpiarCamposConsultar();
     }//GEN-LAST:event_jBLimpiarConsultarActionPerformed
-
+    public void limpiarCamposConsultar() {
+        jTFCod2.setText("");
+        jCBPasajero2.setSelectedIndex(0);
+        jCBEstacion2.setSelectedIndex(0);
+    }
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
 
         int selectedRow = jTResultados.getSelectedRow();
-        jCBRuta3.setModel(
-                new javax.swing.DefaultComboBoxModel(controladorRuta.listar()));
-        jTFPlaca3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
-        jTFMarca3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
-        jTFChasis3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
-        jCBTipo3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 3));
-        jTFAsientos3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
-        jTFCapacidad3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 5));
-        jCBRuta3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 6));
+        jCBEstacion3.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorEstacion.listar()));
+        jCBPasajero3.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));
+
+        jTFCod3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jCBPasajero3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        jCBEstacion3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+        jTADescripcion3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 3));
 
 
-        jTPBus.setSelectedIndex(2);
+        jTPReclamo.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed
         LinkedList consulta = new LinkedList();
 
         try {
-            int capacidad = 0;
-            try {
-                capacidad = Integer.parseInt(jTFCapacidad2.getText());
-            } catch (Exception e) {
-                capacidad = 0;
-            }
-            String ruta = jCBRuta2.getSelectedItem().toString();
 
-            consulta = controladorBus.consultar(
-                    jTFPlaca2.getText(),
-                    jCBTipo2.getSelectedItem().toString(),
-                    capacidad,
-                    ruta);
 
-            Object[][] s = new Object[consulta.size()][7];
+
+            consulta = controladorReclamo.consultar(
+                    jTFCod2.getText(),
+                    jCBPasajero2.getSelectedItem().toString(),
+                    jCBEstacion2.getSelectedItem().toString());
+
+            Object[][] s = new Object[consulta.size()][4];
             for (int i = 0; i < consulta.size(); i++) {
-                Buses bus = (Buses) consulta.get(i);
-                if (bus.getPlaca() != null) {
-                    s[i][0] = bus.getPlaca();
-                    s[i][1] = bus.getMarca();
-                    s[i][2] = bus.getNroChasis();
-                    s[i][3] = bus.getTipo();
-                    s[i][4] = bus.getNroAsientos();
-                    s[i][5] = bus.getCapacidad();
-                    s[i][6] = bus.getRuta();
+                Reclamos r = (Reclamos) consulta.get(i);
+                if (r.getCodigo() != null) {
+                    s[i][0] = r.getCodigo();
+                    s[i][1] = r.getPasajero();
+                    s[i][2] = r.getEstacion();
+                    s[i][3] = r.getDescripcion();
+
 
                 } else {
                     s = null;
                 }
             }
             TableModel myModel = new DefaultTableModel(s, new String[]{
-                        "Placa", "Marca", "Chasis",
-                        "Tipo", "Nro. Asientos", "Capacidad", "Ruta"}) {
+                        "Codigo", "Pasajero", "Estacion",
+                        "Descripcion"}) {
 
-                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false};
+                boolean[] canEdit = new boolean[]{false, false, false, false};
 
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -466,15 +480,14 @@ public class JPReclamo extends javax.swing.JPanel {
 
         try {
 
-            Rutas r = controladorRuta.consultar(jCBRuta3.getSelectedItem().toString());
-            editar = controladorBus.modificar(
-                    jTFPlaca3.getText(),
-                    jTFMarca3.getText(),
-                    jTFChasis3.getText(),
-                    jCBTipo3.getSelectedItem().toString(),
-                    Integer.parseInt(jTFAsientos3.getText()),
-                    Integer.parseInt(jTFCapacidad3.getText()),
-                    r);
+            Pasajeros p = controladorPasajero.consultar(jCBPasajero3.getSelectedItem().toString());
+           Estaciones estacion = controladorEstacion.consultar(jCBEstacion3.getSelectedItem().toString());
+            
+            editar = controladorReclamo.modificar(
+                    jTFCod3.getText(),
+                    jTADescripcion3.getText(),
+                    p,
+                    estacion);
 
 
         } catch (Exception e) {
@@ -486,24 +499,43 @@ public class JPReclamo extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "modificado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposConsultar();
             jTResultados.removeAll();
-            jTFPlaca2.setText(jTFPlaca3.getText());
+            jTFCod2.setText(jTFCod3.getText());
             jBConsultar1.doClick();
-            jTPBus.setSelectedIndex(1);
-            limpiarCamposModificar();
+            jTPReclamo.setSelectedIndex(1);
+            
         }
     }//GEN-LAST:event_jBModificarActionPerformed
 
-    private void jCBRuta3PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBRuta3PopupMenuWillBecomeVisible
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBRuta3PopupMenuWillBecomeVisible
-
-    private void jCBRuta3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBRuta3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBRuta3ActionPerformed
-
     private void jCBEstacion2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBEstacion2PopupMenuWillBecomeVisible
         // TODO add your handling code here:
+          jCBEstacion2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorEstacion.listar()));
+   
     }//GEN-LAST:event_jCBEstacion2PopupMenuWillBecomeVisible
+
+    private void jCBEstacion3PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBEstacion3PopupMenuWillBecomeVisible
+         jCBEstacion3.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorEstacion.listar()));
+   
+    }//GEN-LAST:event_jCBEstacion3PopupMenuWillBecomeVisible
+
+    private void jCBPasajero1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBPasajero1PopupMenuWillBecomeVisible
+        jCBPasajero1.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));
+   
+    }//GEN-LAST:event_jCBPasajero1PopupMenuWillBecomeVisible
+
+    private void jCBPasajero2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBPasajero2PopupMenuWillBecomeVisible
+         jCBPasajero2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));
+   
+    }//GEN-LAST:event_jCBPasajero2PopupMenuWillBecomeVisible
+
+    private void jCBPasajero3PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBPasajero3PopupMenuWillBecomeVisible
+        jCBPasajero3.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));
+   
+    }//GEN-LAST:event_jCBPasajero3PopupMenuWillBecomeVisible
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar1;
@@ -513,24 +545,21 @@ public class JPReclamo extends javax.swing.JPanel {
     private javax.swing.JButton jBModificar;
     private javax.swing.JComboBox jCBEstacion1;
     private javax.swing.JComboBox jCBEstacion2;
+    private javax.swing.JComboBox jCBEstacion3;
     private javax.swing.JComboBox jCBPasajero1;
     private javax.swing.JComboBox jCBPasajero2;
-    private javax.swing.JComboBox jCBRuta3;
-    private javax.swing.JComboBox jCBTipo3;
+    private javax.swing.JComboBox jCBPasajero3;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -539,15 +568,13 @@ public class JPReclamo extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTADescripcion1;
-    private javax.swing.JTextField jTFAsientos3;
-    private javax.swing.JTextField jTFCapacidad3;
-    private javax.swing.JTextField jTFChasis3;
+    private javax.swing.JTextArea jTADescripcion3;
     private javax.swing.JTextField jTFCod1;
     private javax.swing.JTextField jTFCod2;
-    private javax.swing.JTextField jTFMarca3;
-    private javax.swing.JTextField jTFPlaca3;
-    private javax.swing.JTabbedPane jTPBus;
+    private javax.swing.JTextField jTFCod3;
+    private javax.swing.JTabbedPane jTPReclamo;
     private javax.swing.JTable jTResultados;
     // End of variables declaration//GEN-END:variables
 }
