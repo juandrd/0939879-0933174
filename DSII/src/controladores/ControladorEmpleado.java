@@ -32,7 +32,7 @@ public class ControladorEmpleado {
     }
     
     public int insertar(String id,String nombre,String apellidos,
-                String telefono,String direccion,String email,String genero,
+                String telefono,String direccion,String genero,String email,
                 int salario)
     {
         if (!id.isEmpty() && !nombre.isEmpty() && !apellidos.isEmpty() 
@@ -145,7 +145,7 @@ public class ControladorEmpleado {
             sql_select += " e.genero = '"+genero+"'"+" AND ";
         }
         if (salario>0) {
-            sql_select += " e.salario < '"+salario+"'"+" AND ";
+            sql_select += " e.salario < "+salario+""+" AND ";
         }
 
             

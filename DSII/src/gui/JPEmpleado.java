@@ -641,6 +641,11 @@ public class JPEmpleado extends javax.swing.JPanel {
                 jCBEstaciones2PopupMenuWillBecomeVisible(evt);
             }
         });
+        jCBEstaciones2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBEstaciones2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -790,6 +795,7 @@ public class JPEmpleado extends javax.swing.JPanel {
             if(!a.getIdentificacion().equals("")){
                 tipo=1;
                 estacion=""+a.getEstacion();
+                System.out.println("Estacion "+estacion);
             }
         }
         catch(Exception exception){
@@ -799,16 +805,20 @@ public class JPEmpleado extends javax.swing.JPanel {
             Conductores c=controladorConductor.consultar(id);
             if(!c.getIdentificacion().equals("")){
                 tipo=2;
+                
+            
             }
         }
         catch(Exception exception){
                         
         }
-
+System.out.println("TIPO "+tipo);
         if(tipo==1){
             jCBEstaciones2.setSelectedItem(estacion);
         }
         if(tipo==2){
+            
+            
         }
         
         jTFId3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
@@ -1212,6 +1222,8 @@ public class JPEmpleado extends javax.swing.JPanel {
 
     private void jCBEstaciones2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBEstaciones2PopupMenuWillBecomeVisible
         // TODO add your handling code here:
+         jCBEstaciones2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorEstacion.listar()));
     }//GEN-LAST:event_jCBEstaciones2PopupMenuWillBecomeVisible
 
     private void jTFSalario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFSalario3ActionPerformed
@@ -1379,6 +1391,10 @@ public class JPEmpleado extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jBConsultarPorTipoActionPerformed
+
+    private void jCBEstaciones2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEstaciones2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBEstaciones2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;

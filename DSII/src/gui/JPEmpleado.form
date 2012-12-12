@@ -1095,6 +1095,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="popupMenuWillBecomeVisible" listener="javax.swing.event.PopupMenuListener" parameters="javax.swing.event.PopupMenuEvent" handler="jCBEstaciones2PopupMenuWillBecomeVisible"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBEstaciones2ActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
