@@ -70,6 +70,7 @@ public class GUI extends javax.swing.JFrame {
         jMILoginPasajeros = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         JMIReclamo = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMOpciones = new javax.swing.JMenu();
         jMICrearEmpleado = new javax.swing.JMenuItem();
         jMIRutas = new javax.swing.JMenuItem();
@@ -108,6 +109,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMPasajeros.add(JMIReclamo);
+
+        jMenuItem1.setText("Tarjetas Genericas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMPasajeros.add(jMenuItem1);
 
         jMenuBar1.add(jMPasajeros);
 
@@ -303,6 +312,19 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_JMIReclamoActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPTarjetasGenericas tg = new JPTarjetasGenericas();
+        tg.setBounds(jPPrincipal.getBounds());
+        jPPrincipal.add(tg, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -361,6 +383,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMReportes;
     private javax.swing.JMenu jMVentas;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPPrincipal;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;

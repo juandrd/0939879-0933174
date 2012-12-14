@@ -118,7 +118,7 @@ public class ControladoresTarjetasGenericas {
         }
         
         if(!estado.equals("")){
-            sql_select += "tg.estado LIKE '%"+estado+"%'"+" AND ";
+            sql_select += "tg.estado = '"+estado+"' AND ";
         }
             
             
