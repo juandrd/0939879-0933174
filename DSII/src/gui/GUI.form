@@ -87,12 +87,11 @@
         <Menu class="javax.swing.JMenu" name="jMVentas">
           <Properties>
             <Property name="text" type="java.lang.String" value=" Ventas  "/>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMICrearCotizacion">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Crear Cotizacion"/>
+                <Property name="text" type="java.lang.String" value="Registrar Venta"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMICrearCotizacionActionPerformed"/>
@@ -102,7 +101,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMIRegistrarVenta">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registrar Venta"/>
+                <Property name="text" type="java.lang.String" value="dsds"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIRegistrarVentaActionPerformed"/>

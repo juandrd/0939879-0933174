@@ -143,5 +143,13 @@ public class ControladorTarjetasPersonalizadas {
             
             return listaTarjetas;
     }
-    
+          public String[] listar() {
+        LinkedList tarjetasConsulta = consultar("",0,"Disponible");
+        String[] tarjetas = new String[tarjetasConsulta.size() + 1];
+        tarjetas[0] = " ";
+        for (int i = 0; i < tarjetasConsulta.size(); i++) {
+            tarjetas[i + 1] = ((TarjetasPersonalizadas) tarjetasConsulta.get(i)).getPinTarjeta();
+        }
+        return tarjetas;
+    }
 }

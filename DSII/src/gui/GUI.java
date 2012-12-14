@@ -166,9 +166,8 @@ public class GUI extends javax.swing.JFrame {
         jMenuBar1.add(jMOpciones);
 
         jMVentas.setText(" Ventas  ");
-        jMVentas.setEnabled(false);
 
-        jMICrearCotizacion.setText("Crear Cotizacion");
+        jMICrearCotizacion.setText("Registrar Venta");
         jMICrearCotizacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMICrearCotizacionActionPerformed(evt);
@@ -177,7 +176,7 @@ public class GUI extends javax.swing.JFrame {
         jMVentas.add(jMICrearCotizacion);
         jMVentas.add(jSeparator3);
 
-        jMIRegistrarVenta.setText("Registrar Venta");
+        jMIRegistrarVenta.setText("dsds");
         jMIRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIRegistrarVentaActionPerformed(evt);
@@ -245,8 +244,8 @@ public class GUI extends javax.swing.JFrame {
             jPPrincipal.removeAll();
         } catch (Exception e) {
         }
-        //JPCotizacion jPC2 = new JPCotizacion();
-        //jPPrincipal.add(jPC2, BorderLayout.CENTER);
+        JPVentaTarjetas jPC2 = new JPVentaTarjetas();
+        jPPrincipal.add(jPC2, BorderLayout.CENTER);
         jPPrincipal.updateUI();
         this.pack();
     }//GEN-LAST:event_jMICrearCotizacionActionPerformed
