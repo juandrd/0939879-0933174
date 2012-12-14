@@ -66,5 +66,31 @@ public class ControladorPasajeroPersonalizado {
         }
         return -1;
     }
+        
+        
+           public LinkedList consultar(String pasajero)
+
+    {
+                        //"SELECT r FROM Rutas r"
+            List lista;
+            LinkedList listaPasajeros= new LinkedList();       
+        
        
+                      
+           
+            lista = dao.findPasajerosPersonalizadasEntities();
+           // else lista = manager.createQuery("SELECT p FROM Pasajeros p").getResultList();
+            
+            for(int i=0;i<lista.size();i++)
+            {
+                PasajerosPersonalizadas p = (PasajerosPersonalizadas) lista.get(i);
+                if(p.getPasajerosPersonalizadasPK().getIdentificacion().equals(pasajero)){
+                
+                listaPasajeros.add(p);}
+            }
+            
+            return listaPasajeros;
+    }
+        
+          
 }

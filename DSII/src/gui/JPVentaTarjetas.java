@@ -8,8 +8,14 @@ import controladores.ControladorPasajero;
 import controladores.ControladorTarjetasPersonalizadas;
 import controladores.ControladorPasajeroPersonalizado;
 import entidades.Pasajeros;
+import entidades.PasajerosPersonalizadas;
+import entidades.PasajerosPersonalizadasPK;
 import entidades.TarjetasPersonalizadas;
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -40,7 +46,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTPBus2 = new javax.swing.JTabbedPane();
+        jTPVentas = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
@@ -56,13 +62,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
         jTResultados = new javax.swing.JTable();
         jBConsultar1 = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
-        jTFPlaca4 = new javax.swing.JTextField();
-        jLabel29 = new javax.swing.JLabel();
-        jTFCapacidad4 = new javax.swing.JTextField();
-        jCBTipo2 = new javax.swing.JComboBox();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jCBRuta2 = new javax.swing.JComboBox();
+        jCBPasajero2 = new javax.swing.JComboBox();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Venta de Tarjetas"));
 
@@ -99,7 +99,15 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
         jPanel12.add(jLabel28);
         jLabel28.setBounds(-10, 60, 90, 30);
 
-        jCBPasajero1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Troncal", "Alimentador", "Padron" }));
+        jCBPasajero1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBPasajero1PopupMenuWillBecomeVisible(evt);
+            }
+        });
         jPanel12.add(jCBPasajero1);
         jCBPasajero1.setBounds(110, 10, 180, 30);
 
@@ -119,7 +127,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
         jPanel11.add(jPanel12);
         jPanel12.setBounds(0, 0, 340, 210);
 
-        jTPBus2.addTab("Vender", jPanel11);
+        jTPVentas.addTab("Vender", jPanel11);
 
         jPanel3.setLayout(null);
 
@@ -133,18 +141,18 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             }
         });
         jPanel13.add(jBLimpiarConsultar);
-        jBLimpiarConsultar.setBounds(290, 100, 90, 23);
+        jBLimpiarConsultar.setBounds(290, 30, 90, 23);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Placa", "Marca", "Chasis", "Tipo", "Nro. Asientos", "Capacidad", "Ruta"
+                "Pasajero", "Pin Tarjeta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -159,7 +167,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel13.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 210, 410, 100);
+        jScrollPane1.setBounds(30, 120, 410, 100);
 
         jBConsultar1.setText("Consultar");
         jBConsultar1.addActionListener(new java.awt.event.ActionListener() {
@@ -168,53 +176,29 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             }
         });
         jPanel13.add(jBConsultar1);
-        jBConsultar1.setBounds(290, 140, 90, 23);
+        jBConsultar1.setBounds(290, 60, 90, 23);
 
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel27.setText("Placa");
+        jLabel27.setText("Pasajero");
         jPanel13.add(jLabel27);
         jLabel27.setBounds(-10, 10, 80, 30);
-        jPanel13.add(jTFPlaca4);
-        jTFPlaca4.setBounds(80, 10, 180, 30);
 
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel29.setText("Capacidad");
-        jPanel13.add(jLabel29);
-        jLabel29.setBounds(0, 40, 80, 40);
-        jPanel13.add(jTFCapacidad4);
-        jTFCapacidad4.setBounds(80, 50, 180, 30);
-
-        jCBTipo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Troncal", "Alimentador", "Padron" }));
-        jPanel13.add(jCBTipo2);
-        jCBTipo2.setBounds(80, 90, 180, 30);
-
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setText("Tipo");
-        jPanel13.add(jLabel33);
-        jLabel33.setBounds(0, 90, 60, 30);
-
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel34.setText("Ruta");
-        jPanel13.add(jLabel34);
-        jLabel34.setBounds(-10, 130, 90, 30);
-
-        jCBRuta2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar" }));
-        jCBRuta2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+        jCBPasajero2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                jCBRuta2PopupMenuWillBecomeVisible(evt);
+                jCBPasajero2PopupMenuWillBecomeVisible(evt);
             }
         });
-        jPanel13.add(jCBRuta2);
-        jCBRuta2.setBounds(80, 130, 180, 30);
+        jPanel13.add(jCBPasajero2);
+        jCBPasajero2.setBounds(80, 10, 180, 30);
 
         jPanel3.add(jPanel13);
-        jPanel13.setBounds(0, 0, 590, 340);
+        jPanel13.setBounds(0, 0, 590, 270);
 
-        jTPBus2.addTab("Consultar", jPanel3);
+        jTPVentas.addTab("Consultar", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -222,59 +206,43 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTPBus2, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+                .addComponent(jTPVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPBus2, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+            .addComponent(jTPVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCBRuta2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBRuta2PopupMenuWillBecomeVisible
-        jCBRuta2.setModel(
-                new javax.swing.DefaultComboBoxModel(controladorRuta.listar()));
-    }//GEN-LAST:event_jCBRuta2PopupMenuWillBecomeVisible
-
     private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed
-        LinkedList consulta = new LinkedList();
+       LinkedList consulta = new LinkedList();
 
         try {
-            int capacidad = 0;
-            try {
-                capacidad = Integer.parseInt(jTFCapacidad2.getText());
-            } catch (Exception e) {
-                capacidad = 0;
-            }
-            String ruta = jCBRuta2.getSelectedItem().toString();
+            
+            
+            
+            consulta = controladorPP.consultar(
+                 
+                    jCBPasajero2.getSelectedItem().toString()
+                 );
 
-            consulta = controladorBus.consultar(
-                    jTFPlaca2.getText(),
-                    jCBTipo2.getSelectedItem().toString(),
-                    capacidad,
-                    ruta);
-
-            Object[][] s = new Object[consulta.size()][7];
+            Object[][] s = new Object[consulta.size()][2];
             for (int i = 0; i < consulta.size(); i++) {
-                Buses bus = (Buses) consulta.get(i);
-                if (bus.getPlaca() != null) {
-                    s[i][0] = bus.getPlaca();
-                    s[i][1] = bus.getMarca();
-                    s[i][2] = bus.getNroChasis();
-                    s[i][3] = bus.getTipo();
-                    s[i][4] = bus.getNroAsientos();
-                    s[i][5] = bus.getCapacidad();
-                    s[i][6] = bus.getRuta();
+                PasajerosPersonalizadas p = (PasajerosPersonalizadas) consulta.get(i);
+                if (p.getPasajerosPersonalizadasPK().getIdentificacion() != null) {
+                    s[i][0] = p.getPasajerosPersonalizadasPK().getIdentificacion();
+                    s[i][1] = p.getPasajerosPersonalizadasPK().getPinTarjeta();
+                
 
                 } else {
                     s = null;
                 }
             }
             TableModel myModel = new DefaultTableModel(s, new String[]{
-                        "Placa", "Marca", "Chasis",
-                        "Tipo", "Nro. Asientos", "Capacidad", "Ruta"}) {
+                         "Pasajero", "Pin Tarjeta"}) {
 
-                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false};
+                boolean[] canEdit = new boolean[]{ false, false};
 
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -291,23 +259,23 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
 
-        int selectedRow = jTResultados.getSelectedRow();
-        jCBRuta3.setModel(
-                new javax.swing.DefaultComboBoxModel(controladorRuta.listar()));
-        jTFPlaca3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
-        jTFMarca3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
-        jTFChasis3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
-        jCBTipo3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 3));
-        jTFAsientos3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
-        jTFCapacidad3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 5));
-        jCBRuta3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 6));
-
-
-        jTPBus.setSelectedIndex(2);
+//        int selectedRow = jTResultados.getSelectedRow();
+//        jCBRuta3.setModel(
+//                new javax.swing.DefaultComboBoxModel(controladorRuta.listar()));
+//        jTFPlaca3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+//        jTFMarca3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+//        jTFChasis3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+//        jCBTipo3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 3));
+//        jTFAsientos3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
+//        jTFCapacidad3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 5));
+//        jCBRuta3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 6));
+//
+//
+//        jTPBus.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBLimpiarConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarConsultarActionPerformed
-        limpiarCamposConsultar();
+        
     }//GEN-LAST:event_jBLimpiarConsultarActionPerformed
 
     private void jCBTarjeta1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBTarjeta1PopupMenuWillBecomeVisible
@@ -341,64 +309,44 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(this, "Venta Creada correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
 
-//                limpiarCamposConsultar();
-//                jTFPlaca2.setText(jTFPlaca1.getText());
-//                jBConsultar1.doClick();
-//                jTPBus.setSelectedIndex(1);
-//                limpiarCamposCrear();
+
             }
         }
     }//GEN-LAST:event_jBCrear1ActionPerformed
 
     private void jBLimpiar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar3ActionPerformed
-        limpiarCamposCrear();
+        
     }//GEN-LAST:event_jBLimpiar3ActionPerformed
+
+    private void jCBPasajero1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBPasajero1PopupMenuWillBecomeVisible
+        // TODO add your handling code here:
+         jCBPasajero1.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));
+    }//GEN-LAST:event_jCBPasajero1PopupMenuWillBecomeVisible
+
+    private void jCBPasajero2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBPasajero2PopupMenuWillBecomeVisible
+        // TODO add your handling code here:
+        jCBPasajero2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));
+    }//GEN-LAST:event_jCBPasajero2PopupMenuWillBecomeVisible
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar1;
     private javax.swing.JButton jBCrear1;
-    private javax.swing.JButton jBLimpiar1;
-    private javax.swing.JButton jBLimpiar2;
     private javax.swing.JButton jBLimpiar3;
     private javax.swing.JButton jBLimpiarConsultar;
     private javax.swing.JComboBox jCBPasajero1;
-    private javax.swing.JComboBox jCBRuta2;
+    private javax.swing.JComboBox jCBPasajero2;
     private javax.swing.JComboBox jCBTarjeta1;
-    private javax.swing.JComboBox jCBTipo2;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTFCapacidad1;
-    private javax.swing.JTextField jTFCapacidad2;
-    private javax.swing.JTextField jTFCapacidad4;
-    private javax.swing.JTextField jTFPlaca1;
-    private javax.swing.JTextField jTFPlaca2;
-    private javax.swing.JTextField jTFPlaca4;
-    private javax.swing.JTabbedPane jTPBus;
-    private javax.swing.JTabbedPane jTPBus1;
-    private javax.swing.JTabbedPane jTPBus2;
+    private javax.swing.JTabbedPane jTPVentas;
     private javax.swing.JTable jTResultados;
     // End of variables declaration//GEN-END:variables
 }
