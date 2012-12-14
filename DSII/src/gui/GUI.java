@@ -71,6 +71,7 @@ public class GUI extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         JMIReclamo = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMOpciones = new javax.swing.JMenu();
         jMICrearEmpleado = new javax.swing.JMenuItem();
         jMIRutas = new javax.swing.JMenuItem();
@@ -117,6 +118,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMPasajeros.add(jMenuItem1);
+
+        jMenuItem2.setText("Tarjetas Personalizadas");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMPasajeros.add(jMenuItem2);
 
         jMenuBar1.add(jMPasajeros);
 
@@ -325,6 +334,18 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPTarjetasPersonalizadas tg = new JPTarjetasPersonalizadas();
+        tg.setBounds(jPPrincipal.getBounds());
+        jPPrincipal.add(tg, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -384,6 +405,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMVentas;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPPrincipal;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;

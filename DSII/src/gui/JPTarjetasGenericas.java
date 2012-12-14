@@ -247,7 +247,6 @@ public class JPTarjetasGenericas extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Tarjeta generica Creada correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
                 jBLimpiarConsultar.doClick();
                 jTFPinTarjeta1.setText(jTFPinTarjeta.getText());
-                JCEstado1.setSelectedIndex(jCEstado.getSelectedIndex());
                 jBLimpiarCrear.doClick();
                 jTabbedPane1.setSelectedIndex(1);
                 jBConsultar.doClick();
@@ -331,13 +330,13 @@ public class JPTarjetasGenericas extends javax.swing.JPanel {
             int num_pasaje=0;
             
             try{
-                num_pasaje= Integer.parseInt(jTFNumeroPasajes.getText());
+                num_pasaje= Integer.parseInt(jTFNumeroPasajes2.getText());
             }
             catch(Exception e){
                 num_pasaje=0;
             }
             editar = controladorTarjetasGenericas.modificar(
-                    jTFPinTarjeta.getText(),
+                    jTFPinTarjeta2.getText(),
                    num_pasaje,
                     JCEstado2.getSelectedItem().toString());
         } catch (Exception e) {

@@ -66,6 +66,8 @@ public class ControladoresTarjetasGenericas {
         TarjetasGenericas tarjetasGenericasEncontrada = daoTarjetasGenericas.findTarjetasGenericas(pin_tarjeta);
         
         tarjetasGenericasEncontrada.setPinTarjeta(pin_tarjeta);
+        tarjetasGenericasEncontrada.setNroPasajes(nro_pasajes);
+        tarjetasGenericasEncontrada.setEstado(estado);
         
         try 
         {   
