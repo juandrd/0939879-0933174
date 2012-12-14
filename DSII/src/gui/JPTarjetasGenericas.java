@@ -161,13 +161,13 @@ public class JPTarjetasGenericas extends javax.swing.JPanel {
         jTFNumeroPasajes1.setColumns(20);
         jPanel2.add(jTFNumeroPasajes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 210, -1));
 
-        jLabel9.setText("Numero de Pasajes");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jLabel9.setText("saldo");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 90, -1));
 
         jLabel10.setText("Estado");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        JCEstado1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Disponible", "Vendido" }));
+        JCEstado1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Disponible", "Vendido" }));
         jPanel2.add(JCEstado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 200, -1));
 
         jTabbedPane1.addTab("Consultar", jPanel2);
@@ -210,18 +210,18 @@ public class JPTarjetasGenericas extends javax.swing.JPanel {
             .addGap(0, 589, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 51, Short.MAX_VALUE)
+                    .addGap(0, 57, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 52, Short.MAX_VALUE)))
+                    .addGap(0, 57, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 359, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 18, Short.MAX_VALUE)
+                    .addGap(0, 25, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 18, Short.MAX_VALUE)))
+                    .addGap(0, 26, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -267,8 +267,20 @@ public class JPTarjetasGenericas extends javax.swing.JPanel {
         // TODO add your handling code here:
          LinkedList consulta = new LinkedList();
         try {
+            
+            
+             int num_pasaje=0;
+            
+            try{
+                num_pasaje= Integer.parseInt(jTFNumeroPasajes1.getText());
+            }
+            catch(Exception e){
+                num_pasaje=0;
+            }
+            
+            System.out.println(num_pasaje);
             consulta = controladorTarjetasGenericas.consultar(jTFPinTarjeta1.getText(),
-                    jTFNumeroPasajes1.getText(),JCEstado1.getSelectedItem().toString());
+                    num_pasaje,JCEstado1.getSelectedItem().toString());
             
             Object[][] s = new Object[consulta.size()][3];
             for (int i = 0; i < consulta.size(); i++) {
@@ -315,9 +327,18 @@ public class JPTarjetasGenericas extends javax.swing.JPanel {
         // TODO add your handling code here:
                 int editar = -1;
         try {
+            
+            int num_pasaje=0;
+            
+            try{
+                num_pasaje= Integer.parseInt(jTFNumeroPasajes.getText());
+            }
+            catch(Exception e){
+                num_pasaje=0;
+            }
             editar = controladorTarjetasGenericas.modificar(
                     jTFPinTarjeta.getText(),
-                    Integer.parseInt(jTFNumeroPasajes.getText()),
+                   num_pasaje,
                     JCEstado2.getSelectedItem().toString());
         } catch (Exception e) {
             System.out.print(e);

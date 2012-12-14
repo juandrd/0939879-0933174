@@ -99,31 +99,31 @@ public class ControladoresTarjetasGenericas {
        }
 
         
-        public LinkedList consultar(String pin_tarjeta,String nro_pasajes,String estado)
+        public LinkedList consultar(String pin_tarjeta,int nro_pasajes,String estado)
     {
                         //"SELECT r FROM TarjetasGenericas r"
             List lista;
             LinkedList listaTarjetasGenericas= new LinkedList();
-            String sql_select="SELECT tg FROM TarjetasGenericas tg   ";
-            if (!pin_tarjeta.equals("") || !nro_pasajes.equals("")|| !estado.equals("")) {
-            sql_select += "WHERE ";
+            String sql_select="SELECT tg FROM TarjetasGenericas tg     ";
+            if (!pin_tarjeta.equals("") || nro_pasajes>0|| !estado.equals("")) {
+            sql_select += "WHERE";
             }
             
         if (!pin_tarjeta.equals("")) {
-            sql_select += "tg.pin_tarjeta = '" + pin_tarjeta + "' AND ";
+            sql_select += " tg.pinTarjeta = '" + pin_tarjeta + "' AND ";
         }
         
-        if(!nro_pasajes.equals("")){
-            sql_select += "tg.nro_pasajes = "+nro_pasajes+"  AND ";
+        if(nro_pasajes>0){
+            sql_select += " tg.nroPasajes <= "+nro_pasajes+"  AND ";
         }
         
         if(!estado.equals("")){
-            sql_select += "tg.estado = '"+estado+"' AND ";
+            sql_select += " tg.estado = '"+estado+"' AND ";
         }
             
             
             sql_select = sql_select.substring(0, sql_select.length() - 5);
-            
+            System.out.println(sql_select);
             //sirve para ejecutar consultas
             if(sql_select.contains("WHERE"))
             lista = manager.createQuery(sql_select).getResultList();
