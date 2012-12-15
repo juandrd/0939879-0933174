@@ -46,6 +46,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMIModificarDatos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar Datos"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIModificarDatosActionPerformed"/>
@@ -54,6 +55,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMITarjetaPasajero">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Info de Tarjeta"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMITarjetaPasajeroActionPerformed"/>

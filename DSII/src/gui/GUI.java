@@ -40,6 +40,8 @@ public class GUI extends javax.swing.JFrame {
         //PASAJEROS
         if(tipo_u==1){            
             jMILoginPasajeros.setEnabled(false);
+            jMIModificarDatos.setEnabled(true);
+            jMITarjetaPasajero.setEnabled(true);
             jMIModificarDatos.doClick();
           
         }
@@ -169,6 +171,7 @@ public class GUI extends javax.swing.JFrame {
         jMPasajeros.add(jMenuItem2);
 
         jMIModificarDatos.setText("Modificar Datos");
+        jMIModificarDatos.setEnabled(false);
         jMIModificarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIModificarDatosActionPerformed(evt);
@@ -177,6 +180,7 @@ public class GUI extends javax.swing.JFrame {
         jMPasajeros.add(jMIModificarDatos);
 
         jMITarjetaPasajero.setText("Info de Tarjeta");
+        jMITarjetaPasajero.setEnabled(false);
         jMITarjetaPasajero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMITarjetaPasajeroActionPerformed(evt);

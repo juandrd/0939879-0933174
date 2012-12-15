@@ -246,7 +246,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             Object[][] s = new Object[consulta.size()][4];
             for (int i = 0; i < consulta.size(); i++) {
                 PasajerosPersonalizadas p = (PasajerosPersonalizadas) consulta.get(i);
-                TarjetasPersonalizadas t=controladorTP.consultar(p.getPasajerosPersonalizadasPK().getIdentificacion());
+                TarjetasPersonalizadas t=controladorTP.consultar(p.getPasajerosPersonalizadasPK().getPinTarjeta());
                 if (p.getPasajerosPersonalizadasPK().getIdentificacion() != null) {
                     s[i][0] = p.getPasajerosPersonalizadasPK().getIdentificacion();
                     s[i][1] = p.getPasajerosPersonalizadasPK().getPinTarjeta();
@@ -345,6 +345,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
     private void jCBPasajero2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBPasajero2PopupMenuWillBecomeVisible
         // TODO add your handling code here:
 if(tipo==1){
+    jCBPasajero2.removeAllItems();
     jCBPasajero2.addItem(usuario);
 }      
 
