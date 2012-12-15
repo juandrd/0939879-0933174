@@ -30,13 +30,27 @@ public class JPRuta extends javax.swing.JPanel {
         rutaControlador = new ControladorRuta();
 
 
-        jTabbedPane1.setSelectedIndex(0);
-        
+        jTabbedPane1.setSelectedIndex(0);   
         
 
         
 
     }
+     public JPRuta(int tipo) {
+        initComponents();
+
+        rutaControlador = new ControladorRuta();
+
+
+        jTabbedPane1.setSelectedIndex(1);
+        jTabbedPane1.setEnabledAt(0, false);   
+        jTabbedPane1.setEnabledAt(2, false);   
+        
+
+        
+
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

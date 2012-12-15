@@ -43,6 +43,7 @@ public class GUI extends javax.swing.JFrame {
             jMIModificarDatos.setEnabled(true);
             jMITarjetaPasajero.setEnabled(true);
             jMIMisReclamos.setEnabled(true);
+            jMIRutasPasajero.setEnabled(true);
             jMIModificarDatos.doClick();
           
         }
@@ -108,7 +109,7 @@ public class GUI extends javax.swing.JFrame {
         jPPrincipal = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMPasajeros = new javax.swing.JMenu();
+        jMIVerRutas = new javax.swing.JMenu();
         jMILoginPasajeros = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         JMIReclamo = new javax.swing.JMenuItem();
@@ -117,6 +118,7 @@ public class GUI extends javax.swing.JFrame {
         jMIModificarDatos = new javax.swing.JMenuItem();
         jMITarjetaPasajero = new javax.swing.JMenuItem();
         jMIMisReclamos = new javax.swing.JMenuItem();
+        jMIRutasPasajero = new javax.swing.JMenuItem();
         jMOpciones = new javax.swing.JMenu();
         jMICrearEmpleado = new javax.swing.JMenuItem();
         jMIRutas = new javax.swing.JMenuItem();
@@ -137,7 +139,7 @@ public class GUI extends javax.swing.JFrame {
         jPPrincipal.add(jLabel2);
         jLabel2.setBounds(0, 0, 670, 480);
 
-        jMPasajeros.setText("Pasajeros");
+        jMIVerRutas.setText("Pasajeros");
 
         jMILoginPasajeros.setText("Login");
         jMILoginPasajeros.addActionListener(new java.awt.event.ActionListener() {
@@ -145,8 +147,8 @@ public class GUI extends javax.swing.JFrame {
                 jMILoginPasajerosActionPerformed(evt);
             }
         });
-        jMPasajeros.add(jMILoginPasajeros);
-        jMPasajeros.add(jSeparator2);
+        jMIVerRutas.add(jMILoginPasajeros);
+        jMIVerRutas.add(jSeparator2);
 
         JMIReclamo.setText("Reclamos");
         JMIReclamo.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +156,7 @@ public class GUI extends javax.swing.JFrame {
                 JMIReclamoActionPerformed(evt);
             }
         });
-        jMPasajeros.add(JMIReclamo);
+        jMIVerRutas.add(JMIReclamo);
 
         jMenuItem1.setText("Tarjetas Genericas");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +164,7 @@ public class GUI extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMPasajeros.add(jMenuItem1);
+        jMIVerRutas.add(jMenuItem1);
 
         jMenuItem2.setText("Tarjetas Personalizadas");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +172,7 @@ public class GUI extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMPasajeros.add(jMenuItem2);
+        jMIVerRutas.add(jMenuItem2);
 
         jMIModificarDatos.setText("Modificar Datos");
         jMIModificarDatos.setEnabled(false);
@@ -179,7 +181,7 @@ public class GUI extends javax.swing.JFrame {
                 jMIModificarDatosActionPerformed(evt);
             }
         });
-        jMPasajeros.add(jMIModificarDatos);
+        jMIVerRutas.add(jMIModificarDatos);
 
         jMITarjetaPasajero.setText("Info de Tarjeta");
         jMITarjetaPasajero.setEnabled(false);
@@ -188,7 +190,7 @@ public class GUI extends javax.swing.JFrame {
                 jMITarjetaPasajeroActionPerformed(evt);
             }
         });
-        jMPasajeros.add(jMITarjetaPasajero);
+        jMIVerRutas.add(jMITarjetaPasajero);
 
         jMIMisReclamos.setText("Mis Reclamos");
         jMIMisReclamos.setEnabled(false);
@@ -197,9 +199,18 @@ public class GUI extends javax.swing.JFrame {
                 jMIMisReclamosActionPerformed(evt);
             }
         });
-        jMPasajeros.add(jMIMisReclamos);
+        jMIVerRutas.add(jMIMisReclamos);
 
-        jMenuBar1.add(jMPasajeros);
+        jMIRutasPasajero.setText("Consultar Rutas");
+        jMIRutasPasajero.setEnabled(false);
+        jMIRutasPasajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIRutasPasajeroActionPerformed(evt);
+            }
+        });
+        jMIVerRutas.add(jMIRutasPasajero);
+
+        jMenuBar1.add(jMIVerRutas);
 
         jMOpciones.setText("Empleados");
 
@@ -447,6 +458,18 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMIMisReclamosActionPerformed
 
+    private void jMIRutasPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRutasPasajeroActionPerformed
+        try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+         
+        JPRuta jPRR = new JPRuta(1);
+        jPPrincipal.add(jPRR, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_jMIRutasPasajeroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -502,9 +525,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIModificarDatos;
     private javax.swing.JMenuItem jMIRegistrarVenta;
     private javax.swing.JMenuItem jMIRutas;
+    private javax.swing.JMenuItem jMIRutasPasajero;
     private javax.swing.JMenuItem jMITarjetaPasajero;
+    private javax.swing.JMenu jMIVerRutas;
     private javax.swing.JMenu jMOpciones;
-    private javax.swing.JMenu jMPasajeros;
     private javax.swing.JMenu jMReportes;
     private javax.swing.JMenu jMVentas;
     private javax.swing.JMenuBar jMenuBar1;

@@ -4,7 +4,7 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMPasajeros">
+        <Menu class="javax.swing.JMenu" name="jMIVerRutas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pasajeros"/>
           </Properties>
@@ -68,6 +68,15 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIMisReclamosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIRutasPasajero">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Consultar Rutas"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIRutasPasajeroActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
