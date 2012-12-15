@@ -145,16 +145,8 @@ public class GUI extends javax.swing.JFrame {
         jMIMisTurnos = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         jMISalirE = new javax.swing.JMenuItem();
-        jMOpciones = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jMVentas = new javax.swing.JMenu();
-        jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jMIRegistrarVenta = new javax.swing.JMenuItem();
-        jMReportes = new javax.swing.JMenu();
-        jMIGenerarReporte = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -362,43 +354,17 @@ public class GUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMEmpleado);
 
-        jMOpciones.setText("sas");
+        jMenu2.setText("Info");
 
-        jMenuItem3.setText("Login");
-        jMOpciones.add(jMenuItem3);
-        jMOpciones.add(jSeparator1);
-        jMOpciones.add(jSeparator4);
-
-        jMenuBar1.add(jMOpciones);
-
-        jMVentas.setText(" Ventas  ");
-        jMVentas.add(jSeparator3);
-
-        jMIRegistrarVenta.setText("dsds");
-        jMIRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem3.setText("Hecho Por");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIRegistrarVentaActionPerformed(evt);
+                jMenuItem3ActionPerformed(evt);
             }
         });
-        jMVentas.add(jMIRegistrarVenta);
+        jMenu2.add(jMenuItem3);
 
-        jMenuBar1.add(jMVentas);
-
-        jMReportes.setText(" Reportes  ");
-        jMReportes.setEnabled(false);
-
-        jMIGenerarReporte.setText("Generar Reporte");
-        jMIGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIGenerarReporteActionPerformed(evt);
-            }
-        });
-        jMReportes.add(jMIGenerarReporte);
-
-        jMenu1.setText("jMenu1");
-        jMReportes.add(jMenu1);
-
-        jMenuBar1.add(jMReportes);
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -451,17 +417,6 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMICrearCotizacionActionPerformed
 
-    private void jMIRegistrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRegistrarVentaActionPerformed
-        try {
-            jPPrincipal.removeAll();
-        } catch (Exception e) {
-        }
-        //JPVenta jPV = new JPVenta();
-        //jPPrincipal.add(jPV, BorderLayout.CENTER);
-        jPPrincipal.updateUI();
-        this.pack();
-    }//GEN-LAST:event_jMIRegistrarVentaActionPerformed
-
     private void jMIBusesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIBusesActionPerformed
         ///interfaz completa
         try {
@@ -473,17 +428,6 @@ public class GUI extends javax.swing.JFrame {
         jPPrincipal.updateUI();
         this.pack();
     }//GEN-LAST:event_jMIBusesActionPerformed
-
-    private void jMIGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIGenerarReporteActionPerformed
-        try {
-            jPPrincipal.removeAll();
-        } catch (Exception e) {
-        }
-        //JPReporte jPR = new JPReporte();
-        //jPPrincipal.add(jPR, BorderLayout.CENTER);
-        jPPrincipal.updateUI();
-        this.pack();
-    }//GEN-LAST:event_jMIGenerarReporteActionPerformed
 
     private void jMICrearTurnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICrearTurnosActionPerformed
         try {
@@ -653,6 +597,12 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMIMisTurnosActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        JFIntegrantes gui=new JFIntegrantes();
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -709,33 +659,25 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMICrearTurnos;
     private javax.swing.JMenuItem jMIEmpleadosInfo;
     private javax.swing.JMenuItem jMIEstacion;
-    private javax.swing.JMenuItem jMIGenerarReporte;
     private javax.swing.JMenuItem jMILoginEmpleado;
     private javax.swing.JMenuItem jMILoginPasajeros;
     private javax.swing.JMenuItem jMIMisReclamos;
     private javax.swing.JMenuItem jMIMisTurnos;
     private javax.swing.JMenuItem jMIModificarDatos;
     private javax.swing.JMenuItem jMIReclamoConsultar;
-    private javax.swing.JMenuItem jMIRegistrarVenta;
     private javax.swing.JMenuItem jMIRutas;
     private javax.swing.JMenuItem jMIRutasPasajero;
     private javax.swing.JMenuItem jMISalirE;
     private javax.swing.JMenuItem jMISalirP;
     private javax.swing.JMenuItem jMITarjetaPasajero;
-    private javax.swing.JMenu jMOpciones;
     private javax.swing.JMenu jMPasajero;
-    private javax.swing.JMenu jMReportes;
-    private javax.swing.JMenu jMVentas;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPPrincipal;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JPopupMenu.Separator jSeparator3;
-    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JPopupMenu.Separator jSeparator7;

@@ -449,7 +449,7 @@ public class JPReclamo extends javax.swing.JPanel {
         jCBEstacion2.setSelectedIndex(0);
     }
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-
+if(tipo!=1){
         int selectedRow = jTResultados.getSelectedRow();
         jCBEstacion3.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorEstacion.listar()));
@@ -462,7 +462,7 @@ public class JPReclamo extends javax.swing.JPanel {
         jTADescripcion3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 3));
 
 
-        jTPReclamo.setSelectedIndex(2);
+        jTPReclamo.setSelectedIndex(2);}
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed
