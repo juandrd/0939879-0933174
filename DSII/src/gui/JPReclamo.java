@@ -28,12 +28,31 @@ public class JPReclamo extends javax.swing.JPanel {
     ControladorReclamo controladorReclamo;
     ControladorPasajero controladorPasajero;
     ControladorEstacion controladorEstacion;
+    int tipo;
+    String user;
 
     public JPReclamo() {
         initComponents();
+        tipo=0;
         controladorEstacion = new ControladorEstacion();
         controladorPasajero = new ControladorPasajero();
         controladorReclamo = new ControladorReclamo();
+    }
+    
+     public JPReclamo(int tipo, String user) {
+        initComponents();
+        this.tipo=tipo;
+        this.user=user;
+        controladorEstacion = new ControladorEstacion();
+        controladorPasajero = new ControladorPasajero();
+        controladorReclamo = new ControladorReclamo();
+        
+         jTPReclamo.setSelectedIndex(1);
+        jTPReclamo.setEnabledAt(0, false);        
+        jTPReclamo.setEnabledAt(2, false);
+        jTFCod2.setEnabled(false);
+        jCBEstacion2.setEnabled(false);
+       
     }
 
     /**
@@ -526,7 +545,13 @@ public class JPReclamo extends javax.swing.JPanel {
     }//GEN-LAST:event_jCBPasajero1PopupMenuWillBecomeVisible
 
     private void jCBPasajero2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBPasajero2PopupMenuWillBecomeVisible
-         jCBPasajero2.setModel(
+      if(tipo==1){
+    jCBPasajero2.removeAllItems();
+    jCBPasajero2.addItem(user);
+}   
+      else
+        
+        jCBPasajero2.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));
    
     }//GEN-LAST:event_jCBPasajero2PopupMenuWillBecomeVisible

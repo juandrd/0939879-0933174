@@ -42,6 +42,7 @@ public class GUI extends javax.swing.JFrame {
             jMILoginPasajeros.setEnabled(false);
             jMIModificarDatos.setEnabled(true);
             jMITarjetaPasajero.setEnabled(true);
+            jMIMisReclamos.setEnabled(true);
             jMIModificarDatos.doClick();
           
         }
@@ -115,6 +116,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMIModificarDatos = new javax.swing.JMenuItem();
         jMITarjetaPasajero = new javax.swing.JMenuItem();
+        jMIMisReclamos = new javax.swing.JMenuItem();
         jMOpciones = new javax.swing.JMenu();
         jMICrearEmpleado = new javax.swing.JMenuItem();
         jMIRutas = new javax.swing.JMenuItem();
@@ -187,6 +189,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMPasajeros.add(jMITarjetaPasajero);
+
+        jMIMisReclamos.setText("Mis Reclamos");
+        jMIMisReclamos.setEnabled(false);
+        jMIMisReclamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIMisReclamosActionPerformed(evt);
+            }
+        });
+        jMPasajeros.add(jMIMisReclamos);
 
         jMenuBar1.add(jMPasajeros);
 
@@ -424,6 +435,18 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMITarjetaPasajeroActionPerformed
 
+    private void jMIMisReclamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIMisReclamosActionPerformed
+        try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPReclamo g = new JPReclamo(1, usuario_id);
+        g.setBounds(jPPrincipal.getBounds());
+        jPPrincipal.add(g, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_jMIMisReclamosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -475,6 +498,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIEstacion;
     private javax.swing.JMenuItem jMIGenerarReporte;
     private javax.swing.JMenuItem jMILoginPasajeros;
+    private javax.swing.JMenuItem jMIMisReclamos;
     private javax.swing.JMenuItem jMIModificarDatos;
     private javax.swing.JMenuItem jMIRegistrarVenta;
     private javax.swing.JMenuItem jMIRutas;
