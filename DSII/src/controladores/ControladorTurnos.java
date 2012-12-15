@@ -10,6 +10,7 @@ import dao.exceptions.NonexistentEntityException;
 import dao.exceptions.PreexistingEntityException;
 import entidades.Turnos;
 import entidades.TurnosPK;
+import java.sql.Time;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class ControladorTurnos {
     daoTurnos= new TurnosJpaController(mi_fabrica.getFactory());
     }
     
-        public int insertar(String conductor,String bus,Date hora_inicio,Date hora_fin)
+        public int insertar(String conductor,String bus,Time hora_inicio,Time hora_fin)
     {
         if (!conductor.isEmpty() && !bus.isEmpty() && !hora_inicio.toString().isEmpty()
                 && !hora_fin.toString().isEmpty()) {
@@ -65,7 +66,7 @@ public class ControladorTurnos {
         return -1;
     }
         
-    public int modificar(String conductor,String bus,Date hora_inicio,Date hora_fin)
+    public int modificar(String conductor,String bus,Time hora_inicio,Time hora_fin)
     {
         if (!conductor.isEmpty() && !bus.isEmpty() && !hora_inicio.toString().isEmpty()
                 && !hora_fin.toString().isEmpty() ) {
@@ -98,34 +99,27 @@ public class ControladorTurnos {
 
 
         
-        public LinkedList consultar(String conductor,String bus,String hora_inicio,String hora_fin)
+        public LinkedList consultar(String conductor,String bus)
     {
-                        //"SELECT r FROM Rutas r"
             List lista;
             LinkedList listaTurnos= new LinkedList();
-            String sql_select="SELECT t FROM Turnos t   ";
-            if (!conductor.equals("") || !bus.equals("") || !hora_inicio.equals("") || !hora_fin.equals("")) {
-            sql_select += "WHERE ";
+            String sql_select="SELECT t FROM Turnos t     ";
+            if (!conductor.equals("") || !bus.equals("")) {
+            sql_select += "WHERE";
             }
             
         if (!conductor.equals("")) {
-            sql_select += "t.conductor = '" + conductor + "' AND ";
+            sql_select += " t.conductor = '" + conductor + "' AND ";
         }
         
         if(!bus.equals("")){
-            sql_select += "t.bus = '"+bus+"'"+" AND ";
+            sql_select += " t.bus = '"+bus+"'"+" AND ";
         }
         
-        if(!hora_inicio.equals("")){
-            sql_select += "t.hora_inicio = '"+hora_inicio+"'"+" AND ";
-        }
-        
-        if(!hora_fin.equals("")){
-            sql_select += "t.hora_fin = '"+hora_fin+"'"+" AND ";
-        }
-            
+      
             
             sql_select = sql_select.substring(0, sql_select.length() - 5);
+            System.out.println(sql_select);
             
             //sirve para ejecutar consultas
             if(sql_select.contains("WHERE"))

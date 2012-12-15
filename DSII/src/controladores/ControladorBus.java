@@ -157,5 +157,13 @@ public class ControladorBus {
             
             return listabuses;
     }
-    
+     public String[] listar() {
+        LinkedList busesConsulta = consultar("","",0," ");
+        String[] buses = new String[busesConsulta.size() + 1];
+        buses[0] = " ";
+        for (int i = 0; i < busesConsulta.size(); i++) {
+            buses[i + 1] = ((Buses) busesConsulta.get(i)).getPlaca();
+        }
+        return buses;
+    }
 }

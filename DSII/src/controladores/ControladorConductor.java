@@ -124,4 +124,14 @@ public Conductores consultar(String id){
             
             return listaAuxiliares;
     }
+  
+    public String[] listar() {
+        LinkedList conductoresConsulta = consultarAll();
+        String[] conductor = new String[conductoresConsulta.size() + 1];
+        conductor[0] = " ";
+        for (int i = 0; i < conductoresConsulta.size(); i++) {
+            conductor[i + 1] = ((Conductores) conductoresConsulta.get(i)).getIdentificacion();
+        }
+        return conductor;
+    }
 }

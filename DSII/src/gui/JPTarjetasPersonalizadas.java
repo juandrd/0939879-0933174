@@ -168,7 +168,7 @@ public class JPTarjetasPersonalizadas extends javax.swing.JPanel {
         jLabel11.setText("Estado");
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        JCEstado1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Disponible", "Vendido" }));
+        JCEstado1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Disponible", "Vendida" }));
         jPanel4.add(JCEstado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 200, -1));
 
         jTPTarjetasPersonalizadas.addTab("Consultar", jPanel4);
@@ -385,8 +385,6 @@ public class JPTarjetasPersonalizadas extends javax.swing.JPanel {
     private javax.swing.JButton jBConsultar;
     private javax.swing.JButton jBCrear;
     private javax.swing.JButton jBLimpiarConsultar;
-    private javax.swing.JButton jBLimpiarCrear;
-    private javax.swing.JButton jBLimpiarCrear1;
     private javax.swing.JButton jBLimpiarCrear2;
     private javax.swing.JButton jBModificar;
     private javax.swing.JComboBox jCEstado;
@@ -396,23 +394,15 @@ public class JPTarjetasPersonalizadas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFAdelantos3;
-    private javax.swing.JTextField jTFNumeroPasajes;
-    private javax.swing.JTextField jTFNumeroPasajes1;
     private javax.swing.JTextField jTFNumeroPasajes2;
     private javax.swing.JTextField jTFNumeroPasajes3;
     private javax.swing.JTextField jTFNumeroPasajes4;
@@ -421,7 +411,5 @@ public class JPTarjetasPersonalizadas extends javax.swing.JPanel {
     private javax.swing.JTextField jTFPinTarjeta2;
     private javax.swing.JTabbedPane jTPTarjetasPersonalizadas;
     private javax.swing.JTable jTResultados;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     // End of variables declaration//GEN-END:variables
 }

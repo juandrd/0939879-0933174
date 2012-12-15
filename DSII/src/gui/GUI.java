@@ -132,11 +132,13 @@ public class GUI extends javax.swing.JFrame {
         jMIRutas = new javax.swing.JMenuItem();
         jMIBuses = new javax.swing.JMenuItem();
         jMIEstacion = new javax.swing.JMenuItem();
+        jMITurnos = new javax.swing.JMenuItem();
         jMAuxiliar = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMICrearCotizacion = new javax.swing.JMenuItem();
         JMIReclamo = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMDirectorEstacion = new javax.swing.JMenu();
         jMIReclamoConsultar = new javax.swing.JMenuItem();
         jMConductor = new javax.swing.JMenu();
@@ -267,6 +269,14 @@ public class GUI extends javax.swing.JFrame {
         });
         jMDirectoresOperativos.add(jMIEstacion);
 
+        jMITurnos.setText("Programar Turnos");
+        jMITurnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMITurnosActionPerformed(evt);
+            }
+        });
+        jMDirectoresOperativos.add(jMITurnos);
+
         jMEmpleado.add(jMDirectoresOperativos);
 
         jMAuxiliar.setText("Auxiliar");
@@ -303,6 +313,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMAuxiliar.add(JMIReclamo);
+
+        jMenuItem4.setText("Crear Pasajero");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMAuxiliar.add(jMenuItem4);
 
         jMEmpleado.add(jMAuxiliar);
 
@@ -610,6 +628,31 @@ public class GUI extends javax.swing.JFrame {
         nueva.setVisible(true);
     }//GEN-LAST:event_jMISalirEActionPerformed
 
+    private void jMITurnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMITurnosActionPerformed
+         try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPProgramarTurnos g = new JPProgramarTurnos();
+        g.setBounds(jPPrincipal.getBounds());
+        jPPrincipal.add(g, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_jMITurnosActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+         try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPPasajero g = new JPPasajero();
+        g.setBounds(jPPrincipal.getBounds());
+        jPPrincipal.add(g, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -677,6 +720,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMISalirE;
     private javax.swing.JMenuItem jMISalirP;
     private javax.swing.JMenuItem jMITarjetaPasajero;
+    private javax.swing.JMenuItem jMITurnos;
     private javax.swing.JMenu jMOpciones;
     private javax.swing.JMenu jMPasajero;
     private javax.swing.JMenu jMReportes;
@@ -686,6 +730,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPPrincipal;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
