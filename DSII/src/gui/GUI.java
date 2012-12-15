@@ -134,11 +134,11 @@ public class GUI extends javax.swing.JFrame {
         jMIEstacion = new javax.swing.JMenuItem();
         jMITurnos = new javax.swing.JMenuItem();
         jMAuxiliar = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMICrearCotizacion = new javax.swing.JMenuItem();
         JMIReclamo = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMDirectorEstacion = new javax.swing.JMenu();
         jMIReclamoConsultar = new javax.swing.JMenuItem();
         jMConductor = new javax.swing.JMenu();
@@ -282,6 +282,14 @@ public class GUI extends javax.swing.JFrame {
         jMAuxiliar.setText("Auxiliar");
         jMAuxiliar.setEnabled(false);
 
+        jMenuItem4.setText("Registrar Pasajero");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMAuxiliar.add(jMenuItem4);
+
         jMenuItem1.setText("Tarjetas Genericas");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,14 +321,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMAuxiliar.add(JMIReclamo);
-
-        jMenuItem4.setText("Crear Pasajero");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMAuxiliar.add(jMenuItem4);
 
         jMEmpleado.add(jMAuxiliar);
 
@@ -489,7 +489,7 @@ public class GUI extends javax.swing.JFrame {
             jPPrincipal.removeAll();
         } catch (Exception e) {
         }
-        JPEmpleado jPE = new JPEmpleado();
+        JPProgramarTurnos jPE = new JPProgramarTurnos();
         jPPrincipal.add(jPE, BorderLayout.CENTER);
         jPPrincipal.updateUI();
         this.pack();

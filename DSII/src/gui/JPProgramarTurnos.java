@@ -4,12 +4,17 @@
  */
 package gui;
 import controladores.*;
+import entidades.Empleados;
+import entidades.Turnos;
 import java.sql.Time;
 import java.util.LinkedList;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -23,12 +28,14 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
     ControladorBus controladorBus;
     ControladorTurnos cTurnos;
     ControladorConductor controladorConductor;
+    ControladorEmpleado cE;
     
     public JPProgramarTurnos() {
         initComponents();
         controladorBus=new ControladorBus();
         cTurnos=new ControladorTurnos();
         controladorConductor= new ControladorConductor();
+        cE=new ControladorEmpleado();
         
          //SPINNERS RESTRINGIR HORA Y MINUTOS
         SpinnerNumberModel modeloSpinnersHE= new SpinnerNumberModel(0, 0, 23, 1);
@@ -218,11 +225,11 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Conductor", "Bus", "hora entrada", "hora salida"
+                "ID Conductor", "Nombre", "Apellido", "Bus", "hora entrada", "hora salida"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, true, true, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -237,7 +244,7 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel9.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 190, 350, 100);
+        jScrollPane1.setBounds(10, 190, 360, 100);
 
         jBConsultar1.setText("Consultar");
         jBConsultar1.addActionListener(new java.awt.event.ActionListener() {
@@ -445,15 +452,18 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
 
         int selectedRow = jTResultados.getSelectedRow();
-        jCBRuta3.setModel(
-                new javax.swing.DefaultComboBoxModel(controladorRuta.listar()));
-        jTFPlaca3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
-        jTFMarca3.setText("" + jTResultados.getModel().getValueAt(sjCBConductor1ow, 1));
-        jTFChasis3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
-        jCBTipo3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 3));
-        jTFAsientos3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
-        jTFCapacidad3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 5));
-        jCBRuta3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 6));
+        jCBConductor3.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorConductor.listar()));
+        jCBBus3.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorBus.listar()));
+        Time h=(Time)jTResultados.getModel().getValueAt(selectedRow, 4);
+        Time s=(Time)jTResultados.getModel().getValueAt(selectedRow, 5);
+        jSHoraEntrada1.setValue(h.getHours());
+        jSHoraSalida1.setValue(s.getHours());
+        jSMinutosEntrada1.setValue(h.getMinutes());
+         jSMinutosSalida1.setValue(s.getMinutes());
+          jCBConductor3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+         jCBBus3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 3));
 
 
         jTPTurnos.setSelectedIndex(2);
@@ -463,41 +473,33 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
         LinkedList consulta = new LinkedList();
 
         try {
-            int capacidad = 0;
-            try {
-                capacidad = Integer.parseInt(jTFCapacidad2.getText());
-            } catch (Exception e) {
-                capacidad = 0;
-            }
-            String ruta = jCBRuta2.getSelectedItem().toString();
+            
+       
+            consulta = cTurnos.consultar(jCBConductor2.getSelectedItem().toString(),
+                    jCBBus2.getSelectedItem().toString()
+                   );
 
-            consulta = controladorBus.consultar(
-                    jTFPlaca2.getText(),
-                    jCBTipo2.getSelectedItem().toString(),
-                    capacidad,
-                    ruta);
-
-            Object[][] s = new Object[consulta.size()][7];
+            Object[][] s = new Object[consulta.size()][6];
             for (int i = 0; i < consulta.size(); i++) {
-                Buses bus = (Buses) consulta.get(i);
-                if (bus.getPlaca() != null) {
-                    s[i][0] = bus.getPlaca();
-                    s[i][1] = bus.getMarca();
-                    s[i][2] = bus.getNroChasis();
-                    s[i][3] = bus.getTipo();
-                    s[i][4] = bus.getNroAsientos();
-                    s[i][5] = bus.getCapacidad();
-                    s[i][6] = bus.getRuta();
+                Turnos t = (Turnos) consulta.get(i);
+                Empleados e=cE.consultar(t.getTurnosPK().getConductor());
+                        if (t.getTurnosPK().getConductor() != null) {
+                    s[i][0] = t.getTurnosPK().getConductor();
+                    s[i][1] =e.getNombres();
+                    s[i][2] = e.getApellidos();
+                    s[i][3] = t.getTurnosPK().getBus();
+                    s[i][4] = t.getTurnosPK().getHoraInicio();
+                    s[i][5] = t.getHoraFin();
 
                 } else {
                     s = null;
                 }
             }
             TableModel myModel = new DefaultTableModel(s, new String[]{
-                        "Placa", "Marca", "Chasis",
-                        "Tipo", "Nro. Asientos", "Capacidad", "Ruta"}) {
+                        "Id conductor", "Nombre", "Apellido",
+                        "Bus", "Hora inicio", "Hora fin"}) {
 
-                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false};
+                boolean[] canEdit = new boolean[]{false,false, false, false, false, false};
 
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -516,16 +518,17 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
         int editar = -1;
 
         try {
-
-            Rutas r = controladorRuta.consultar(jCBRuta3.getSelectedItem().toString());
-            editar = controladorBus.modificar(
-                    jTFPlaca3.getText(),
-                    jTFMarca3.getText(),
-                    jTFChasis3.getText(),
-                    jCBTipo3.getSelectedItem().toString(),
-                    Integer.parseInt(jTFAsientos3.getText()),
-                    Integer.parseInt(jTFCapacidad3.getText()),
-                    r);
+            String conductor =jCBConductor3.getSelectedItem().toString();
+            String bus = jCBBus3.getSelectedItem().toString();
+          
+             int horaSalida=(Integer)jSHoraSalida1.getValue();
+            int horaEntrada=(Integer)jSHoraEntrada1.getValue();
+            int minutoSalida=(Integer)jSMinutosSalida1.getValue();
+            int minutoEntrada=(Integer)jSMinutosEntrada1.getValue();
+            Time hora_inicio= new Time(horaEntrada, minutoEntrada, 0);
+            Time hora_salida= new Time(horaSalida, minutoSalida, 0);
+           
+            editar = cTurnos.modificar(conductor, bus, hora_inicio, hora_salida);
 
 
         } catch (Exception e) {
@@ -535,12 +538,11 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "No su pudo modificar", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "modificado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
-            limpiarCamposConsultar();
-            jTResultados.removeAll();
-            jTFPlaca2.setText(jTFPlaca3.getText());
+            jBLimpiarConsultar.doClick();
+            jTResultados.removeAll();            
             jBConsultar1.doClick();
             jTPTurnos.setSelectedIndex(1);
-            limpiarCamposModificar();
+           
         }
     }//GEN-LAST:event_jBModificarActionPerformed
 

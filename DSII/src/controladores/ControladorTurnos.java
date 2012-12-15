@@ -97,44 +97,34 @@ public class ControladorTurnos {
     }   
         
 
+ public LinkedList consultar(String conductor, String bus)
 
-        
-        public LinkedList consultar(String conductor,String bus)
     {
+                       
             List lista;
-            LinkedList listaTurnos= new LinkedList();
-            String sql_select="SELECT t FROM Turnos t     ";
-            if (!conductor.equals("") || !bus.equals("")) {
-            sql_select += "WHERE";
-            }
-            
-        if (!conductor.equals("")) {
-            sql_select += " t.conductor = '" + conductor + "' AND ";
-        }
+            LinkedList listaTurnos= new LinkedList();       
         
-        if(!bus.equals("")){
-            sql_select += " t.bus = '"+bus+"'"+" AND ";
-        }
-        
-      
-            
-            sql_select = sql_select.substring(0, sql_select.length() - 5);
-            System.out.println(sql_select);
-            
-            //sirve para ejecutar consultas
-            if(sql_select.contains("WHERE"))
-            lista = manager.createQuery(sql_select).getResultList();
-            else lista = manager.createQuery("SELECT t FROM Turnos t").getResultList();
+       
+                      
+           
+            lista = daoTurnos.findTurnosEntities();
+           // else lista = manager.createQuery("SELECT p FROM Pasajeros p").getResultList();
             
             for(int i=0;i<lista.size();i++)
             {
-                Turnos t = (Turnos) lista.get(i);
-                listaTurnos.add(t);
+                Turnos turno = (Turnos) lista.get(i);
+                if(turno.getTurnosPK().getConductor().equals(conductor)
+                                                &&
+                        turno.getTurnosPK().getBus().equals(bus)){
+                
+                listaTurnos.add(turno);}
             }
             
             return listaTurnos;
     }
-    
+        
+        
+      
     
 
 
