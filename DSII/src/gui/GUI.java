@@ -74,7 +74,7 @@ public class GUI extends javax.swing.JFrame {
                 
             }
             if(tipo_e.equals("Operativo")){
-                
+                jMDirectoresOperativos.setEnabled(true);
             }
                 
             
@@ -119,17 +119,26 @@ public class GUI extends javax.swing.JFrame {
         jMITarjetaPasajero = new javax.swing.JMenuItem();
         jMIMisReclamos = new javax.swing.JMenuItem();
         jMIRutasPasajero = new javax.swing.JMenuItem();
-        jMOpciones = new javax.swing.JMenu();
-        jMICrearEmpleado = new javax.swing.JMenuItem();
+        jMIDatosEmpleado = new javax.swing.JMenu();
+        jMILoginEmpleado = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        jMDirectoresOperativos = new javax.swing.JMenu();
+        jMIEmpleadosInfo = new javax.swing.JMenuItem();
         jMIRutas = new javax.swing.JMenuItem();
         jMIBuses = new javax.swing.JMenuItem();
         jMIEstacion = new javax.swing.JMenuItem();
+        jMOpciones = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMICrearEmpleado = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMVentas = new javax.swing.JMenu();
         jMICrearCotizacion = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMIRegistrarVenta = new javax.swing.JMenuItem();
         jMReportes = new javax.swing.JMenu();
         jMIGenerarReporte = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -212,7 +221,60 @@ public class GUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMIVerRutas);
 
-        jMOpciones.setText("Empleados");
+        jMIDatosEmpleado.setText("Empleados");
+
+        jMILoginEmpleado.setText("Login");
+        jMILoginEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMILoginEmpleadoActionPerformed(evt);
+            }
+        });
+        jMIDatosEmpleado.add(jMILoginEmpleado);
+        jMIDatosEmpleado.add(jSeparator5);
+
+        jMDirectoresOperativos.setText("Director Operativo");
+        jMDirectoresOperativos.setEnabled(false);
+
+        jMIEmpleadosInfo.setText("Manejo Empleados");
+        jMIEmpleadosInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIEmpleadosInfoActionPerformed(evt);
+            }
+        });
+        jMDirectoresOperativos.add(jMIEmpleadosInfo);
+
+        jMIRutas.setText("Rutas");
+        jMIRutas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIRutasActionPerformed(evt);
+            }
+        });
+        jMDirectoresOperativos.add(jMIRutas);
+
+        jMIBuses.setText("Buses");
+        jMIBuses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIBusesActionPerformed(evt);
+            }
+        });
+        jMDirectoresOperativos.add(jMIBuses);
+
+        jMIEstacion.setText("Estaciones");
+        jMIEstacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIEstacionActionPerformed(evt);
+            }
+        });
+        jMDirectoresOperativos.add(jMIEstacion);
+
+        jMIDatosEmpleado.add(jMDirectoresOperativos);
+
+        jMenuBar1.add(jMIDatosEmpleado);
+
+        jMOpciones.setText("sas");
+
+        jMenuItem3.setText("Login");
+        jMOpciones.add(jMenuItem3);
 
         jMICrearEmpleado.setText("Crear");
         jMICrearEmpleado.addActionListener(new java.awt.event.ActionListener() {
@@ -221,30 +283,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMOpciones.add(jMICrearEmpleado);
-
-        jMIRutas.setText("Rutas");
-        jMIRutas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIRutasActionPerformed(evt);
-            }
-        });
-        jMOpciones.add(jMIRutas);
-
-        jMIBuses.setText("Buses");
-        jMIBuses.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIBusesActionPerformed(evt);
-            }
-        });
-        jMOpciones.add(jMIBuses);
-
-        jMIEstacion.setText("Estaciones");
-        jMIEstacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIEstacionActionPerformed(evt);
-            }
-        });
-        jMOpciones.add(jMIEstacion);
+        jMOpciones.add(jSeparator1);
+        jMOpciones.add(jSeparator4);
 
         jMenuBar1.add(jMOpciones);
 
@@ -279,6 +319,9 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMReportes.add(jMIGenerarReporte);
+
+        jMenu1.setText("jMenu1");
+        jMReportes.add(jMenu1);
 
         jMenuBar1.add(jMReportes);
 
@@ -470,6 +513,22 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMIRutasPasajeroActionPerformed
 
+    private void jMILoginEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMILoginEmpleadoActionPerformed
+        JFLogin login=new JFLogin(2);
+        setVisible(false);
+    }//GEN-LAST:event_jMILoginEmpleadoActionPerformed
+
+    private void jMIEmpleadosInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIEmpleadosInfoActionPerformed
+      try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPEmpleado jPE = new JPEmpleado();
+        jPPrincipal.add(jPE, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_jMIEmpleadosInfoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -515,11 +574,15 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JMIReclamo;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMDirectoresOperativos;
     private javax.swing.JMenuItem jMIBuses;
     private javax.swing.JMenuItem jMICrearCotizacion;
     private javax.swing.JMenuItem jMICrearEmpleado;
+    private javax.swing.JMenu jMIDatosEmpleado;
+    private javax.swing.JMenuItem jMIEmpleadosInfo;
     private javax.swing.JMenuItem jMIEstacion;
     private javax.swing.JMenuItem jMIGenerarReporte;
+    private javax.swing.JMenuItem jMILoginEmpleado;
     private javax.swing.JMenuItem jMILoginPasajeros;
     private javax.swing.JMenuItem jMIMisReclamos;
     private javax.swing.JMenuItem jMIModificarDatos;
@@ -531,11 +594,16 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMOpciones;
     private javax.swing.JMenu jMReportes;
     private javax.swing.JMenu jMVentas;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPPrincipal;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
     // End of variables declaration//GEN-END:variables
 }

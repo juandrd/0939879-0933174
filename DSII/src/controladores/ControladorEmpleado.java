@@ -90,7 +90,9 @@ public class ControladorEmpleado {
                       
           try{
               Auxiliares a= cA.consultar(id);         
-                    
+                  if(a.getIdentificacion()==null){
+                      throw new Exception();
+                  }  
                 return "Auxiliar";
           }
           catch(Exception e){
@@ -98,7 +100,9 @@ public class ControladorEmpleado {
           }
           try{
               Conductores c=cC.consultar(id);          
-                            
+               if(c.getIdentificacion()==null){
+                      throw new Exception();
+                  }             
             return "Conductor";
           }
           catch(Exception e){
@@ -106,7 +110,9 @@ public class ControladorEmpleado {
           }
           try{
              DirectoresEstacion dE= cDE.consultar(id);          
-                            
+                   if(dE.getIdentificacion()==null){
+                      throw new Exception();
+                  }         
             return "DEstacion";
           }
           catch(Exception e){
@@ -114,7 +120,9 @@ public class ControladorEmpleado {
           }
           try{
               DirectoresOperativos dO=cDO.consultar(id);          
-                            
+                     if(dO.getIdentificacion()==null){
+                      throw new Exception();
+                  }       
             return "Operativo";
           }
           catch(Exception e){

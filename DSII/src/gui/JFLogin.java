@@ -138,6 +138,7 @@ public class JFLogin extends javax.swing.JFrame {
                 
                 if (devuelve.equals(pass)) {
                     String empleado = cEmpleado.tipoE(user);
+                    System.out.println("Empleado es "+empleado);
                     setVisible(false);
                     JOptionPane.showMessageDialog(null, "Usuario valido");
                     GUI g = new GUI(2, user, empleado);
