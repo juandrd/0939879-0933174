@@ -55,6 +55,17 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIRutasPasajeroActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator6">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMISalirP">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salir"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMISalirPActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMEmpleado">
@@ -157,6 +168,16 @@
                 <Property name="text" type="java.lang.String" value="Director Estacion"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMIReclamoConsultar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ver Reclamos"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIReclamoConsultarActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMConductor">
               <Properties>
@@ -164,6 +185,17 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Menu>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator7">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMISalirE">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salir"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMISalirEActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMOpciones">

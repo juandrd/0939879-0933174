@@ -4,9 +4,11 @@
  */
 package gui;
 
+import controladores.ControladorDirectorEstacion;
 import controladores.ControladorEstacion;
 import controladores.ControladorPasajero;
 import controladores.ControladorReclamo;
+import entidades.DirectoresEstacion;
 import entidades.Pasajeros;
 import entidades.Estaciones;
 import entidades.Reclamos;
@@ -31,12 +33,26 @@ public class JPReclamo extends javax.swing.JPanel {
     int tipo;
     String user;
 
-    public JPReclamo() {
+    public JPReclamo(int valor, String user, String add) {
         initComponents();
-        tipo=0;
+        tipo=valor;
+        this.user=user;
         controladorEstacion = new ControladorEstacion();
         controladorPasajero = new ControladorPasajero();
         controladorReclamo = new ControladorReclamo();
+        
+        
+        if(valor==2){//AUXILIAR
+            jTPReclamo.setSelectedIndex(0);
+            jTPReclamo.setEnabledAt(2, false);
+        }
+        
+        if(valor==3){//DIRECTOR ESTACION
+            jTPReclamo.setSelectedIndex(1);
+            jTPReclamo.setEnabledAt(0, false);
+            jCBPasajero2.setEnabled(false);
+            jTFCod2.setEnabled(false);
+        }
     }
     
      public JPReclamo(int tipo, String user) {
@@ -454,12 +470,19 @@ public class JPReclamo extends javax.swing.JPanel {
 
         try {
 
-
-
+            if(tipo==3){
+                String estacion=jCBEstacion2.getSelectedItem().toString();
+                if (estacion.equals("") ||estacion.equals(" ")){
+                    estacion="NADA";
+                }
+                    
+                consulta=controladorReclamo.consultar("","", estacion);
+            }
+            else{
             consulta = controladorReclamo.consultar(
                     jTFCod2.getText(),
                     jCBPasajero2.getSelectedItem().toString(),
-                    jCBEstacion2.getSelectedItem().toString());
+                    jCBEstacion2.getSelectedItem().toString());}
 
             Object[][] s = new Object[consulta.size()][4];
             for (int i = 0; i < consulta.size(); i++) {
@@ -527,7 +550,16 @@ public class JPReclamo extends javax.swing.JPanel {
 
     private void jCBEstacion2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBEstacion2PopupMenuWillBecomeVisible
         // TODO add your handling code here:
-          jCBEstacion2.setModel(
+if(tipo==3){
+    
+    jCBEstacion2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorEstacion.listarDirectores(user)));
+   
+
+    
+}       
+        
+else  jCBEstacion2.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorEstacion.listar()));
    
     }//GEN-LAST:event_jCBEstacion2PopupMenuWillBecomeVisible

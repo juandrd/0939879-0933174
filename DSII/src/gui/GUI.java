@@ -41,6 +41,7 @@ public class GUI extends javax.swing.JFrame {
         if(tipo_u==1){            
             jMILoginPasajeros.setEnabled(false);
             jMEmpleado.setEnabled(false);
+            jMISalirP.setEnabled(true);
             jMIModificarDatos.setEnabled(true);
             jMITarjetaPasajero.setEnabled(true);
             jMIMisReclamos.setEnabled(true);
@@ -66,6 +67,7 @@ public class GUI extends javax.swing.JFrame {
         
         if (tipo_u == 2) { 
             jMPasajero.setEnabled(false);
+            jMISalirE.setEnabled(true);
             jMILoginEmpleado.setEnabled(false);
             if(tipo_e.equals("Auxiliar")){
                 
@@ -120,6 +122,8 @@ public class GUI extends javax.swing.JFrame {
         jMITarjetaPasajero = new javax.swing.JMenuItem();
         jMIMisReclamos = new javax.swing.JMenuItem();
         jMIRutasPasajero = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
+        jMISalirP = new javax.swing.JMenuItem();
         jMEmpleado = new javax.swing.JMenu();
         jMILoginEmpleado = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
@@ -134,7 +138,10 @@ public class GUI extends javax.swing.JFrame {
         jMICrearCotizacion = new javax.swing.JMenuItem();
         JMIReclamo = new javax.swing.JMenuItem();
         jMDirectorEstacion = new javax.swing.JMenu();
+        jMIReclamoConsultar = new javax.swing.JMenuItem();
         jMConductor = new javax.swing.JMenu();
+        jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        jMISalirE = new javax.swing.JMenuItem();
         jMOpciones = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMICrearEmpleado = new javax.swing.JMenuItem();
@@ -201,6 +208,16 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMPasajero.add(jMIRutasPasajero);
+        jMPasajero.add(jSeparator6);
+
+        jMISalirP.setText("Salir");
+        jMISalirP.setEnabled(false);
+        jMISalirP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMISalirPActionPerformed(evt);
+            }
+        });
+        jMPasajero.add(jMISalirP);
 
         jMenuBar1.add(jMPasajero);
 
@@ -291,11 +308,30 @@ public class GUI extends javax.swing.JFrame {
 
         jMDirectorEstacion.setText("Director Estacion");
         jMDirectorEstacion.setEnabled(false);
+
+        jMIReclamoConsultar.setText("Ver Reclamos");
+        jMIReclamoConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIReclamoConsultarActionPerformed(evt);
+            }
+        });
+        jMDirectorEstacion.add(jMIReclamoConsultar);
+
         jMEmpleado.add(jMDirectorEstacion);
 
         jMConductor.setText("Conductor");
         jMConductor.setEnabled(false);
         jMEmpleado.add(jMConductor);
+        jMEmpleado.add(jSeparator7);
+
+        jMISalirE.setText("Salir");
+        jMISalirE.setEnabled(false);
+        jMISalirE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMISalirEActionPerformed(evt);
+            }
+        });
+        jMEmpleado.add(jMISalirE);
 
         jMenuBar1.add(jMEmpleado);
 
@@ -453,7 +489,7 @@ public class GUI extends javax.swing.JFrame {
             jPPrincipal.removeAll();
         } catch (Exception e) {
         }
-        JPReclamo g = new JPReclamo();
+        JPReclamo g = new JPReclamo(2,usuario_id, "EMPLEADO");
         g.setBounds(jPPrincipal.getBounds());
         jPPrincipal.add(g, BorderLayout.CENTER);
         jPPrincipal.updateUI();
@@ -549,6 +585,31 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMIEmpleadosInfoActionPerformed
 
+    private void jMIReclamoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIReclamoConsultarActionPerformed
+        try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPReclamo g = new JPReclamo(3,usuario_id, "EMPLEADO");
+        g.setBounds(jPPrincipal.getBounds());
+        jPPrincipal.add(g, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_jMIReclamoConsultarActionPerformed
+
+    private void jMISalirPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISalirPActionPerformed
+        setVisible(false);
+        GUI nueva=new GUI();
+        nueva.setVisible(true);
+    }//GEN-LAST:event_jMISalirPActionPerformed
+
+    private void jMISalirEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISalirEActionPerformed
+        // TODO add your handling code here:
+         setVisible(false);
+        GUI nueva=new GUI();
+        nueva.setVisible(true);
+    }//GEN-LAST:event_jMISalirEActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -609,9 +670,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMILoginPasajeros;
     private javax.swing.JMenuItem jMIMisReclamos;
     private javax.swing.JMenuItem jMIModificarDatos;
+    private javax.swing.JMenuItem jMIReclamoConsultar;
     private javax.swing.JMenuItem jMIRegistrarVenta;
     private javax.swing.JMenuItem jMIRutas;
     private javax.swing.JMenuItem jMIRutasPasajero;
+    private javax.swing.JMenuItem jMISalirE;
+    private javax.swing.JMenuItem jMISalirP;
     private javax.swing.JMenuItem jMITarjetaPasajero;
     private javax.swing.JMenu jMOpciones;
     private javax.swing.JMenu jMPasajero;
@@ -628,5 +692,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JPopupMenu.Separator jSeparator7;
     // End of variables declaration//GEN-END:variables
 }

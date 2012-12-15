@@ -148,6 +148,16 @@ public class ControladorEstacion {
         }
         return estaciones;
     }
+    
+    public String[] listarDirectores(String director) {
+        LinkedList estacionConsultar = consultar("","",director);
+        String[] estaciones = new String[estacionConsultar.size() + 1];
+      
+        for (int i = 0; i < estacionConsultar.size(); i++) {
+            estaciones[i] = ((Estaciones) estacionConsultar.get(i)).getNombre();
+        }
+        return estaciones;
+    }
 
         
 }
