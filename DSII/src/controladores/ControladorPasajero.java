@@ -112,12 +112,20 @@ public class ControladorPasajero {
           
            Pasajeros p;
            
-           p=daoPasajero.findPasajeros(id);
-           
+           p=daoPasajero.findPasajeros(id);        
          
             
            
            return p;
+       }
+       
+       public String login(String id){
+           Pasajeros p;
+           p=consultar(id);
+           String retorno;
+           retorno=p.getPassword();
+           return retorno;
+           
        }
        
         public LinkedList consultar(String id, String nombres, String apellidos

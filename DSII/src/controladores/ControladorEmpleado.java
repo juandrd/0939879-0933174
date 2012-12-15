@@ -6,8 +6,7 @@ package controladores;
 import dao.EmpleadosJpaController;
 import dao.exceptions.NonexistentEntityException;
 import dao.exceptions.PreexistingEntityException;
-import entidades.Buses;
-import entidades.Empleados;
+import entidades.*;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -22,9 +21,17 @@ public class ControladorEmpleado {
     
     //se requiere para elaborar consultas personalizadas
     EntityManager manager;
+   ControladorAuxiliar cA;
+   ControladorConductor cC;
+   ControladorDirectorEstacion cDE;
+   ControladorDirectorOperativo cDO;
     
     public ControladorEmpleado()
     {
+        cA=new ControladorAuxiliar();
+        cC=new ControladorConductor();
+        cDE=new ControladorDirectorEstacion();
+        cDO=new ControladorDirectorOperativo();
     mi_fabrica = new FabricaObjetos();   
     manager= mi_fabrica.crear().createEntityManager();
     
@@ -68,7 +75,54 @@ public class ControladorEmpleado {
         }
         return -1;
     }
-        
+     
+    public String login(String id){
+           Empleados p;
+           p=consultar(id);
+           String retorno;
+           retorno=p.getPassword();
+           return retorno;
+           
+       }
+      public String tipoE(String id){
+                      
+          try{
+              Auxiliares a= cA.consultar(id);         
+                    
+                return "Auxiliar";
+          }
+          catch(Exception e){
+              System.out.println("No es Auxiliar");
+          }
+          try{
+              Conductores c=cC.consultar(id);          
+                            
+            return "Conductor";
+          }
+          catch(Exception e){
+              System.out.println("No es Conductor");
+          }
+          try{
+             DirectoresEstacion dE= cDE.consultar(id);          
+                            
+            return "DEstacion";
+          }
+          catch(Exception e){
+              System.out.println("No es DEstacion");
+          }
+          try{
+              DirectoresOperativos dO=cDO.consultar(id);          
+                            
+            return "Operativo";
+          }
+          catch(Exception e){
+              System.out.println("No es Operativo");
+              return "ERROR";
+          }
+          
+       }
+    
+    
      public int modificar(String id,String nombre,String apellidos,
                 String telefono,String direccion,String email,String genero,
                 int salario, String password)

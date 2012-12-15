@@ -18,7 +18,8 @@ public class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      *
      */
-    int tipo_e;
+    int tipo_u;
+    String tipo_e;
     String usuario_id;
 
     public GUI() {
@@ -26,30 +27,68 @@ public class GUI extends javax.swing.JFrame {
         jPPrincipal.setLayout(new FlowLayout());
 //        setResizable(false);
     }
+    
+    //pasajeros
+    public GUI(int tipo, String usuario_id){
+        initComponents();
+        setVisible(true);
+        jPPrincipal.setLayout(new FlowLayout());
+        this.tipo_u=tipo;
+        this.usuario_id = usuario_id;
+      
+        jPPrincipal.setLayout(new FlowLayout());
+        //PASAJEROS
+        if(tipo_u==1){            
+            jMILoginPasajeros.setEnabled(false);
+            jMIModificarDatos.doClick();
+          
+        }
+        
+        
+       
+    }
 
-    public GUI(int valor, String usuario_id) {
+    //EMPLEADOS
+    public GUI(int valor, String usuario_id, String tipo) {
 
 
         initComponents();
+        setVisible(true);
         jPPrincipal.setLayout(new FlowLayout());
-        tipo_e = valor;
+        tipo_e = tipo;
+        tipo_u=valor;
         this.usuario_id = usuario_id;
-        if (tipo_e == 1) { //El usuario es Gerente            
-            jMIEstacion.setEnabled(false);
+        
+        if (tipo_u == 2) { 
+            if(tipo_e.equals("Auxiliar")){
+                
+            }
+            if(tipo_e.equals("Conductor")){
+                
+            }
+            if(tipo_e.equals("DEstacion")){
+                
+            }
+            if(tipo_e.equals("Operativo")){
+                
+            }
+                
+            
+            
         }
 
-        if (tipo_e == 2) { //El usuario es Vendedor
-            jMReportes.setEnabled(false);
-            jMIBuses.setEnabled(false);
-            jMIEstacion.setEnabled(false);
-        }
-        if (tipo_e == 3) { //El usuario es jefe de taller
-            jMReportes.setEnabled(false);
-            jMVentas.setEnabled(false);
-            jMIRutas.setEnabled(false);
-            jMIBuses.setEnabled(false);
-
-        }
+//        if (tipo_e == 2) { //El usuario es Vendedor
+//            jMReportes.setEnabled(false);
+//            jMIBuses.setEnabled(false);
+//            jMIEstacion.setEnabled(false);
+//        }
+//        if (tipo_e == 3) { //El usuario es jefe de taller
+//            jMReportes.setEnabled(false);
+//            jMVentas.setEnabled(false);
+//            jMIRutas.setEnabled(false);
+//            jMIBuses.setEnabled(false);
+//
+//        }
 
 
     }
@@ -72,6 +111,7 @@ public class GUI extends javax.swing.JFrame {
         JMIReclamo = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMIModificarDatos = new javax.swing.JMenuItem();
         jMOpciones = new javax.swing.JMenu();
         jMICrearEmpleado = new javax.swing.JMenuItem();
         jMIRutas = new javax.swing.JMenuItem();
@@ -126,6 +166,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMPasajeros.add(jMenuItem2);
+
+        jMIModificarDatos.setText("Modificar Datos");
+        jMIModificarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIModificarDatosActionPerformed(evt);
+            }
+        });
+        jMPasajeros.add(jMIModificarDatos);
 
         jMenuBar1.add(jMPasajeros);
 
@@ -296,16 +344,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMICrearEmpleadoActionPerformed
 
     private void jMILoginPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMILoginPasajerosActionPerformed
-        ///interfaz completa
-        try {
-            jPPrincipal.removeAll();
-        } catch (Exception e) {
-        }
-        JPPasajero g = new JPPasajero();
-        g.setBounds(jPPrincipal.getBounds());
-        jPPrincipal.add(g, BorderLayout.CENTER);
-        jPPrincipal.updateUI();
-        this.pack();
+        
+        JFLogin login=new JFLogin(1);
+        setVisible(false);
+        
     }//GEN-LAST:event_jMILoginPasajerosActionPerformed
 
     private void JMIReclamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMIReclamoActionPerformed
@@ -344,6 +386,18 @@ public class GUI extends javax.swing.JFrame {
         jPPrincipal.updateUI();
         this.pack();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMIModificarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIModificarDatosActionPerformed
+        try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPPasajero g = new JPPasajero();
+        g.setBounds(jPPrincipal.getBounds());
+        jPPrincipal.add(g, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_jMIModificarDatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,6 +450,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIEstacion;
     private javax.swing.JMenuItem jMIGenerarReporte;
     private javax.swing.JMenuItem jMILoginPasajeros;
+    private javax.swing.JMenuItem jMIModificarDatos;
     private javax.swing.JMenuItem jMIRegistrarVenta;
     private javax.swing.JMenuItem jMIRutas;
     private javax.swing.JMenu jMOpciones;
