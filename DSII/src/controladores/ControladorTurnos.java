@@ -96,23 +96,39 @@ public class ControladorTurnos {
         return -1;
     }   
         
-
+public LinkedList consultarAll(){
+     List lista;
+            LinkedList listaTurnos= new LinkedList();    
+        
+                            
+                lista = daoTurnos.findTurnosEntities();
+           // else lista = manager.createQuery("SELECT p FROM Pasajeros p").getResultList();
+            
+            for(int i=0;i<lista.size();i++)
+            {
+                Turnos turno = (Turnos) lista.get(i);               
+                               
+                listaTurnos.add(turno);}
+            
+            
+            return listaTurnos;
+    
+}
  public LinkedList consultar(String conductor, String bus)
 
     {
                        
             List lista;
-            LinkedList listaTurnos= new LinkedList();       
+            LinkedList listaTurnos= new LinkedList();    
         
-       
-                      
-           
-            lista = daoTurnos.findTurnosEntities();
+                            
+                lista = daoTurnos.findTurnosEntities();
            // else lista = manager.createQuery("SELECT p FROM Pasajeros p").getResultList();
             
             for(int i=0;i<lista.size();i++)
             {
                 Turnos turno = (Turnos) lista.get(i);
+                System.out.println(turno.getTurnosPK().getConductor());
                 if(turno.getTurnosPK().getConductor().equals(conductor)
                                                 &&
                         turno.getTurnosPK().getBus().equals(bus)){
@@ -124,9 +140,55 @@ public class ControladorTurnos {
     }
         
         
-      
-    
+  
+     public LinkedList consultarporConductor(String conductor)
 
+    {
+                       
+            List lista;
+            LinkedList listaTurnos= new LinkedList();    
+        
+                            
+                lista = daoTurnos.findTurnosEntities();
+           // else lista = manager.createQuery("SELECT p FROM Pasajeros p").getResultList();
+            
+            for(int i=0;i<lista.size();i++)
+            {
+                Turnos turno = (Turnos) lista.get(i);
+                System.out.println(turno.getTurnosPK().getConductor());
+                if(turno.getTurnosPK().getConductor().equals(conductor)
+                                  ){
+                
+                listaTurnos.add(turno);}
+            }
+            
+            return listaTurnos;
+    }
+        
 
+  public LinkedList consultarporBus(String bus)
+
+    {
+                       
+            List lista;
+            LinkedList listaTurnos= new LinkedList();    
+        
+                            
+                lista = daoTurnos.findTurnosEntities();
+           // else lista = manager.createQuery("SELECT p FROM Pasajeros p").getResultList();
+            
+            for(int i=0;i<lista.size();i++)
+            {
+                Turnos turno = (Turnos) lista.get(i);
+               
+                if(turno.getTurnosPK().getBus().equals(bus)
+                                  ){
+                
+                listaTurnos.add(turno);}
+            }
+            
+            return listaTurnos;
+    }
+        
     
 }

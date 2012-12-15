@@ -403,22 +403,23 @@ public class JPPasajero extends javax.swing.JPanel {
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
 
         String id;
+        if (tipo == 0) {
+            int selectedRow = jTResultados.getSelectedRow();
+            System.out.println(selectedRow);
+            id = jTResultados.getModel().getValueAt(selectedRow, 0).toString();
+            Pasajeros p = controladorPasajero.consultar(id);
+            jPFPassword3.setText(p.getPassword());
 
-        int selectedRow = jTResultados.getSelectedRow();
-        System.out.println(selectedRow);
-        id = jTResultados.getModel().getValueAt(selectedRow, 0).toString();
-        Pasajeros p = controladorPasajero.consultar(id);
-        jPFPassword3.setText(p.getPassword());
+            jTFId3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+            jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+            jTFApellido3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+            jTFTelefono3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 3));
+            jTFDireccion3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
+            jCBGenero3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 5));
+            jTFEmail3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 6));
 
-        jTFId3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
-        jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
-        jTFApellido3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
-        jTFTelefono3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 3));
-        jTFDireccion3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
-        jCBGenero3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 5));
-        jTFEmail3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 6));
-
-        jTPPasajero.setSelectedIndex(2);
+            jTPPasajero.setSelectedIndex(2);
+        }
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed

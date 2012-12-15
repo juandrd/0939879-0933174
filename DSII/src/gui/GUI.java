@@ -132,9 +132,9 @@ public class GUI extends javax.swing.JFrame {
         jMIRutas = new javax.swing.JMenuItem();
         jMIBuses = new javax.swing.JMenuItem();
         jMIEstacion = new javax.swing.JMenuItem();
-        jMITurnos = new javax.swing.JMenuItem();
+        jMICrearTurnos = new javax.swing.JMenuItem();
         jMAuxiliar = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMICrearPasajero = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMICrearCotizacion = new javax.swing.JMenuItem();
@@ -142,11 +142,11 @@ public class GUI extends javax.swing.JFrame {
         jMDirectorEstacion = new javax.swing.JMenu();
         jMIReclamoConsultar = new javax.swing.JMenuItem();
         jMConductor = new javax.swing.JMenu();
+        jMIMisTurnos = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         jMISalirE = new javax.swing.JMenuItem();
         jMOpciones = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMICrearEmpleado = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMVentas = new javax.swing.JMenu();
@@ -269,26 +269,26 @@ public class GUI extends javax.swing.JFrame {
         });
         jMDirectoresOperativos.add(jMIEstacion);
 
-        jMITurnos.setText("Programar Turnos");
-        jMITurnos.addActionListener(new java.awt.event.ActionListener() {
+        jMICrearTurnos.setText("Programar Turnos");
+        jMICrearTurnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMITurnosActionPerformed(evt);
+                jMICrearTurnosActionPerformed(evt);
             }
         });
-        jMDirectoresOperativos.add(jMITurnos);
+        jMDirectoresOperativos.add(jMICrearTurnos);
 
         jMEmpleado.add(jMDirectoresOperativos);
 
         jMAuxiliar.setText("Auxiliar");
         jMAuxiliar.setEnabled(false);
 
-        jMenuItem4.setText("Registrar Pasajero");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jMICrearPasajero.setText("Registrar Pasajero");
+        jMICrearPasajero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMICrearPasajeroActionPerformed(evt);
             }
         });
-        jMAuxiliar.add(jMenuItem4);
+        jMAuxiliar.add(jMICrearPasajero);
 
         jMenuItem1.setText("Tarjetas Genericas");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -339,6 +339,15 @@ public class GUI extends javax.swing.JFrame {
 
         jMConductor.setText("Conductor");
         jMConductor.setEnabled(false);
+
+        jMIMisTurnos.setText("Mis Turnos");
+        jMIMisTurnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIMisTurnosActionPerformed(evt);
+            }
+        });
+        jMConductor.add(jMIMisTurnos);
+
         jMEmpleado.add(jMConductor);
         jMEmpleado.add(jSeparator7);
 
@@ -357,14 +366,6 @@ public class GUI extends javax.swing.JFrame {
 
         jMenuItem3.setText("Login");
         jMOpciones.add(jMenuItem3);
-
-        jMICrearEmpleado.setText("Crear");
-        jMICrearEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMICrearEmpleadoActionPerformed(evt);
-            }
-        });
-        jMOpciones.add(jMICrearEmpleado);
         jMOpciones.add(jSeparator1);
         jMOpciones.add(jSeparator4);
 
@@ -484,7 +485,7 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMIGenerarReporteActionPerformed
 
-    private void jMICrearEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICrearEmpleadoActionPerformed
+    private void jMICrearTurnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICrearTurnosActionPerformed
         try {
             jPPrincipal.removeAll();
         } catch (Exception e) {
@@ -493,7 +494,7 @@ public class GUI extends javax.swing.JFrame {
         jPPrincipal.add(jPE, BorderLayout.CENTER);
         jPPrincipal.updateUI();
         this.pack();
-    }//GEN-LAST:event_jMICrearEmpleadoActionPerformed
+    }//GEN-LAST:event_jMICrearTurnosActionPerformed
 
     private void jMILoginPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMILoginPasajerosActionPerformed
         
@@ -628,19 +629,7 @@ public class GUI extends javax.swing.JFrame {
         nueva.setVisible(true);
     }//GEN-LAST:event_jMISalirEActionPerformed
 
-    private void jMITurnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMITurnosActionPerformed
-         try {
-            jPPrincipal.removeAll();
-        } catch (Exception e) {
-        }
-        JPProgramarTurnos g = new JPProgramarTurnos();
-        g.setBounds(jPPrincipal.getBounds());
-        jPPrincipal.add(g, BorderLayout.CENTER);
-        jPPrincipal.updateUI();
-        this.pack();
-    }//GEN-LAST:event_jMITurnosActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMICrearPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICrearPasajeroActionPerformed
         // TODO add your handling code here:
          try {
             jPPrincipal.removeAll();
@@ -651,7 +640,18 @@ public class GUI extends javax.swing.JFrame {
         jPPrincipal.add(g, BorderLayout.CENTER);
         jPPrincipal.updateUI();
         this.pack();
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jMICrearPasajeroActionPerformed
+
+    private void jMIMisTurnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIMisTurnosActionPerformed
+        try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPProgramarTurnos jPE = new JPProgramarTurnos(1, usuario_id);
+        jPPrincipal.add(jPE, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_jMIMisTurnosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -705,13 +705,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMEmpleado;
     private javax.swing.JMenuItem jMIBuses;
     private javax.swing.JMenuItem jMICrearCotizacion;
-    private javax.swing.JMenuItem jMICrearEmpleado;
+    private javax.swing.JMenuItem jMICrearPasajero;
+    private javax.swing.JMenuItem jMICrearTurnos;
     private javax.swing.JMenuItem jMIEmpleadosInfo;
     private javax.swing.JMenuItem jMIEstacion;
     private javax.swing.JMenuItem jMIGenerarReporte;
     private javax.swing.JMenuItem jMILoginEmpleado;
     private javax.swing.JMenuItem jMILoginPasajeros;
     private javax.swing.JMenuItem jMIMisReclamos;
+    private javax.swing.JMenuItem jMIMisTurnos;
     private javax.swing.JMenuItem jMIModificarDatos;
     private javax.swing.JMenuItem jMIReclamoConsultar;
     private javax.swing.JMenuItem jMIRegistrarVenta;
@@ -720,7 +722,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMISalirE;
     private javax.swing.JMenuItem jMISalirP;
     private javax.swing.JMenuItem jMITarjetaPasajero;
-    private javax.swing.JMenuItem jMITurnos;
     private javax.swing.JMenu jMOpciones;
     private javax.swing.JMenu jMPasajero;
     private javax.swing.JMenu jMReportes;
@@ -730,7 +731,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPPrincipal;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;

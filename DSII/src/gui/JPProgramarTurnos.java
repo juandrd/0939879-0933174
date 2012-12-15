@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package gui;
+
 import controladores.*;
 import entidades.Empleados;
 import entidades.Turnos;
@@ -29,40 +30,55 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
     ControladorTurnos cTurnos;
     ControladorConductor controladorConductor;
     ControladorEmpleado cE;
-    
+    int tipo;
+    String user;
+
     public JPProgramarTurnos() {
         initComponents();
-        controladorBus=new ControladorBus();
-        cTurnos=new ControladorTurnos();
-        controladorConductor= new ControladorConductor();
-        cE=new ControladorEmpleado();
-        
-         //SPINNERS RESTRINGIR HORA Y MINUTOS
-        SpinnerNumberModel modeloSpinnersHE= new SpinnerNumberModel(0, 0, 23, 1);
-        SpinnerNumberModel modeloSpinnersHS= new SpinnerNumberModel(0, 0, 23, 1);
-        SpinnerNumberModel modeloSpinnersME= new SpinnerNumberModel(0, 0, 59, 1);
-        SpinnerNumberModel modeloSpinnersMS= new SpinnerNumberModel(0, 0, 59, 1);
+        tipo = 0;
+        controladorBus = new ControladorBus();
+        cTurnos = new ControladorTurnos();
+        controladorConductor = new ControladorConductor();
+        cE = new ControladorEmpleado();
+
+        //SPINNERS RESTRINGIR HORA Y MINUTOS
+        SpinnerNumberModel modeloSpinnersHE = new SpinnerNumberModel(0, 0, 23, 1);
+        SpinnerNumberModel modeloSpinnersHS = new SpinnerNumberModel(0, 0, 23, 1);
+        SpinnerNumberModel modeloSpinnersME = new SpinnerNumberModel(0, 0, 59, 1);
+        SpinnerNumberModel modeloSpinnersMS = new SpinnerNumberModel(0, 0, 59, 1);
         jSHoraEntrada.setModel(modeloSpinnersHE);
         jSHoraSalida.setModel(modeloSpinnersHS);
         jSMinutosEntrada.setModel(modeloSpinnersME);
         jSMinutosSalida.setModel(modeloSpinnersMS);
-        JFormattedTextField tfHE = ((JSpinner.DefaultEditor)jSHoraEntrada.getEditor())
-        .getTextField();
+        JFormattedTextField tfHE = ((JSpinner.DefaultEditor) jSHoraEntrada.getEditor()).getTextField();
         tfHE.setEditable(false);
         //----------------------
-         JFormattedTextField tfHS = ((JSpinner.DefaultEditor)jSHoraSalida.getEditor())
-        .getTextField();
+        JFormattedTextField tfHS = ((JSpinner.DefaultEditor) jSHoraSalida.getEditor()).getTextField();
         tfHS.setEditable(false);
         //----------------------
-          JFormattedTextField tfME = ((JSpinner.DefaultEditor)jSMinutosEntrada.getEditor())
-        .getTextField();
+        JFormattedTextField tfME = ((JSpinner.DefaultEditor) jSMinutosEntrada.getEditor()).getTextField();
         tfME.setEditable(false);
         //----------------------
-         JFormattedTextField tfMS = ((JSpinner.DefaultEditor)jSMinutosSalida.getEditor())
-        .getTextField();
+        JFormattedTextField tfMS = ((JSpinner.DefaultEditor) jSMinutosSalida.getEditor()).getTextField();
         tfMS.setEditable(false);
         //----------------------
-        
+
+    }
+
+    public JPProgramarTurnos(int tipo, String user) {
+        this.tipo = tipo;
+        initComponents();
+        this.user = user;
+        controladorBus = new ControladorBus();
+        cTurnos = new ControladorTurnos();
+        controladorConductor = new ControladorConductor();
+        cE = new ControladorEmpleado();
+
+        jTPTurnos.setSelectedIndex(1);
+        jTPTurnos.setEnabledAt(0, false);
+
+        jTPTurnos.setEnabledAt(2, false);
+
     }
 
     /**
@@ -187,19 +203,19 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
 
         jSHoraEntrada.setToolTipText("hora");
         jPanel8.add(jSHoraEntrada);
-        jSHoraEntrada.setBounds(120, 120, 29, 20);
+        jSHoraEntrada.setBounds(120, 120, 50, 30);
 
         jSHoraSalida.setToolTipText("hora");
         jPanel8.add(jSHoraSalida);
-        jSHoraSalida.setBounds(120, 170, 29, 20);
+        jSHoraSalida.setBounds(120, 170, 50, 30);
 
         jSMinutosSalida.setToolTipText("minutos");
         jPanel8.add(jSMinutosSalida);
-        jSMinutosSalida.setBounds(180, 170, 29, 20);
+        jSMinutosSalida.setBounds(180, 170, 50, 30);
 
         jSMinutosEntrada.setToolTipText("minutos");
         jPanel8.add(jSMinutosEntrada);
-        jSMinutosEntrada.setBounds(180, 120, 29, 20);
+        jSMinutosEntrada.setBounds(180, 120, 50, 30);
 
         jPanel7.add(jPanel8);
         jPanel8.setBounds(0, 0, 370, 310);
@@ -404,16 +420,16 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
         int guardar = -1;
         try {
 
-            String conductor =jCBConductor1.getSelectedItem().toString();
+            String conductor = jCBConductor1.getSelectedItem().toString();
             String bus = jCBBus1.getSelectedItem().toString();
-          
-             int horaSalida=(Integer)jSHoraSalida.getValue();
-            int horaEntrada=(Integer)jSHoraEntrada.getValue();
-            int minutoSalida=(Integer)jSMinutosSalida.getValue();
-            int minutoEntrada=(Integer)jSMinutosEntrada.getValue();
-            Time hora_inicio= new Time(horaEntrada, minutoEntrada, 0);
-            Time hora_salida= new Time(horaSalida, minutoSalida, 0);
-           
+
+            int horaSalida = (Integer) jSHoraSalida.getValue();
+            int horaEntrada = (Integer) jSHoraEntrada.getValue();
+            int minutoSalida = (Integer) jSMinutosSalida.getValue();
+            int minutoEntrada = (Integer) jSMinutosEntrada.getValue();
+            Time hora_inicio = new Time(horaEntrada, minutoEntrada, 0);
+            Time hora_salida = new Time(horaSalida, minutoSalida, 0);
+
             guardar = cTurnos.insertar(conductor, bus, hora_inicio, hora_salida);
 
         } catch (Exception e) {
@@ -434,7 +450,7 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
                 jCBConductor2.setSelectedItem(jCBConductor1.getSelectedItem());
                 jBConsultar1.doClick();
                 jTPTurnos.setSelectedIndex(1);
-               jBLimpiar1.doClick();
+                jBLimpiar1.doClick();
             }
         }
     }//GEN-LAST:event_jBCrear1ActionPerformed
@@ -451,41 +467,53 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
 
-        int selectedRow = jTResultados.getSelectedRow();
-        jCBConductor3.setModel(
-                new javax.swing.DefaultComboBoxModel(controladorConductor.listar()));
-        jCBBus3.setModel(
-                new javax.swing.DefaultComboBoxModel(controladorBus.listar()));
-        Time h=(Time)jTResultados.getModel().getValueAt(selectedRow, 4);
-        Time s=(Time)jTResultados.getModel().getValueAt(selectedRow, 5);
-        jSHoraEntrada1.setValue(h.getHours());
-        jSHoraSalida1.setValue(s.getHours());
-        jSMinutosEntrada1.setValue(h.getMinutes());
-         jSMinutosSalida1.setValue(s.getMinutes());
-          jCBConductor3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 0));
-         jCBBus3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 3));
+        if (tipo == 0) {
+            int selectedRow = jTResultados.getSelectedRow();
+            jCBConductor3.setModel(
+                    new javax.swing.DefaultComboBoxModel(controladorConductor.listar()));
+            jCBBus3.setModel(
+                    new javax.swing.DefaultComboBoxModel(controladorBus.listar()));
+            jCBConductor3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+            jCBBus3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 3));
 
 
-        jTPTurnos.setSelectedIndex(2);
+            jTPTurnos.setSelectedIndex(2);
+        }
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed
         LinkedList consulta = new LinkedList();
 
         try {
-            
-       
-            consulta = cTurnos.consultar(jCBConductor2.getSelectedItem().toString(),
-                    jCBBus2.getSelectedItem().toString()
-                   );
 
+            if (tipo == 1) {
+                consulta = cTurnos.consultarporConductor(user);
+            } else {
+                if ((jCBConductor2.getSelectedItem().toString().equals(" ") || jCBConductor2.getSelectedItem().equals(""))
+                        && (jCBBus2.getSelectedItem().toString().equals(" ") || jCBBus2.getSelectedItem().equals(""))) {
+                    consulta = cTurnos.consultarAll();
+                }
+                if (!jCBConductor2.getSelectedItem().toString().equals(" ") && !jCBBus2.getSelectedItem().toString().equals(" ")) {
+
+                    consulta = cTurnos.consultar(jCBConductor2.getSelectedItem().toString(),
+                            jCBBus2.getSelectedItem().toString());
+                }
+                if (!jCBConductor2.getSelectedItem().toString().equals(" ") && jCBBus2.getSelectedItem().toString().equals(" ")) {
+
+                    consulta = cTurnos.consultarporConductor(jCBConductor2.getSelectedItem().toString());
+
+                }
+                if (jCBConductor2.getSelectedItem().toString().equals(" ") && !jCBBus2.getSelectedItem().toString().equals(" ")) {
+                    consulta = cTurnos.consultarporBus(jCBBus2.getSelectedItem().toString());
+                }
+            }
             Object[][] s = new Object[consulta.size()][6];
             for (int i = 0; i < consulta.size(); i++) {
                 Turnos t = (Turnos) consulta.get(i);
-                Empleados e=cE.consultar(t.getTurnosPK().getConductor());
-                        if (t.getTurnosPK().getConductor() != null) {
+                Empleados e = cE.consultar(t.getTurnosPK().getConductor());
+                if (t.getTurnosPK().getConductor() != null) {
                     s[i][0] = t.getTurnosPK().getConductor();
-                    s[i][1] =e.getNombres();
+                    s[i][1] = e.getNombres();
                     s[i][2] = e.getApellidos();
                     s[i][3] = t.getTurnosPK().getBus();
                     s[i][4] = t.getTurnosPK().getHoraInicio();
@@ -499,7 +527,7 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
                         "Id conductor", "Nombre", "Apellido",
                         "Bus", "Hora inicio", "Hora fin"}) {
 
-                boolean[] canEdit = new boolean[]{false,false, false, false, false, false};
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false};
 
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -518,16 +546,16 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
         int editar = -1;
 
         try {
-            String conductor =jCBConductor3.getSelectedItem().toString();
+            String conductor = jCBConductor3.getSelectedItem().toString();
             String bus = jCBBus3.getSelectedItem().toString();
-          
-             int horaSalida=(Integer)jSHoraSalida1.getValue();
-            int horaEntrada=(Integer)jSHoraEntrada1.getValue();
-            int minutoSalida=(Integer)jSMinutosSalida1.getValue();
-            int minutoEntrada=(Integer)jSMinutosEntrada1.getValue();
-            Time hora_inicio= new Time(horaEntrada, minutoEntrada, 0);
-            Time hora_salida= new Time(horaSalida, minutoSalida, 0);
-           
+
+            int horaSalida = (Integer) jSHoraSalida1.getValue();
+            int horaEntrada = (Integer) jSHoraEntrada1.getValue();
+            int minutoSalida = (Integer) jSMinutosSalida1.getValue();
+            int minutoEntrada = (Integer) jSMinutosEntrada1.getValue();
+            Time hora_inicio = new Time(horaEntrada, minutoEntrada, 0);
+            Time hora_salida = new Time(horaSalida, minutoSalida, 0);
+
             editar = cTurnos.modificar(conductor, bus, hora_inicio, hora_salida);
 
 
@@ -539,47 +567,46 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "modificado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             jBLimpiarConsultar.doClick();
-            jTResultados.removeAll();            
+            jTResultados.removeAll();
             jBConsultar1.doClick();
             jTPTurnos.setSelectedIndex(1);
-           
+
         }
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jCBBus2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBBus2PopupMenuWillBecomeVisible
         // TODO add your handling code here:
-         jCBBus2.setModel(
+        jCBBus2.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorBus.listar()));
-  
+
     }//GEN-LAST:event_jCBBus2PopupMenuWillBecomeVisible
 
     private void jCBBus3PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBBus3PopupMenuWillBecomeVisible
         // TODO add your handling code here:
-         jCBBus3.setModel(
+        jCBBus3.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorBus.listar()));
-  
+
     }//GEN-LAST:event_jCBBus3PopupMenuWillBecomeVisible
 
     private void jCBConductor1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBConductor1PopupMenuWillBecomeVisible
         // TODO add your handling code here:
-         jCBConductor1.setModel(
+        jCBConductor1.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorConductor.listar()));
-  
+
     }//GEN-LAST:event_jCBConductor1PopupMenuWillBecomeVisible
 
     private void jCBConductor2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBConductor2PopupMenuWillBecomeVisible
         jCBConductor2.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorConductor.listar()));
-  // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jCBConductor2PopupMenuWillBecomeVisible
 
     private void jCBConductor3PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBConductor3PopupMenuWillBecomeVisible
         // TODO add your handling code here:
         jCBConductor3.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorConductor.listar()));
-  
-    }//GEN-LAST:event_jCBConductor3PopupMenuWillBecomeVisible
 
+    }//GEN-LAST:event_jCBConductor3PopupMenuWillBecomeVisible
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar1;
     private javax.swing.JButton jBCrear1;
