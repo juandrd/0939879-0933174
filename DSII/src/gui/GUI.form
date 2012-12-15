@@ -4,7 +4,7 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMIVerRutas">
+        <Menu class="javax.swing.JMenu" name="jMPasajero">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pasajeros"/>
           </Properties>
@@ -18,30 +18,6 @@
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="JMIReclamo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Reclamos"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMIReclamoActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tarjetas Genericas"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tarjetas Personalizadas"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
-              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMIModificarDatos">
               <Properties>
@@ -81,7 +57,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMIDatosEmpleado">
+        <Menu class="javax.swing.JMenu" name="jMEmpleado">
           <Properties>
             <Property name="text" type="java.lang.String" value="Empleados"/>
           </Properties>
@@ -136,6 +112,58 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <Menu class="javax.swing.JMenu" name="jMAuxiliar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Auxiliar"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tarjetas Genericas"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tarjetas Personalizadas"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMICrearCotizacion">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Registrar Venta"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMICrearCotizacionActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="JMIReclamo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reclamos"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMIReclamoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jMDirectorEstacion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Director Estacion"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jMConductor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Conductor"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Menu>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMOpciones">
@@ -167,14 +195,6 @@
             <Property name="text" type="java.lang.String" value=" Ventas  "/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMICrearCotizacion">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Registrar Venta"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMICrearCotizacionActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator3">
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMIRegistrarVenta">
