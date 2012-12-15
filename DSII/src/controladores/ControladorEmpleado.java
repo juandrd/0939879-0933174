@@ -78,9 +78,11 @@ public class ControladorEmpleado {
      
     public String login(String id){
            Empleados p;
-           p=consultar(id);
+           p=consultar(id);           
            String retorno;
            retorno=p.getPassword();
+           
+           
            return retorno;
            
        }

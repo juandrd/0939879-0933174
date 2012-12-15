@@ -129,12 +129,13 @@ public class JFLogin extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Usuario valido");
                     GUI g = new GUI(1, user);
                 }
-                else  JOptionPane.showMessageDialog(null, "ERROR DE USUARIO O CONTRASEÑA");
+                else  JOptionPane.showMessageDialog(null, "ERROR DE CONTRASEÑA");
            
             }
 
             if (flag == 2) {
                 String devuelve = cEmpleado.login(user);
+                
                 if (devuelve.equals(pass)) {
                     String empleado = cEmpleado.tipoE(user);
                     setVisible(false);
@@ -142,14 +143,16 @@ public class JFLogin extends javax.swing.JFrame {
                     GUI g = new GUI(2, user, empleado);
                     
                 }
-                else  JOptionPane.showMessageDialog(null, "ERROR DE USUARIO O CONTRASEÑA");
+                else  JOptionPane.showMessageDialog(null, "ERROR DE CONTRASEÑA");
            
 
             }
 
         } catch (Exception e) {
                    
-            
+            JOptionPane.showMessageDialog(null, "ERROR DE USUARIO");
+           
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

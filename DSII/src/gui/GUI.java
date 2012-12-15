@@ -112,6 +112,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMIModificarDatos = new javax.swing.JMenuItem();
+        jMITarjetaPasajero = new javax.swing.JMenuItem();
         jMOpciones = new javax.swing.JMenu();
         jMICrearEmpleado = new javax.swing.JMenuItem();
         jMIRutas = new javax.swing.JMenuItem();
@@ -174,6 +175,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMPasajeros.add(jMIModificarDatos);
+
+        jMITarjetaPasajero.setText("Info de Tarjeta");
+        jMITarjetaPasajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMITarjetaPasajeroActionPerformed(evt);
+            }
+        });
+        jMPasajeros.add(jMITarjetaPasajero);
 
         jMenuBar1.add(jMPasajeros);
 
@@ -392,12 +401,24 @@ public class GUI extends javax.swing.JFrame {
             jPPrincipal.removeAll();
         } catch (Exception e) {
         }
-        JPPasajero g = new JPPasajero();
+        JPPasajero g = new JPPasajero(1, usuario_id);
         g.setBounds(jPPrincipal.getBounds());
         jPPrincipal.add(g, BorderLayout.CENTER);
         jPPrincipal.updateUI();
         this.pack();
     }//GEN-LAST:event_jMIModificarDatosActionPerformed
+
+    private void jMITarjetaPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMITarjetaPasajeroActionPerformed
+         try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPVentaTarjetas tg = new JPVentaTarjetas(1, usuario_id);
+        tg.setBounds(jPPrincipal.getBounds());
+        jPPrincipal.add(tg, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_jMITarjetaPasajeroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,6 +474,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIModificarDatos;
     private javax.swing.JMenuItem jMIRegistrarVenta;
     private javax.swing.JMenuItem jMIRutas;
+    private javax.swing.JMenuItem jMITarjetaPasajero;
     private javax.swing.JMenu jMOpciones;
     private javax.swing.JMenu jMPasajeros;
     private javax.swing.JMenu jMReportes;

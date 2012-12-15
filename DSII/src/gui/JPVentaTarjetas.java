@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+
 /**
  *
  * @author Juan
@@ -26,15 +27,31 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
     /**
      * Creates new form JPVentaTarjetas
      */
-    
+    int tipo;
+    String usuario;
     ControladorTarjetasPersonalizadas controladorTP;
     ControladorPasajero controladorPasajero;
     ControladorPasajeroPersonalizado controladorPP;
+ 
     public JPVentaTarjetas() {
         initComponents();
+        tipo=0;
         controladorTP= new ControladorTarjetasPersonalizadas();
         controladorPasajero=new ControladorPasajero();
         controladorPP=new ControladorPasajeroPersonalizado();
+    }
+    
+     public JPVentaTarjetas(int tipo, String user) {
+        initComponents();
+        this.tipo=tipo;
+        usuario=user;
+        controladorTP= new ControladorTarjetasPersonalizadas();
+        controladorPasajero=new ControladorPasajero();
+        controladorPP=new ControladorPasajeroPersonalizado();
+        
+        jTPVentas.setSelectedIndex(1);
+        jTPVentas.setEnabledAt(0, false);   
+        
     }
 
     /**
@@ -148,11 +165,11 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Pasajero", "Pin Tarjeta"
+                "Pasajero", "Pin Tarjeta", "Saldo", "adelantos disponibles"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -222,27 +239,28 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             
             
             
-            consulta = controladorPP.consultar(
-                 
+            consulta = controladorPP.consultar(                 
                     jCBPasajero2.getSelectedItem().toString()
                  );
 
-            Object[][] s = new Object[consulta.size()][2];
+            Object[][] s = new Object[consulta.size()][4];
             for (int i = 0; i < consulta.size(); i++) {
                 PasajerosPersonalizadas p = (PasajerosPersonalizadas) consulta.get(i);
+                TarjetasPersonalizadas t=controladorTP.consultar(p.getPasajerosPersonalizadasPK().getIdentificacion());
                 if (p.getPasajerosPersonalizadasPK().getIdentificacion() != null) {
                     s[i][0] = p.getPasajerosPersonalizadasPK().getIdentificacion();
                     s[i][1] = p.getPasajerosPersonalizadasPK().getPinTarjeta();
-                
+                    s[i][2] = t.getNroPasajes().toString();
+                    s[i][3] = t.getAdelantoDisponible().toString();
 
                 } else {
                     s = null;
                 }
             }
             TableModel myModel = new DefaultTableModel(s, new String[]{
-                         "Pasajero", "Pin Tarjeta"}) {
+                         "Pasajero", "Pin Tarjeta", "Saldo", "Adelantos_Disponibles"}) {
 
-                boolean[] canEdit = new boolean[]{ false, false};
+                boolean[] canEdit = new boolean[]{ false, false, false, false};
 
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -326,8 +344,12 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
 
     private void jCBPasajero2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBPasajero2PopupMenuWillBecomeVisible
         // TODO add your handling code here:
-        jCBPasajero2.setModel(
-                new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));
+if(tipo==1){
+    jCBPasajero2.addItem(usuario);
+}      
+
+else{  jCBPasajero2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));}
     }//GEN-LAST:event_jCBPasajero2PopupMenuWillBecomeVisible
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -22,13 +22,42 @@ public class JPPasajero extends javax.swing.JPanel {
      * Creates new form JPPasajero
      */
     ControladorPasajero controladorPasajero;
+    int tipo;
+    String user;
 
     public JPPasajero() {
+        tipo = 0;
+
         initComponents();
         controladorPasajero = new ControladorPasajero();
 
         jTPPasajero.setSelectedIndex(0);
-        
+
+    }
+
+    public JPPasajero(int tipo, String user) {
+        initComponents();
+        this.tipo = tipo;
+        this.user = user;
+        controladorPasajero = new ControladorPasajero();
+
+        jTPPasajero.setSelectedIndex(2);
+        jTPPasajero.setEnabledAt(0, false);
+        jTFId3.setEnabled(false);
+        if (tipo == 1) {
+            Pasajeros p = controladorPasajero.consultar(user);
+
+            jTFId3.setText(p.getIdentificacion());
+            jTFNombre3.setText(p.getNombres());
+            jTFApellido3.setText(p.getApellidos());
+            jTFTelefono3.setText(p.getTelefono());
+            jTFDireccion3.setText(p.getDireccion());
+            jCBGenero3.setSelectedItem(p.getGenero());
+            jTFEmail3.setText(p.getEmail());
+            jPFPassword3.setText(p.getPassword());
+
+        }
+        jTPPasajero.setEnabledAt(1, false);
     }
 
     /**
@@ -378,9 +407,9 @@ public class JPPasajero extends javax.swing.JPanel {
         int selectedRow = jTResultados.getSelectedRow();
         System.out.println(selectedRow);
         id = jTResultados.getModel().getValueAt(selectedRow, 0).toString();
-         Pasajeros p = controladorPasajero.consultar(id);
+        Pasajeros p = controladorPasajero.consultar(id);
         jPFPassword3.setText(p.getPassword());
-      
+
         jTFId3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
         jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
         jTFApellido3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
@@ -393,6 +422,9 @@ public class JPPasajero extends javax.swing.JPanel {
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+
+
+
         int editar = -1;
 
         try {
@@ -415,10 +447,14 @@ public class JPPasajero extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "modificado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposConsultar();
-            jTFId2.setText(jTFId3.getText());
-            jBConsultar1.doClick();
-            jTPPasajero.setSelectedIndex(1);
-            limpiarCamposModificar();
+
+
+            if (tipo == 0) {
+                jTFId2.setText(jTFId3.getText());
+                jBConsultar1.doClick();
+                jTPPasajero.setSelectedIndex(1);
+                limpiarCamposModificar();
+            }
         }
     }//GEN-LAST:event_jBModificarActionPerformed
 
