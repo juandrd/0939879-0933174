@@ -131,7 +131,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMIReportes">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="MIReportes"/>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIReportesActionPerformed"/>

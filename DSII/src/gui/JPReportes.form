@@ -110,36 +110,57 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Pasajeros"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBPasajerosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBPasajeroMovil">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pasajeros Movilizados"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBPasajeroMovilActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBTarjetasVen">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tarjetas Vendidas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBTarjetasVenActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBQuejas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quejas y/o Reclamos"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBQuejasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBBuses">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buses Padrones"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBBusesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBRutas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Rutas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBRutasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBQuejasComun">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quejas Comunes"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBQuejasComunActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

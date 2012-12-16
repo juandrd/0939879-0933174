@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package gui;
+import reportes.GenerarReporte;
 
 /**
  *
@@ -13,8 +14,10 @@ public class JPReportes extends javax.swing.JPanel {
     /**
      * Creates new form JPReportes
      */
+    GenerarReporte generadorReportes;
     public JPReportes() {
         initComponents();
+        generadorReportes= new GenerarReporte();
     }
 
     /**
@@ -44,18 +47,53 @@ public class JPReportes extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Reportes")));
 
         jBPasajeros.setText("Pasajeros");
+        jBPasajeros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPasajerosActionPerformed(evt);
+            }
+        });
 
         jBPasajeroMovil.setText("Pasajeros Movilizados");
+        jBPasajeroMovil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPasajeroMovilActionPerformed(evt);
+            }
+        });
 
         jBTarjetasVen.setText("Tarjetas Vendidas");
+        jBTarjetasVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBTarjetasVenActionPerformed(evt);
+            }
+        });
 
         jBQuejas.setText("Quejas y/o Reclamos");
+        jBQuejas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBQuejasActionPerformed(evt);
+            }
+        });
 
         jBBuses.setText("Buses Padrones");
+        jBBuses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBusesActionPerformed(evt);
+            }
+        });
 
         jBRutas.setText("Rutas");
+        jBRutas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRutasActionPerformed(evt);
+            }
+        });
 
         jBQuejasComun.setText("Quejas Comunes");
+        jBQuejasComun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBQuejasComunActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Listado de pasajeros con tarjetas personalizadas");
 
@@ -136,6 +174,39 @@ public class JPReportes extends javax.swing.JPanel {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPasajerosActionPerformed
+        // TODO add your handling code here:
+        generadorReportes.generarReporte("pasajeros");
+        
+    }//GEN-LAST:event_jBPasajerosActionPerformed
+
+    private void jBPasajeroMovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPasajeroMovilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBPasajeroMovilActionPerformed
+
+    private void jBTarjetasVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTarjetasVenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBTarjetasVenActionPerformed
+
+    private void jBQuejasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBQuejasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBQuejasActionPerformed
+
+    private void jBBusesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBusesActionPerformed
+        // TODO add your handling code here:
+        generadorReportes.generarReporte("buses");
+    }//GEN-LAST:event_jBBusesActionPerformed
+
+    private void jBRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRutasActionPerformed
+        // TODO add your handling code here:
+        generadorReportes.generarReporte("rutas");
+    }//GEN-LAST:event_jBRutasActionPerformed
+
+    private void jBQuejasComunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBQuejasComunActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBQuejasComunActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuses;
     private javax.swing.JButton jBPasajeroMovil;

@@ -270,7 +270,7 @@ public class GUI extends javax.swing.JFrame {
         });
         jMDirectoresOperativos.add(jMICrearTurnos);
 
-        jMIReportes.setText("MIReportes");
+        jMIReportes.setText("Reportes");
         jMIReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIReportesActionPerformed(evt);
@@ -614,6 +614,14 @@ public class GUI extends javax.swing.JFrame {
 
     private void jMIReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIReportesActionPerformed
         // TODO add your handling code here:
+                try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPReportes jPr = new JPReportes();
+        jPPrincipal.add(jPr, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
     }//GEN-LAST:event_jMIReportesActionPerformed
 
     /**
