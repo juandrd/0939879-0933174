@@ -354,6 +354,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             }
             else {
                 TarjetasGenericas t = controladorTG.consultar(tarjeta);
+                p.setNombres("generico");
                 guardar = controladorPP.insertar(p, t); 
             }
         } catch (Exception e) {
