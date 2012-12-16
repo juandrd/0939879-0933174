@@ -261,7 +261,7 @@ public class JPMovilizacion extends javax.swing.JPanel {
 
         int guardar = -1;
         try {
-            java.sql.Date fecha=new java.sql.Date(
+         
             java.sql.Date fecha = new java.sql.Date(jDCFecha1.getDate().getTime());
             String pasajero = jCBPasajero1.getSelectedItem().toString();
             String ruta = jCBRuta1.getSelectedItem().toString();
