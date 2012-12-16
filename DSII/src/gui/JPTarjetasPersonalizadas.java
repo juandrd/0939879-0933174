@@ -190,7 +190,7 @@ public class JPTarjetasPersonalizadas extends javax.swing.JPanel {
         jTFPinTarjeta2.setEnabled(false);
         jPanel5.add(jTFPinTarjeta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 210, 30));
 
-        jLabel13.setText("Numero de Pasajes");
+        jLabel13.setText("Saldo");
         jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         jTFNumeroPasajes4.setColumns(20);
@@ -213,7 +213,7 @@ public class JPTarjetasPersonalizadas extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 495, Short.MAX_VALUE)
+            .addGap(0, 510, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -222,7 +222,7 @@ public class JPTarjetasPersonalizadas extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 358, Short.MAX_VALUE)
+            .addGap(0, 359, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(35, Short.MAX_VALUE)
