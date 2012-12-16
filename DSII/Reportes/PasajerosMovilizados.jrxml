@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteUsuariosPrepago" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="44"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.String"/>
+	<field name="tipo_documento" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="genero" class="java.lang.String"/>
+	<field name="estado_civil" class="java.lang.String"/>
+	<field name="fecha_nacimiento" class="java.sql.Date"/>
+	<field name="comuna" class="java.lang.String"/>
+	<field name="barrio" class="java.lang.String"/>
+	<field name="ciudad" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="imei" class="java.lang.String"/>
+	<field name="id_abonado" class="java.lang.String"/>
+	<field name="id_empleado" class="java.lang.String"/>
+	<field name="cod_plan" class="java.lang.String"/>
+	<field name="simcard" class="java.lang.String"/>
+	<field name="fecha_ingreso" class="java.sql.Date"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<staticText>
+					<reportElement x="0" y="0" width="62" height="20"/>
+					<textElement/>
+					<text><![CDATA[ID ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="245" y="0" width="49" height="20"/>
+					<textElement/>
+					<text><![CDATA[Hora]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="429" y="0" width="49" height="20"/>
+					<textElement/>
+					<text><![CDATA[Ruta]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="159" y="0" width="73" height="20"/>
+					<textElement/>
+					<text><![CDATA[Apellidos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="82" y="0" width="61" height="20"/>
+					<textElement/>
+					<text><![CDATA[Nombres]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="310" y="0" width="107" height="20"/>
+					<textElement/>
+					<text><![CDATA[Estacion]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="13"/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/5)]]></groupExpression>
+		<groupHeader>
+			<band height="10"/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="2" y="21" width="553" height="47" forecolor="#CCCCCC" backcolor="#C12000"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Title" x="17" y="21" width="293" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Pasajeros Movilizados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="136" y="46" width="174" height="22"/>
+				<textElement/>
+				<text><![CDATA[Sistema Transporte]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Opaque" x="310" y="22" width="243" height="46" forecolor="#CCCCCC" backcolor="#003296"/>
+			</rectangle>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="333" height="15"/>
+				<textElement/>
+				<text><![CDATA[Listado de usuarios de plan de datos y consumo mensual]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="553" height="34" forecolor="#CCCCCC" backcolor="#503BB6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="21" y="7" width="312" height="20"/>
+				<textElement/>
+				<text><![CDATA[Listado de pasajeros movilizados por estacion y ruta]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="63" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="2" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="83" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="159" y="0" width="73" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="0" width="49" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="107" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="429" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="11" width="553" height="34" forecolor="#CCCCCC" backcolor="#3B9BB6"/>
+			</rectangle>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Opaque" x="197" y="0" width="356" height="20" forecolor="#CCCCCC" backcolor="#503BB6"/>
+			</rectangle>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

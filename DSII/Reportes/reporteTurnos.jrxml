@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteUsuariosPrepago" language="groovy" pageWidth="1000" pageHeight="864" columnWidth="960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="16"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[select * from turnos  t,buses b,empleados e  where t.conductor=e.identificacion and b.placa=t.bus;]]>
+	</queryString>
+	<field name="conductor" class="java.lang.String"/>
+	<field name="bus" class="java.lang.String"/>
+	<field name="hora_inicio" class="java.sql.Time"/>
+	<field name="hora_fin" class="java.sql.Time"/>
+	<field name="placa" class="java.lang.String"/>
+	<field name="marca" class="java.lang.String"/>
+	<field name="nro_chasis" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="nro_asientos" class="java.lang.Integer"/>
+	<field name="capacidad" class="java.lang.Integer"/>
+	<field name="ruta" class="java.lang.String"/>
+	<field name="identificacion" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="genero" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="salario" class="java.lang.Integer"/>
+	<field name="password" class="java.lang.String"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
+		<groupHeader>
+			<band height="49">
+				<staticText>
+					<reportElement x="0" y="0" width="51" height="20"/>
+					<textElement/>
+					<text><![CDATA[Ruta]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="88" y="0" width="91" height="20"/>
+					<textElement/>
+					<text><![CDATA[Placa Bus]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="303" y="0" width="58" height="40"/>
+					<textElement/>
+					<text><![CDATA[Marca Bus]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="214" y="0" width="58" height="40"/>
+					<textElement/>
+					<text><![CDATA[Capacidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="883" y="0" width="58" height="40"/>
+					<textElement/>
+					<text><![CDATA[Telefono]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="503" y="0" width="65" height="40"/>
+					<textElement/>
+					<text><![CDATA[Nombre]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="402" y="0" width="75" height="40"/>
+					<textElement/>
+					<text><![CDATA[Identificacion Conductor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="615" y="0" width="58" height="40"/>
+					<textElement/>
+					<text><![CDATA[Apellidos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="718" y="0" width="58" height="40"/>
+					<textElement/>
+					<text><![CDATA[Direccion]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/5)]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="3" width="960" height="20" forecolor="#CCCCCC" backcolor="#C12000"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="21" width="450" height="47" forecolor="#CCCCCC" backcolor="#8100C1"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Title" x="30" y="35" width="316" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Turnos]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Opaque" x="450" y="22" width="510" height="46" forecolor="#CCCCCC" backcolor="#48003C"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="SubTitle" x="480" y="24" width="327" height="22"/>
+				<textElement/>
+				<text><![CDATA[Sistema  de Transporte Masivo]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="4" width="960" height="20" forecolor="#CCCCCC" backcolor="#C1003F"/>
+			</rectangle>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="392" height="15"/>
+				<textElement/>
+				<text><![CDATA[Listado de los buses padrones y los conductores asociados a ellos]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="34" width="960" height="20" forecolor="#CCCCCC" backcolor="#C100A0"/>
+			</rectangle>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="53" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="15" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ruta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="16" width="58" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{capacidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{placa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="15" width="75" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="15" width="75" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{conductor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="503" y="15" width="79" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="615" y="15" width="68" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="718" y="15" width="130" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="883" y="15" width="77" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="11" width="960" height="34" forecolor="#CCCCCC" backcolor="#9FC100"/>
+			</rectangle>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Opaque" x="197" y="10" width="763" height="10" forecolor="#CCCCCC" backcolor="#C100A0"/>
+			</rectangle>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -133,6 +133,7 @@ public class GUI extends javax.swing.JFrame {
         jMIBuses = new javax.swing.JMenuItem();
         jMIEstacion = new javax.swing.JMenuItem();
         jMICrearTurnos = new javax.swing.JMenuItem();
+        jMIReportes = new javax.swing.JMenuItem();
         jMAuxiliar = new javax.swing.JMenu();
         jMICrearPasajero = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -268,6 +269,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMDirectoresOperativos.add(jMICrearTurnos);
+
+        jMIReportes.setText("MIReportes");
+        jMIReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIReportesActionPerformed(evt);
+            }
+        });
+        jMDirectoresOperativos.add(jMIReportes);
 
         jMEmpleado.add(jMDirectoresOperativos);
 
@@ -603,6 +612,10 @@ public class GUI extends javax.swing.JFrame {
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMIReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIReportesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMIReportesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -665,6 +678,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIMisTurnos;
     private javax.swing.JMenuItem jMIModificarDatos;
     private javax.swing.JMenuItem jMIReclamoConsultar;
+    private javax.swing.JMenuItem jMIReportes;
     private javax.swing.JMenuItem jMIRutas;
     private javax.swing.JMenuItem jMIRutasPasajero;
     private javax.swing.JMenuItem jMISalirE;
