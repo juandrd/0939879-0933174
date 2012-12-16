@@ -9,6 +9,7 @@ import dao.exceptions.PreexistingEntityException;
 import entidades.Pasajeros;
 import entidades.PasajerosPersonalizadas;
 import entidades.PasajerosPersonalizadasPK;
+import entidades.TarjetasGenericas;
 import entidades.TarjetasPersonalizadas;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,12 +25,14 @@ public class ControladorPasajeroPersonalizado {
     //se requiere para elaborar consultas personalizadas
     EntityManager manager;
     ControladorTarjetasPersonalizadas controladorTPersonalizadas;
+    ControladoresTarjetasGenericas controladorTGenericas;
     
     public ControladorPasajeroPersonalizado()
     {
     mi_fabrica = new FabricaObjetos();   
     manager= mi_fabrica.crear().createEntityManager();
     controladorTPersonalizadas= new ControladorTarjetasPersonalizadas();
+    controladorTGenericas= new ControladoresTarjetasGenericas();
     
     dao= new PasajerosPersonalizadasJpaController(mi_fabrica.getFactory());
     }
@@ -52,6 +55,40 @@ public class ControladorPasajeroPersonalizado {
             controladorTPersonalizadas.modificar(tarjeta.getPinTarjeta(), 
                     tarjeta.getNroPasajes()
                     , tarjeta.getEstado(), tarjeta.getAdelantoDisponible());
+            return 0;
+        }
+        catch (PreexistingEntityException ex) 
+        {
+            System.out.println(ex.getMessage());
+            return 1;
+        }
+        catch (Exception ex) 
+        {
+            System.out.println(ex.getMessage());
+        }
+        }
+        return -1;
+    }
+        
+        
+         public int insertar(Pasajeros p, TarjetasGenericas t)
+    {
+        if (!p.getIdentificacion().isEmpty() && !t.getPinTarjeta().isEmpty()  ) {
+            
+        PasajerosPersonalizadasPK venta = new PasajerosPersonalizadasPK();
+        venta.setIdentificacion(p.getIdentificacion());
+        venta.setPinTarjeta(t.getPinTarjeta());
+        
+        PasajerosPersonalizadas pasajeroPersonalizada=new PasajerosPersonalizadas(venta);
+        
+        TarjetasGenericas tarjeta=controladorTGenericas.consultar(venta.getPinTarjeta());
+        tarjeta.setEstado("Vendida");
+        try 
+        {
+            dao.create(pasajeroPersonalizada);
+            controladorTGenericas.modificar(tarjeta.getPinTarjeta(), 
+                    tarjeta.getNroPasajes()
+                    , tarjeta.getEstado());
             return 0;
         }
         catch (PreexistingEntityException ex) 

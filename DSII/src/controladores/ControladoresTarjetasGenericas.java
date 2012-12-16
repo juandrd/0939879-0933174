@@ -141,15 +141,15 @@ public class ControladoresTarjetasGenericas {
     }
     
     
-//    public String[] listar() {
-//        LinkedList TarjetasGenericasConsultar = consultar("","");
-//        String[] TarjetasGenericas = new String[TarjetasGenericasConsultar.size() + 1];
-//        TarjetasGenericas[0] = " ";
-//        for (int i = 0; i < TarjetasGenericasConsultar.size(); i++) {
-//            TarjetasGenericas[i + 1] = ((TarjetasGenericas) TarjetasGenericasConsultar.get(i)).getNombre();
-//        }
-//        return TarjetasGenericas;
-//    }
+    public String[] listar() {
+        LinkedList TarjetasGenericasConsultar = consultar("",999999,"");
+        String[] TarjetasGenericas = new String[TarjetasGenericasConsultar.size() + 1];
+        TarjetasGenericas[0] = " ";
+        for (int i = 0; i < TarjetasGenericasConsultar.size(); i++) {
+            TarjetasGenericas[i + 1] = ((TarjetasGenericas) TarjetasGenericasConsultar.get(i)).getPinTarjeta();
+        }
+        return TarjetasGenericas;
+    }
 
     
     

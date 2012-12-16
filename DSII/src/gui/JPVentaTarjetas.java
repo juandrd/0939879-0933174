@@ -7,12 +7,11 @@ package gui;
 import controladores.ControladorPasajero;
 import controladores.ControladorTarjetasPersonalizadas;
 import controladores.ControladorPasajeroPersonalizado;
-import entidades.Pasajeros;
-import entidades.PasajerosPersonalizadas;
-import entidades.PasajerosPersonalizadasPK;
-import entidades.TarjetasPersonalizadas;
+import controladores.ControladoresTarjetasGenericas;
+import entidades.*;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -33,6 +32,8 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
     ControladorTarjetasPersonalizadas controladorTP;
     ControladorPasajero controladorPasajero;
     ControladorPasajeroPersonalizado controladorPP;
+    ControladoresTarjetasGenericas controladorTG;
+    ButtonGroup grupo = new ButtonGroup();
  
     public JPVentaTarjetas() {
         initComponents();
@@ -40,6 +41,10 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
         controladorTP= new ControladorTarjetasPersonalizadas();
         controladorPasajero=new ControladorPasajero();
         controladorPP=new ControladorPasajeroPersonalizado();
+        controladorTG= new ControladoresTarjetasGenericas();
+        grupo.add(JRBgen);
+        grupo.add(jRBper);
+        
     }
     
      public JPVentaTarjetas(int tipo, String user) {
@@ -49,6 +54,9 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
         controladorTP= new ControladorTarjetasPersonalizadas();
         controladorPasajero=new ControladorPasajero();
         controladorPP=new ControladorPasajeroPersonalizado();
+        
+        grupo.add(JRBgen);
+        grupo.add(jRBper);
         
         jTPVentas.setSelectedIndex(1);
         jTPVentas.setEnabledAt(0, false);   
@@ -73,6 +81,9 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
         jLabel28 = new javax.swing.JLabel();
         jCBPasajero1 = new javax.swing.JComboBox();
         jCBTarjeta1 = new javax.swing.JComboBox();
+        jLabel29 = new javax.swing.JLabel();
+        JRBgen = new javax.swing.JRadioButton();
+        jRBper = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jBLimpiarConsultar = new javax.swing.JButton();
@@ -101,7 +112,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             }
         });
         jPanel12.add(jBLimpiar3);
-        jBLimpiar3.setBounds(120, 120, 70, 23);
+        jBLimpiar3.setBounds(130, 150, 70, 33);
 
         jBCrear1.setText("Crear");
         jBCrear1.addActionListener(new java.awt.event.ActionListener() {
@@ -110,20 +121,20 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             }
         });
         jPanel12.add(jBCrear1);
-        jBCrear1.setBounds(230, 120, 59, 23);
+        jBCrear1.setBounds(240, 150, 51, 33);
 
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("Tarjeta");
+        jLabel28.setText("Tipo Tarjeta");
         jPanel12.add(jLabel28);
-        jLabel28.setBounds(-10, 60, 90, 30);
+        jLabel28.setBounds(10, 50, 90, 30);
 
         jCBPasajero1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBPasajero1PopupMenuWillBecomeVisible(evt);
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
             }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                jCBPasajero1PopupMenuWillBecomeVisible(evt);
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
         });
         jPanel12.add(jCBPasajero1);
@@ -131,19 +142,38 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
 
         jCBTarjeta1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
         jCBTarjeta1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-            }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
                 jCBTarjeta1PopupMenuWillBecomeVisible(evt);
             }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        jCBTarjeta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBTarjeta1ActionPerformed(evt);
+            }
         });
         jPanel12.add(jCBTarjeta1);
-        jCBTarjeta1.setBounds(110, 60, 180, 30);
+        jCBTarjeta1.setBounds(110, 100, 180, 30);
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setText("Tarjeta");
+        jPanel12.add(jLabel29);
+        jLabel29.setBounds(-10, 100, 90, 30);
+
+        JRBgen.setSelected(true);
+        JRBgen.setText("Generica");
+        jPanel12.add(JRBgen);
+        JRBgen.setBounds(110, 60, 79, 20);
+
+        jRBper.setText("Personalizada");
+        jPanel12.add(jRBper);
+        jRBper.setBounds(210, 60, 111, 20);
 
         jPanel11.add(jPanel12);
-        jPanel12.setBounds(0, 0, 340, 210);
+        jPanel12.setBounds(0, 0, 440, 220);
 
         jTPVentas.addTab("Vender", jPanel11);
 
@@ -159,7 +189,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             }
         });
         jPanel13.add(jBLimpiarConsultar);
-        jBLimpiarConsultar.setBounds(290, 30, 90, 23);
+        jBLimpiarConsultar.setBounds(290, 30, 90, 33);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,7 +224,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             }
         });
         jPanel13.add(jBConsultar1);
-        jBConsultar1.setBounds(290, 60, 90, 23);
+        jBConsultar1.setBounds(290, 60, 90, 33);
 
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("Pasajero");
@@ -202,12 +232,12 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
         jLabel27.setBounds(-10, 10, 80, 30);
 
         jCBPasajero2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBPasajero2PopupMenuWillBecomeVisible(evt);
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
             }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                jCBPasajero2PopupMenuWillBecomeVisible(evt);
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
         });
         jPanel13.add(jCBPasajero2);
@@ -298,7 +328,11 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
     }//GEN-LAST:event_jBLimpiarConsultarActionPerformed
 
     private void jCBTarjeta1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBTarjeta1PopupMenuWillBecomeVisible
+        
+        if(JRBgen.isSelected())        
         jCBTarjeta1.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorTG.listar()));
+        else jCBTarjeta1.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorTP.listar()));
     }//GEN-LAST:event_jCBTarjeta1PopupMenuWillBecomeVisible
 
@@ -311,10 +345,17 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             String pasajero = jCBPasajero1.getSelectedItem().toString();
             String tarjeta = jCBTarjeta1.getSelectedItem().toString();
             Pasajeros p = controladorPasajero.consultar(pasajero);
+            if(tarjeta.contains("TP"))
+            {
             TarjetasPersonalizadas t = controladorTP.consultar(tarjeta);
             if(controladorPP.consultar(pasajero).isEmpty())
             guardar = controladorPP.insertar(p, t);
             else guardar=-2;
+            }
+            else {
+                TarjetasGenericas t = controladorTG.consultar(tarjeta);
+                guardar = controladorPP.insertar(p, t); 
+            }
         } catch (Exception e) {
         }
         if (guardar == -1) {
@@ -360,7 +401,12 @@ else{  jCBPasajero2.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));}
     }//GEN-LAST:event_jCBPasajero2PopupMenuWillBecomeVisible
 
+    private void jCBTarjeta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBTarjeta1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBTarjeta1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton JRBgen;
     private javax.swing.JButton jBConsultar1;
     private javax.swing.JButton jBCrear1;
     private javax.swing.JButton jBLimpiar3;
@@ -371,10 +417,12 @@ else{  jCBPasajero2.setModel(
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JRadioButton jRBper;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTPVentas;
     private javax.swing.JTable jTResultados;
