@@ -33,6 +33,11 @@ public class JPMovilizacion extends javax.swing.JPanel {
         controladorRuta = new ControladorRuta();
         controladorMovilizacion = new ControladorMovilizacion();
 
+         jCBPasajero2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));
+    jCBRuta2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorRuta.listar()));
+   
     }
 
     /**
@@ -57,7 +62,6 @@ public class JPMovilizacion extends javax.swing.JPanel {
         jDCFecha1 = new com.toedter.calendar.JDateChooser();
         jPanel3 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
-        jBLimpiarConsultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTResultados = new javax.swing.JTable();
         jBConsultar1 = new javax.swing.JButton();
@@ -149,15 +153,6 @@ public class JPMovilizacion extends javax.swing.JPanel {
 
         jPanel13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel13.setLayout(null);
-
-        jBLimpiarConsultar.setText("Limpiar");
-        jBLimpiarConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBLimpiarConsultarActionPerformed(evt);
-            }
-        });
-        jPanel13.add(jBLimpiarConsultar);
-        jBLimpiarConsultar.setBounds(290, 30, 90, 23);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -312,9 +307,6 @@ public class JPMovilizacion extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBRuta1ActionPerformed
 
-    private void jBLimpiarConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarConsultarActionPerformed
-    }//GEN-LAST:event_jBLimpiarConsultarActionPerformed
-
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
     }//GEN-LAST:event_jTResultadosMouseClicked
 
@@ -399,7 +391,6 @@ public class JPMovilizacion extends javax.swing.JPanel {
     private javax.swing.JButton jBConsultar1;
     private javax.swing.JButton jBCrear1;
     private javax.swing.JButton jBLimpiar3;
-    private javax.swing.JButton jBLimpiarConsultar;
     private javax.swing.JComboBox jCBPasajero1;
     private javax.swing.JComboBox jCBPasajero2;
     private javax.swing.JComboBox jCBRuta1;
