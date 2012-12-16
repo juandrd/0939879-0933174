@@ -6,6 +6,9 @@ package gui;
 
 import javax.swing.JOptionPane;
 import controladores.*;
+import entidades.Movilizacion;
+import entidades.Pasajeros;
+import entidades.Rutas;
 import groovy.model.DefaultTableModel;
 import java.util.LinkedList;
 import javax.swing.table.TableModel;
@@ -28,7 +31,7 @@ public class JPMovilizacion extends javax.swing.JPanel {
         initComponents();
         controladorPasajero = new ControladorPasajero();
         controladorRuta = new ControladorRuta();
-        controladorMovilizacion=new ControladorMovilizacion();
+        controladorMovilizacion = new ControladorMovilizacion();
 
     }
 
@@ -261,12 +264,14 @@ public class JPMovilizacion extends javax.swing.JPanel {
 
         int guardar = -1;
         try {
-         
+
             java.sql.Date fecha = new java.sql.Date(jDCFecha1.getDate().getTime());
             String pasajero = jCBPasajero1.getSelectedItem().toString();
+            Pasajeros p = controladorPasajero.consultar(pasajero);
             String ruta = jCBRuta1.getSelectedItem().toString();
+            Rutas r = controladorRuta.consultar(ruta);
 
-            guardar = controladorMovilizacion.insertar(pasajero, ruta, fecha);
+            guardar = controladorMovilizacion.insertar(p, r, fecha);
 
 
         } catch (Exception e) {
@@ -298,9 +303,9 @@ public class JPMovilizacion extends javax.swing.JPanel {
 
     private void jCBRuta1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBRuta1PopupMenuWillBecomeVisible
 
-                  jCBRuta1.setModel(
-                    new javax.swing.DefaultComboBoxModel(controladorRuta.listar()));
-        
+        jCBRuta1.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorRuta.listar()));
+
     }//GEN-LAST:event_jCBRuta1PopupMenuWillBecomeVisible
 
     private void jCBRuta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBRuta1ActionPerformed
@@ -311,7 +316,6 @@ public class JPMovilizacion extends javax.swing.JPanel {
     }//GEN-LAST:event_jBLimpiarConsultarActionPerformed
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed
@@ -319,29 +323,50 @@ public class JPMovilizacion extends javax.swing.JPanel {
 
         try {
 
+            if (!jCBPasajero2.getSelectedItem().toString().equals(" ") || !jCBRuta2.getSelectedItem().toString().equals(" ")) {
+                if (!jCBPasajero2.getSelectedItem().toString().equals(" ") && !jCBRuta2.getSelectedItem().toString().equals(" ")) {
 
+                    consulta = controladorMovilizacion.consultar(jCBPasajero2.getSelectedItem().toString(),
+                            jCBRuta2.getSelectedItem().toString());
+                }
+                if (!jCBPasajero2.getSelectedItem().toString().equals(" ") && jCBRuta2.getSelectedItem().toString().equals(" ")) {
+
+                    consulta = controladorMovilizacion.consultarporPasajero(jCBPasajero2.getSelectedItem().toString());
+
+                }
+                if (jCBPasajero2.getSelectedItem().toString().equals(" ") && !jCBRuta2.getSelectedItem().toString().equals(" ")) {
+                    consulta = controladorMovilizacion.consultarporRuta(jCBRuta2.getSelectedItem().toString());
+                }
+
+            } else {
+                consulta = controladorMovilizacion.consultarAll();
+            }
 
             //consulta = controladorMovilizacion.consultar(
-              //      jCBPasajero2.getSelectedItem().toString(), jCBRuta2.getSelectedItem().toString(),            );
+            //      jCBPasajero2.getSelectedItem().toString(), jCBRuta2.getSelectedItem().toString(),            );
 
             Object[][] s = new Object[consulta.size()][5];
             for (int i = 0; i < consulta.size(); i++) {
-     //           Movilizacion p = (Movilizacion) consulta.get(i);
-               // if (p.getPasajero().getIdentificacion() != null) {
-//                    s[i][0] = p.getPasajero().getIdentificacion();
-//                    s[i][1] = p.getPasajero().getNombres();
-//                    s[i][2] = p.getPasajero().getApellidos();
-//                    s[i][3] = p.getRuta();
-                    //s[i][4]=p.getFecha();
+                Movilizacion m = (Movilizacion) consulta.get(i);
 
-//                } else {
+                if (m.getMovilizacionPK().getPasajero() != null) {
+                    Pasajeros p = controladorPasajero.consultar(m.getMovilizacionPK().getPasajero());
+
+                    s[i][0] = m.getMovilizacionPK().getPasajero();
+                    s[i][1] = p.getNombres();
+                    s[i][2] = p.getApellidos();
+                    s[i][3] = m.getMovilizacionPK().getRuta();
+                    s[i][4] = m.getMovilizacionPK().getFecha().toString();
+
+                } else {
                     s = null;
-//                }
+                }
             }
-            TableModel myModel = new DefaultTableModel(s, new String[]{
-                        "Id-Pasajero", "Nombre", "Apellido", "Ruta","Fecha"}) {
 
-                boolean[] canEdit = new boolean[]{false, false, false, false};
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id","Nombre","Apellido", "Ruta","Fecha"}) {
+
+                boolean[] canEdit = new boolean[]{false, false,false,false,false
+                };
 
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -358,9 +383,9 @@ public class JPMovilizacion extends javax.swing.JPanel {
 
     private void jCBPasajero2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBPasajero2PopupMenuWillBecomeVisible
         // TODO add your handling code here:
-       jCBPasajero1.setModel(
+        jCBPasajero1.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));
- 
+
     }//GEN-LAST:event_jCBPasajero2PopupMenuWillBecomeVisible
 
     private void jCBRuta2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBRuta2PopupMenuWillBecomeVisible
@@ -370,7 +395,6 @@ public class JPMovilizacion extends javax.swing.JPanel {
     private void jCBRuta2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBRuta2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBRuta2ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar1;
     private javax.swing.JButton jBCrear1;

@@ -146,6 +146,8 @@ public class GUI extends javax.swing.JFrame {
         jMIMisTurnos = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         jMISalirE = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
@@ -362,6 +364,18 @@ public class GUI extends javax.swing.JFrame {
         jMEmpleado.add(jMISalirE);
 
         jMenuBar1.add(jMEmpleado);
+
+        jMenu1.setText("Movilizacion");
+
+        jMenuItem4.setText("Simular Viaje");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Info");
 
@@ -624,6 +638,18 @@ public class GUI extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jMIReportesActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+                  try {
+            jPPrincipal.removeAll();
+        } catch (Exception e) {
+        }
+        JPMovilizacion jPr = new JPMovilizacion();
+        jPPrincipal.add(jPr, BorderLayout.CENTER);
+        jPPrincipal.updateUI();
+        this.pack();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -693,11 +719,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMISalirP;
     private javax.swing.JMenuItem jMITarjetaPasajero;
     private javax.swing.JMenu jMPasajero;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPPrincipal;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator5;
