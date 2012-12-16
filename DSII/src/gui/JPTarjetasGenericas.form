@@ -145,7 +145,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
                     <StringItem index="0" value="Disponible"/>
-                    <StringItem index="1" value="Vendido"/>
+                    <StringItem index="1" value="Vendida"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -283,7 +283,7 @@
                   <StringArray count="3">
                     <StringItem index="0" value=""/>
                     <StringItem index="1" value="Disponible"/>
-                    <StringItem index="2" value="Vendido"/>
+                    <StringItem index="2" value="Vendida"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -344,7 +344,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Saldo"/>
+                <Property name="text" type="java.lang.String" value="Numero de Pasajes"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -377,7 +377,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
                     <StringItem index="0" value="Disponible"/>
-                    <StringItem index="1" value="Vendido"/>
+                    <StringItem index="1" value="Vendida"/>
                   </StringArray>
                 </Property>
               </Properties>

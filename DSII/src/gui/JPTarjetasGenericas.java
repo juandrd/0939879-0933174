@@ -104,7 +104,7 @@ public class JPTarjetasGenericas extends javax.swing.JPanel {
         jTFPinTarjeta.setColumns(20);
         jPanel1.add(jTFPinTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, 30));
 
-        jCEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Disponible", "Vendido" }));
+        jCEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Disponible", "Vendida" }));
         jPanel1.add(jCEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 200, -1));
 
         jTabbedPane1.addTab("Crear", jPanel1);
@@ -167,7 +167,7 @@ public class JPTarjetasGenericas extends javax.swing.JPanel {
         jLabel10.setText("Estado");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        JCEstado1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Disponible", "Vendido" }));
+        JCEstado1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Disponible", "Vendida" }));
         jPanel2.add(JCEstado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 200, -1));
 
         jTabbedPane1.addTab("Consultar", jPanel2);
@@ -189,7 +189,7 @@ public class JPTarjetasGenericas extends javax.swing.JPanel {
         jTFPinTarjeta2.setEnabled(false);
         jPanel3.add(jTFPinTarjeta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 210, 30));
 
-        jLabel11.setText("Saldo");
+        jLabel11.setText("Numero de Pasajes");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         jTFNumeroPasajes2.setColumns(20);
@@ -198,7 +198,7 @@ public class JPTarjetasGenericas extends javax.swing.JPanel {
         jLabel12.setText("Estado");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
-        JCEstado2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Disponible", "Vendido" }));
+        JCEstado2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Disponible", "Vendida" }));
         jPanel3.add(JCEstado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 200, -1));
 
         jTabbedPane1.addTab("Modificar", jPanel3);

@@ -168,7 +168,7 @@ public class JPTarjetasPersonalizadas extends javax.swing.JPanel {
         jLabel11.setText("Estado");
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        JCEstado1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Disponible", "Vendida" }));
+        JCEstado1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Disponible", "Vendida" }));
         jPanel4.add(JCEstado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 200, -1));
 
         jTPTarjetasPersonalizadas.addTab("Consultar", jPanel4);
@@ -199,7 +199,7 @@ public class JPTarjetasPersonalizadas extends javax.swing.JPanel {
         jLabel14.setText("Adelantos Disponibles");
         jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 120, -1));
 
-        JCEstado2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Disponible", "Vendido" }));
+        JCEstado2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Disponible", "Vendida" }));
         JCEstado2.setEnabled(false);
         jPanel5.add(JCEstado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 200, -1));
         jPanel5.add(jTFAdelantos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 210, -1));
@@ -336,7 +336,7 @@ public class JPTarjetasPersonalizadas extends javax.swing.JPanel {
         jTFNumeroPasajes4.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
         JCEstado2.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 2));
         jTFAdelantos3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 3));
-
+        
         jTPTarjetasPersonalizadas.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
 
