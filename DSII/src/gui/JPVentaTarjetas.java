@@ -345,7 +345,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             String pasajero = jCBPasajero1.getSelectedItem().toString();
             String tarjeta = jCBTarjeta1.getSelectedItem().toString();
             Pasajeros p = controladorPasajero.consultar(pasajero);
-            if(tarjeta.contains("TP"))
+            if(jRBper.isSelected())
             {
             TarjetasPersonalizadas t = controladorTP.consultar(tarjeta);
             if(controladorPP.consultar(pasajero).isEmpty())
@@ -354,7 +354,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             }
             else {
                 TarjetasGenericas t = controladorTG.consultar(tarjeta);
-                p.setNombres("generico");
+                p.setIdentificacion("generico");
                 guardar = controladorPP.insertar(p, t); 
             }
         } catch (Exception e) {
