@@ -9,7 +9,7 @@ import controladores.*;
 import entidades.Movilizacion;
 import entidades.Pasajeros;
 import entidades.Rutas;
-import groovy.model.DefaultTableModel;
+import javax.swing.table.DefaultTableModel;
 import java.util.LinkedList;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
