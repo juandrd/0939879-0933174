@@ -20,7 +20,7 @@ import net.sf.jasperreports.view.JasperViewer;
 public class GenerarReporte {
      String url, usuario, password;
     Connection conexion;
-        
+        //TOCO HACERLO ASI PORQUE ORM NO SE COMO SACARLE LA CONEXION A ESA PERSISTENCIA
     
     public GenerarReporte()
     {
