@@ -22,13 +22,13 @@ public class JPMovilizacion extends javax.swing.JPanel {
      */
     ControladorPasajero controladorPasajero;
     ControladorRuta controladorRuta;
-    //ControladorMovilizacion controladorMovilizacion;
+    ControladorMovilizacion controladorMovilizacion;
 
     public JPMovilizacion() {
         initComponents();
         controladorPasajero = new ControladorPasajero();
         controladorRuta = new ControladorRuta();
-        //controladorMovilizacion=new ControladorMovilizacion();
+        controladorMovilizacion=new ControladorMovilizacion();
 
     }
 
@@ -261,12 +261,12 @@ public class JPMovilizacion extends javax.swing.JPanel {
 
         int guardar = -1;
         try {
-
+            java.sql.Date fecha=new java.sql.Date(
             java.sql.Date fecha = new java.sql.Date(jDCFecha1.getDate().getTime());
             String pasajero = jCBPasajero1.getSelectedItem().toString();
             String ruta = jCBRuta1.getSelectedItem().toString();
 
-            // guardar = controladorMovilizacion.insertar(pasajero, ruta, fecha);
+            guardar = controladorMovilizacion.insertar(pasajero, ruta, fecha);
 
 
         } catch (Exception e) {
