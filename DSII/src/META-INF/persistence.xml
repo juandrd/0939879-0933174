@@ -16,6 +16,7 @@
     <class>entidades.TarjetasGenericas</class>
     <class>entidades.Conductores</class>
     <class>entidades.DirectoresEstacion</class>
+    <class>entidades.Movilizacion</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/DSII"/>
       <property name="javax.persistence.jdbc.password" value="chokuno"/>
