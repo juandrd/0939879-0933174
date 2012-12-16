@@ -1,68 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteCotizacion" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteUsuariosPrepago" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="22"/>
+	<property name="ireport.y" value="55"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
 	<queryString>
-		<![CDATA[]]>
+		<![CDATA[select identificacion,pin_tarjeta from pasajeros_personalizadas;]]>
 	</queryString>
-	<field name="linea_v" class="java.lang.String"/>
-	<field name="modelo_v" class="java.lang.String"/>
-	<field name="color_v" class="java.lang.String"/>
-	<field name="marca_v" class="java.lang.String"/>
-	<field name="cojineria_v" class="java.lang.String"/>
-	<field name="precio" class="java.lang.Integer"/>
-	<sortField name="COLUMN_COUNT" order="Descending" type="Variable"/>
+	<field name="identificacion" class="java.lang.String"/>
+	<field name="pin_tarjeta" class="java.lang.String"/>
+	<variable name="suma" class="java.lang.Number" calculation="Sum">
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
 	<group name="Group1">
 		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<staticText>
+					<reportElement x="25" y="10" width="94" height="20"/>
+					<textElement/>
+					<text><![CDATA[Tipo Tarjeta]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="197" y="10" width="94" height="20"/>
+					<textElement/>
+					<text><![CDATA[Pin Tarjeta]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="373" y="10" width="94" height="20"/>
+					<textElement/>
+					<text><![CDATA[Valor]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
 		<groupFooter>
-			<band/>
+			<band height="30"/>
 		</groupFooter>
 	</group>
 	<group name="Group2">
 		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/5)]]></groupExpression>
-	</group>
-	<group name="Grupo">
-		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
 		<groupHeader>
-			<band height="93">
-				<textField>
-					<reportElement x="17" y="0" width="78" height="20"/>
-					<textElement/>
-					<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="113" y="0" width="78" height="20"/>
-					<textElement/>
-					<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="236" y="0" width="122" height="40"/>
-					<textElement/>
-					<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="433" y="0" width="78" height="20"/>
-					<textElement/>
-					<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
-				</textField>
-			</band>
+			<band height="10"/>
 		</groupHeader>
-		<groupFooter>
-			<band height="7"/>
-		</groupFooter>
 	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="90" splitType="Stretch">
+		<band height="70" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="555" height="90" forecolor="#B89F7D" backcolor="#FCFF7A"/>
+				<reportElement mode="Opaque" x="0" y="0" width="553" height="70" forecolor="#B89F7D" backcolor="#FCFF7A"/>
 				<box>
 					<pen lineColor="#F60142"/>
 					<topPen lineStyle="Double" lineColor="#F60142"/>
@@ -70,26 +60,18 @@
 					<rightPen lineColor="#F60142"/>
 				</box>
 			</frame>
-			<staticText>
-				<reportElement style="SubTitle" x="17" y="13" width="200" height="22"/>
-				<textElement textAlignment="Right"/>
-				<text><![CDATA[Sistema de Transporte]]></text>
-			</staticText>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="68" width="555" height="22" backcolor="#FF4D00"/>
+				<reportElement mode="Opaque" x="263" y="0" width="292" height="68" forecolor="#B89F7D" backcolor="#F70D0D"/>
 				<staticText>
-					<reportElement x="17" y="0" width="313" height="20"/>
-					<textElement/>
-					<text><![CDATA[Ganancias por estacion por concepto de tarjetas vendidas]]></text>
+					<reportElement style="Title" x="2" y="13" width="263" height="33"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Tarjetas Vendidas]]></text>
 				</staticText>
 			</frame>
-			<frame>
-				<reportElement mode="Opaque" x="263" y="-22" width="292" height="90" forecolor="#B89F7D" backcolor="#F70D0D"/>
-			</frame>
 			<staticText>
-				<reportElement style="Title" x="281" y="13" width="263" height="33"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Tarjetas Vendidas]]></text>
+				<reportElement style="SubTitle" x="25" y="0" width="200" height="22"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Sistema de Transporte]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -97,37 +79,50 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="45" splitType="Stretch">
+		<band height="37" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement x="113" y="0" width="94" height="20"/>
-				<textElement/>
-				<text><![CDATA[Ubicacion]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="17" y="0" width="68" height="20"/>
-				<textElement/>
-				<text><![CDATA[Nombre]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="236" y="0" width="94" height="20"/>
-				<textElement/>
-				<text><![CDATA[Descripcion]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="433" y="0" width="94" height="20"/>
-				<textElement/>
-				<text><![CDATA[Ganancias]]></text>
-			</staticText>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="22" backcolor="#FF4D00"/>
+				<staticText>
+					<reportElement x="17" y="0" width="313" height="20"/>
+					<textElement/>
+					<text><![CDATA[Ganancias  por concepto de tarjetas vendidas]]></text>
+				</staticText>
+			</frame>
 		</band>
 	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="25" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{identificacion}.equals( "generica" ) ? "generica":"personalizada"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{identificacion}.equals( "generica" ) ? 3000 : 10000]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="197" y="0" width="133" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pin_tarjeta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
 	<columnFooter>
-		<band height="58" splitType="Stretch">
+		<band height="45" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
 				<graphicElement>
@@ -135,7 +130,7 @@
 				</graphicElement>
 			</line>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="555" height="54" forecolor="#B89F7D" backcolor="#F70D0D"/>
+				<reportElement mode="Opaque" x="2" y="0" width="555" height="45" forecolor="#B89F7D" backcolor="#F70D0D"/>
 			</frame>
 		</band>
 	</columnFooter>

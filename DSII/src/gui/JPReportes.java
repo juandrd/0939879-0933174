@@ -188,6 +188,7 @@ public class JPReportes extends javax.swing.JPanel {
 
     private void jBTarjetasVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTarjetasVenActionPerformed
         // TODO add your handling code here:
+        generadorReportes.generarReporte("tarjetasVendidas");
     }//GEN-LAST:event_jBTarjetasVenActionPerformed
 
     private void jBQuejasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBQuejasActionPerformed

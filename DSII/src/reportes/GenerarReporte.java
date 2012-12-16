@@ -70,8 +70,11 @@ public class GenerarReporte {
          
       JasperPrint print = JasperFillManager.fillReport(report, null, conn);
       // Exporta el informe a PDF
+      String nombreArchivo="Reportes/PDF";
+      nombreArchivo+=tipo;
+      
       JasperExportManager.exportReportToPdfFile(print,
-          "Reportes/PDF");
+          nombreArchivo);
       //Para visualizar el pdf directamente desde java
       
       JasperViewer.viewReport(print, false);
