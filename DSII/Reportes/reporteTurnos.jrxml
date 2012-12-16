@@ -8,7 +8,7 @@
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
 	<queryString>
-		<![CDATA[select * from turnos  t,buses b,empleados e  where t.conductor=e.identificacion and b.placa=t.bus;]]>
+		<![CDATA[select * from turnos  t,buses b,empleados e  where t.conductor=e.identificacion and b.placa=t.bus and b.tipo='Troncal';]]>
 	</queryString>
 	<field name="conductor" class="java.lang.String"/>
 	<field name="bus" class="java.lang.String"/>
@@ -129,7 +129,7 @@
 			<staticText>
 				<reportElement style="Column header" x="0" y="0" width="392" height="15"/>
 				<textElement/>
-				<text><![CDATA[Listado de los buses padrones y los conductores asociados a ellos]]></text>
+				<text><![CDATA[Listado de los buses troncales y los conductores asociados a ellos]]></text>
 			</staticText>
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>

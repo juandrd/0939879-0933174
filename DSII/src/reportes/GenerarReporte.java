@@ -13,6 +13,8 @@ import net.sf.jasperreports.view.JasperViewer;
 
 
 
+
+
 /**
  *
  * @author chokuno
@@ -83,7 +85,7 @@ public class GenerarReporte {
         public Connection conectar() {
         try {
             // Se carga el driver
-            Class.forName("org.postgresql.Driver");
+            Class.forName("org.mysql.Driver");
             //System.out.println( "Driver Cargado" );
         } catch (Exception e) {
             System.out.println("No se pudo cargar el driver.");

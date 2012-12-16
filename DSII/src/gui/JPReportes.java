@@ -191,6 +191,7 @@ public class JPReportes extends javax.swing.JPanel {
 
     private void jBQuejasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBQuejasActionPerformed
         // TODO add your handling code here:
+        generadorReportes.generarReporte("quejas");
     }//GEN-LAST:event_jBQuejasActionPerformed
 
     private void jBBusesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBusesActionPerformed
@@ -205,6 +206,7 @@ public class JPReportes extends javax.swing.JPanel {
 
     private void jBQuejasComunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBQuejasComunActionPerformed
         // TODO add your handling code here:
+        generadorReportes.generarReporte("quejasComunes");
     }//GEN-LAST:event_jBQuejasComunActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
