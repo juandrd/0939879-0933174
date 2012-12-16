@@ -6,6 +6,8 @@ package gui;
 
 import controladores.ControladorEmpleado;
 import controladores.ControladorPasajero;
+import entidades.Empleados;
+import entidades.Pasajeros;
 import javax.swing.JOptionPane;
 
 /**
@@ -126,8 +128,8 @@ public class JFLogin extends javax.swing.JFrame {
                 String devuelve = cPasajero.login(user);
                 if (devuelve.equals(pass)) {
                                         setVisible(false);
-
-                    JOptionPane.showMessageDialog(null, "Usuario valido");
+                    Pasajeros p=cPasajero.consultar(user);
+                    JOptionPane.showMessageDialog(null, "Usted ha ingresado como "+p.getNombres()+" "+p.getApellidos());
                     GUI g = new GUI(1, user);
                 }
                 else  JOptionPane.showMessageDialog(null, "ERROR DE CONTRASEÑA");
@@ -141,7 +143,8 @@ public class JFLogin extends javax.swing.JFrame {
                     String empleado = cEmpleado.tipoE(user);
                     System.out.println("Empleado es "+empleado);
                     setVisible(false);
-                    JOptionPane.showMessageDialog(null, "Usuario valido");
+                    Empleados e=cEmpleado.consultar(user);
+                    JOptionPane.showMessageDialog(null, "Usted ha ingresado como "+e.getNombres()+" "+e.getApellidos());
                     GUI g = new GUI(2, user, empleado);
                     
                 }
