@@ -122,7 +122,10 @@ DROP TABLE movilizacion CASCADE;
 CREATE TABLE movilizacion (
 pasajero varchar(100),
 ruta varchar(100),
-fecha Date
+fecha Date,
+PRIMARY KEY(pasajero, ruta, fecha),
+FOREIGN KEY(pasajero) REFERENCES pasajeros(identificacion),
+FOREIGN KEY(ruta) REFERENCES rutas(nombre)
 );
 
 
