@@ -23,6 +23,7 @@ public class JPRuta extends javax.swing.JPanel {
      */
     ControladorRuta rutaControlador;
      int selectedRow;
+     int tipo;
 
     public JPRuta() {
         initComponents();
@@ -45,7 +46,7 @@ public class JPRuta extends javax.swing.JPanel {
         jTabbedPane1.setSelectedIndex(1);
         jTabbedPane1.setEnabledAt(0, false);   
         jTabbedPane1.setEnabledAt(2, false);   
-        
+        this.tipo=1;
 
         
 
@@ -336,14 +337,14 @@ public class JPRuta extends javax.swing.JPanel {
     }//GEN-LAST:event_jBLimpiarConsultarActionPerformed
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-
+if(tipo!=1){
         int selectedRow = jTResultados.getSelectedRow();
         jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
         jTPDescripcion1.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
         
 
 
-        jTabbedPane1.setSelectedIndex(2);
+        jTabbedPane1.setSelectedIndex(2);}
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
