@@ -12,6 +12,7 @@ import entidades.PasajerosPersonalizadas;
 import entidades.PasajerosPersonalizadasPK;
 import entidades.TarjetasPersonalizadas;
 import java.util.LinkedList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -311,8 +312,9 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             String tarjeta = jCBTarjeta1.getSelectedItem().toString();
             Pasajeros p = controladorPasajero.consultar(pasajero);
             TarjetasPersonalizadas t = controladorTP.consultar(tarjeta);
+            if(controladorPP.consultar(pasajero).isEmpty())
             guardar = controladorPP.insertar(p, t);
-
+            else guardar=-2;
         } catch (Exception e) {
         }
         if (guardar == -1) {
@@ -325,7 +327,12 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
 
 
             } else {
-                JOptionPane.showMessageDialog(this, "Venta Creada correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+                
+                if (guardar == -2) {
+            JOptionPane.showMessageDialog(this, "El usuario ya tiene una tarjeta personalizada", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+                  }
+                
+                else  JOptionPane.showMessageDialog(this, "Venta Creada correctamente", "Sistema", JOptionPane.INFORMATION_MESSAGE);
 
 
             }
@@ -338,7 +345,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
 
     private void jCBPasajero1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBPasajero1PopupMenuWillBecomeVisible
         // TODO add your handling code here:
-         jCBPasajero1.setModel(
+        jCBPasajero1.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorPasajero.listar()));
     }//GEN-LAST:event_jCBPasajero1PopupMenuWillBecomeVisible
 
