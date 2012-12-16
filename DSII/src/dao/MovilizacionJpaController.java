@@ -4,8 +4,8 @@
  */
 package dao;
 
-import controladores.exceptions.NonexistentEntityException;
-import controladores.exceptions.PreexistingEntityException;
+import dao.exceptions.NonexistentEntityException;
+import dao.exceptions.PreexistingEntityException;
 import entidades.Movilizacion;
 import entidades.MovilizacionPK;
 import java.io.Serializable;
