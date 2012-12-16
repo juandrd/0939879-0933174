@@ -118,6 +118,13 @@ PRIMARY KEY(conductor, bus, hora_inicio),
 FOREIGN KEY(conductor) REFERENCES conductores(identificacion),
 FOREIGN KEY(bus) REFERENCES buses(placa));
 
+DROP TABLE movilizacion CASCADE;
+CREATE TABLE movilizacion (
+pasajero varchar(100),
+ruta varchar(100),
+fecha Date
+);
+
 
 DROP TABLE reclamos CASCADE;
 CREATE TABLE reclamos (
