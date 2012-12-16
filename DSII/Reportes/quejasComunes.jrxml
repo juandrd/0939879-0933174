@@ -2,16 +2,16 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteCotizacion" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="44"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
 	<queryString>
-		<![CDATA[select * from rutas;]]>
+		<![CDATA[select descripcion,COUNT(descripcion) numero from reclamos GROUP BY descripcion;]]>
 	</queryString>
-	<field name="nombre" class="java.lang.String"/>
 	<field name="descripcion" class="java.lang.String"/>
+	<field name="numero" class="java.lang.Long"/>
 	<sortField name="COLUMN_COUNT" order="Descending" type="Variable"/>
 	<group name="Group1">
 		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
@@ -25,7 +25,7 @@
 	<group name="Grupo">
 		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
 		<groupHeader>
-			<band height="11"/>
+			<band/>
 		</groupHeader>
 		<groupFooter>
 			<band height="7"/>
@@ -35,7 +35,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="90" splitType="Stretch">
+		<band height="283" splitType="Stretch">
 			<frame>
 				<reportElement mode="Opaque" x="0" y="0" width="555" height="90" forecolor="#B89F7D" backcolor="#1CBF66"/>
 				<box>
@@ -55,7 +55,7 @@
 				<staticText>
 					<reportElement x="0" y="0" width="277" height="20"/>
 					<textElement/>
-					<text><![CDATA[Diagrama de barras quejas comunes]]></text>
+					<text><![CDATA[Diagrama de pastel quejas comunes]]></text>
 				</staticText>
 			</frame>
 			<frame>
@@ -66,34 +66,27 @@
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Quejas Comunes]]></text>
 			</staticText>
+			<pie3DChart>
+				<chart evaluationTime="Report">
+					<reportElement x="46" y="90" width="400" height="183"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{descripcion}]]></keyExpression>
+					<valueExpression><![CDATA[$F{numero}]]></valueExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
 		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
-	<columnHeader>
-		<band height="194" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-			<bar3DChart>
-				<chart>
-					<reportElement x="36" y="24" width="460" height="170"/>
-					<chartTitle/>
-					<chartSubtitle/>
-					<chartLegend/>
-				</chart>
-				<categoryDataset/>
-				<bar3DPlot>
-					<plot/>
-					<itemLabel/>
-				</bar3DPlot>
-			</bar3DChart>
-		</band>
-	</columnHeader>
 	<columnFooter>
 		<band height="58" splitType="Stretch">
 			<line>
