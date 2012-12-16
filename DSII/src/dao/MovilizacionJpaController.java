@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package controladores;
+package dao;
 
-import controladores.exceptions.NonexistentEntityException;
-import controladores.exceptions.PreexistingEntityException;
+import dao.exceptions.NonexistentEntityException;
+import dao.exceptions.PreexistingEntityException;
 import entidades.Movilizacion;
 import entidades.MovilizacionPK;
 import java.io.Serializable;
