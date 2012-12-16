@@ -183,6 +183,7 @@ public class JPReportes extends javax.swing.JPanel {
 
     private void jBPasajeroMovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPasajeroMovilActionPerformed
         // TODO add your handling code here:
+        generadorReportes.generarReporte("pasajerosMovilizados");
     }//GEN-LAST:event_jBPasajeroMovilActionPerformed
 
     private void jBTarjetasVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTarjetasVenActionPerformed
