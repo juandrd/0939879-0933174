@@ -169,7 +169,7 @@ public class JPPasajero extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jBLimpiar1);
-        jBLimpiar1.setBounds(160, 260, 70, 23);
+        jBLimpiar1.setBounds(130, 260, 90, 29);
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Apellidos");
@@ -184,7 +184,7 @@ public class JPPasajero extends javax.swing.JPanel {
 
         jCBGenero1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino" }));
         jPanel8.add(jCBGenero1);
-        jCBGenero1.setBounds(100, 130, 100, 20);
+        jCBGenero1.setBounds(100, 130, 100, 27);
 
         jBCrear1.setText("Crear");
         jBCrear1.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +193,7 @@ public class JPPasajero extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jBCrear1);
-        jBCrear1.setBounds(260, 260, 59, 23);
+        jBCrear1.setBounds(260, 260, 80, 29);
 
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Email");
@@ -217,7 +217,7 @@ public class JPPasajero extends javax.swing.JPanel {
             }
         });
         jPanel9.add(jBLimpiarConsultar);
-        jBLimpiarConsultar.setBounds(320, 140, 90, 23);
+        jBLimpiarConsultar.setBounds(320, 140, 90, 29);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -280,7 +280,7 @@ public class JPPasajero extends javax.swing.JPanel {
 
         jCBGenero2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Masculino", "Femenino" }));
         jPanel9.add(jCBGenero2);
-        jCBGenero2.setBounds(100, 130, 150, 20);
+        jCBGenero2.setBounds(100, 130, 150, 27);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel30.setText("Email");
@@ -296,7 +296,7 @@ public class JPPasajero extends javax.swing.JPanel {
             }
         });
         jPanel9.add(jBConsultar1);
-        jBConsultar1.setBounds(320, 170, 90, 23);
+        jBConsultar1.setBounds(320, 170, 90, 29);
 
         jPanel3.add(jPanel9);
         jPanel9.setBounds(0, 0, 590, 340);
@@ -315,7 +315,7 @@ public class JPPasajero extends javax.swing.JPanel {
             }
         });
         jPanel10.add(jBModificar);
-        jBModificar.setBounds(250, 290, 110, 23);
+        jBModificar.setBounds(250, 290, 110, 29);
 
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Identificación");
@@ -347,7 +347,7 @@ public class JPPasajero extends javax.swing.JPanel {
 
         jCBGenero3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino" }));
         jPanel10.add(jCBGenero3);
-        jCBGenero3.setBounds(100, 130, 80, 20);
+        jCBGenero3.setBounds(100, 130, 80, 27);
         jPanel10.add(jTFTelefono3);
         jTFTelefono3.setBounds(280, 130, 80, 30);
 
@@ -392,7 +392,7 @@ public class JPPasajero extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPPasajero, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+            .addComponent(jTPPasajero, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

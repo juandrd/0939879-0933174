@@ -35,7 +35,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTPPasajero" alignment="0" pref="363" max="32767" attributes="0"/>
+          <Component id="jTPPasajero" alignment="0" pref="361" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -160,7 +160,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="160" y="260" width="70" height="-1"/>
+                      <AbsoluteConstraints x="130" y="260" width="90" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -220,7 +220,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="260" y="260" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="260" y="260" width="80" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
