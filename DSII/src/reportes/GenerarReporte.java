@@ -26,9 +26,9 @@ public class GenerarReporte {
     
     public GenerarReporte()
     {
-            url="jdbc:mysql://localhost:3306/DSII";
-            usuario="root";
-            password="chokuno";
+            url="jdbc:postgresql://pgsql:5432/juandrd";
+            usuario="juandrd";
+            password="juandrd";
 
     }
     
@@ -88,7 +88,7 @@ public class GenerarReporte {
         public Connection conectar() {
         try {
             // Se carga el driver
-            Class.forName("org.mysql.Driver");
+            Class.forName("org.postgresql.Driver");
             //System.out.println( "Driver Cargado" );
         } catch (Exception e) {
             System.out.println("No se pudo cargar el driver.");

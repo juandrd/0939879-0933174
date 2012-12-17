@@ -74,7 +74,7 @@ public class JPReportes extends javax.swing.JPanel {
             }
         });
 
-        jBBuses.setText("Buses Padrones");
+        jBBuses.setText("Buses Troncales");
         jBBuses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBusesActionPerformed(evt);
@@ -105,7 +105,7 @@ public class JPReportes extends javax.swing.JPanel {
 
         jLabel5.setText("Listado de las quejas y los reclamos");
 
-        jLabel6.setText("Listado de los buses padrones y los conductores asociados");
+        jLabel6.setText("Listado de los buses troncales y los conductores asociados");
 
         jLabel7.setText("Diagrama de Pastel mostrando las quejas mas comunes");
 

@@ -449,7 +449,7 @@ public class JPReclamo extends javax.swing.JPanel {
         jCBEstacion2.setSelectedIndex(0);
     }
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-if(tipo!=1){
+if(tipo!=1 && tipo!=2){
         int selectedRow = jTResultados.getSelectedRow();
         jCBEstacion3.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorEstacion.listar()));

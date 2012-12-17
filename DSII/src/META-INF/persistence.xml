@@ -18,10 +18,10 @@
     <class>entidades.DirectoresEstacion</class>
     <class>entidades.Movilizacion</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/DSII"/>
-      <property name="javax.persistence.jdbc.password" value="chokuno"/>
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://pgsql:5432/juandrd"/>
+      <property name="javax.persistence.jdbc.password" value="juandrd"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="juandrd"/>
     </properties>
   </persistence-unit>
 </persistence>

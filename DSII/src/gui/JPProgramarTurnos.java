@@ -151,7 +151,7 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jBLimpiar1);
-        jBLimpiar1.setBounds(120, 220, 70, 23);
+        jBLimpiar1.setBounds(120, 220, 70, 29);
 
         jBCrear1.setText("Crear");
         jBCrear1.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +160,7 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jBCrear1);
-        jBCrear1.setBounds(230, 220, 59, 23);
+        jBCrear1.setBounds(230, 220, 51, 29);
 
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Bus");
@@ -195,11 +195,11 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
 
         jLabel2.setText("Hora Inicio");
         jPanel8.add(jLabel2);
-        jLabel2.setBounds(30, 120, 80, 14);
+        jLabel2.setBounds(30, 120, 80, 17);
 
         jLabel3.setText("Hora Fin");
         jPanel8.add(jLabel3);
-        jLabel3.setBounds(30, 170, 60, 14);
+        jLabel3.setBounds(30, 170, 60, 17);
 
         jSHoraEntrada.setToolTipText("hora");
         jPanel8.add(jSHoraEntrada);
@@ -234,7 +234,7 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
             }
         });
         jPanel9.add(jBLimpiarConsultar);
-        jBLimpiarConsultar.setBounds(100, 140, 90, 23);
+        jBLimpiarConsultar.setBounds(100, 140, 90, 29);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -269,7 +269,7 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
             }
         });
         jPanel9.add(jBConsultar1);
-        jBConsultar1.setBounds(200, 140, 90, 23);
+        jBConsultar1.setBounds(200, 140, 90, 29);
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Conductor");
@@ -324,7 +324,7 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
             }
         });
         jPanel10.add(jBModificar);
-        jBModificar.setBounds(180, 250, 110, 23);
+        jBModificar.setBounds(180, 250, 110, 29);
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Conductor");
@@ -338,19 +338,19 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
 
         jLabel4.setText("Hora Inicio");
         jPanel10.add(jLabel4);
-        jLabel4.setBounds(30, 120, 80, 14);
+        jLabel4.setBounds(30, 120, 80, 17);
 
         jLabel5.setText("Hora Fin");
         jPanel10.add(jLabel5);
-        jLabel5.setBounds(30, 170, 60, 14);
+        jLabel5.setBounds(30, 170, 60, 17);
 
         jSMinutosSalida1.setToolTipText("minutos");
         jPanel10.add(jSMinutosSalida1);
-        jSMinutosSalida1.setBounds(180, 160, 29, 20);
+        jSMinutosSalida1.setBounds(180, 160, 50, 30);
 
         jSHoraSalida1.setToolTipText("hora");
         jPanel10.add(jSHoraSalida1);
-        jSHoraSalida1.setBounds(120, 160, 29, 20);
+        jSHoraSalida1.setBounds(120, 160, 50, 28);
 
         jCBBus3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
         jCBBus3.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
@@ -380,11 +380,11 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
 
         jSHoraEntrada1.setToolTipText("hora");
         jPanel10.add(jSHoraEntrada1);
-        jSHoraEntrada1.setBounds(120, 120, 29, 20);
+        jSHoraEntrada1.setBounds(120, 120, 50, 30);
 
         jSMinutosEntrada1.setToolTipText("minutos");
         jPanel10.add(jSMinutosEntrada1);
-        jSMinutosEntrada1.setBounds(180, 120, 29, 20);
+        jSMinutosEntrada1.setBounds(180, 120, 50, 30);
 
         jPanel4.add(jPanel10);
         jPanel10.setBounds(0, 10, 450, 320);
@@ -402,7 +402,7 @@ public class JPProgramarTurnos extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPTurnos, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+            .addComponent(jTPTurnos, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
