@@ -136,7 +136,7 @@ public class JPBus extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jBLimpiar1);
-        jBLimpiar1.setBounds(100, 270, 70, 23);
+        jBLimpiar1.setBounds(90, 269, 80, 30);
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Nro. Chasis");
@@ -154,7 +154,7 @@ public class JPBus extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jBCrear1);
-        jBCrear1.setBounds(220, 270, 59, 23);
+        jBCrear1.setBounds(191, 269, 80, 30);
 
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Ruta");
@@ -197,7 +197,7 @@ public class JPBus extends javax.swing.JPanel {
             }
         });
         jPanel9.add(jBLimpiarConsultar);
-        jBLimpiarConsultar.setBounds(290, 100, 90, 23);
+        jBLimpiarConsultar.setBounds(290, 100, 90, 29);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -232,7 +232,7 @@ public class JPBus extends javax.swing.JPanel {
             }
         });
         jPanel9.add(jBConsultar1);
-        jBConsultar1.setBounds(290, 140, 90, 23);
+        jBConsultar1.setBounds(290, 140, 90, 29);
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("Placa");
@@ -292,7 +292,7 @@ public class JPBus extends javax.swing.JPanel {
             }
         });
         jPanel10.add(jBModificar);
-        jBModificar.setBounds(170, 270, 110, 23);
+        jBModificar.setBounds(170, 270, 110, 29);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("Placa");
@@ -379,7 +379,7 @@ public class JPBus extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPBus, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jTPBus, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

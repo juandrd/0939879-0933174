@@ -89,7 +89,7 @@ public class JPMovilizacion extends javax.swing.JPanel {
             }
         });
         jPanel12.add(jBLimpiar3);
-        jBLimpiar3.setBounds(130, 180, 70, 23);
+        jBLimpiar3.setBounds(100, 180, 100, 30);
 
         jBCrear1.setText("Crear");
         jBCrear1.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +98,7 @@ public class JPMovilizacion extends javax.swing.JPanel {
             }
         });
         jPanel12.add(jBCrear1);
-        jBCrear1.setBounds(240, 180, 59, 23);
+        jBCrear1.setBounds(211, 180, 90, 30);
 
         jCBPasajero1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
@@ -142,7 +142,7 @@ public class JPMovilizacion extends javax.swing.JPanel {
 
         jDCFecha1.setDateFormatString("yyyy-MMM-dd");
         jPanel12.add(jDCFecha1);
-        jDCFecha1.setBounds(110, 130, 150, 20);
+        jDCFecha1.setBounds(110, 130, 150, 27);
 
         jPanel11.add(jPanel12);
         jPanel12.setBounds(0, 0, 350, 230);
@@ -187,7 +187,7 @@ public class JPMovilizacion extends javax.swing.JPanel {
             }
         });
         jPanel13.add(jBConsultar1);
-        jBConsultar1.setBounds(290, 60, 90, 23);
+        jBConsultar1.setBounds(290, 60, 90, 29);
 
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("Pasajero");
@@ -245,7 +245,7 @@ public class JPMovilizacion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+            .addComponent(jTPVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

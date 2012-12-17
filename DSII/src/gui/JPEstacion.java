@@ -104,7 +104,7 @@ public class JPEstacion extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jBLimpiar1);
-        jBLimpiar1.setBounds(120, 160, 70, 23);
+        jBLimpiar1.setBounds(100, 160, 70, 29);
         jPanel8.add(jTFUbicacion1);
         jTFUbicacion1.setBounds(100, 50, 180, 30);
 
@@ -115,7 +115,7 @@ public class JPEstacion extends javax.swing.JPanel {
             }
         });
         jPanel8.add(jBCrear1);
-        jBCrear1.setBounds(220, 160, 59, 23);
+        jBCrear1.setBounds(191, 159, 80, 30);
 
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Director");
@@ -152,7 +152,7 @@ public class JPEstacion extends javax.swing.JPanel {
             }
         });
         jPanel9.add(jBLimpiarConsultar);
-        jBLimpiarConsultar.setBounds(290, 100, 90, 23);
+        jBLimpiarConsultar.setBounds(290, 100, 90, 29);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -187,7 +187,7 @@ public class JPEstacion extends javax.swing.JPanel {
             }
         });
         jPanel9.add(jBConsultar1);
-        jBConsultar1.setBounds(290, 140, 90, 23);
+        jBConsultar1.setBounds(290, 140, 90, 29);
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("Nombre");
@@ -244,7 +244,7 @@ public class JPEstacion extends javax.swing.JPanel {
             }
         });
         jPanel10.add(jBModificar);
-        jBModificar.setBounds(170, 270, 110, 23);
+        jBModificar.setBounds(170, 270, 110, 29);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("Nombre");
@@ -301,7 +301,7 @@ public class JPEstacion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPEstacion, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+            .addComponent(jTPEstacion, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
