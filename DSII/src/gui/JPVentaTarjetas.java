@@ -110,7 +110,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             }
         });
         jPanel12.add(jBLimpiar3);
-        jBLimpiar3.setBounds(130, 150, 70, 29);
+        jBLimpiar3.setBounds(90, 150, 110, 29);
 
         jBCrear1.setText("Crear");
         jBCrear1.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
             }
         });
         jPanel12.add(jBCrear1);
-        jBCrear1.setBounds(240, 150, 51, 29);
+        jBCrear1.setBounds(240, 150, 110, 29);
 
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Tipo Tarjeta");
@@ -253,7 +253,7 @@ public class JPVentaTarjetas extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+            .addComponent(jTPVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

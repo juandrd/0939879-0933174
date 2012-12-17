@@ -27,6 +27,7 @@ public class ControladorPasajeroPersonalizado {
     ControladorTarjetasPersonalizadas controladorTPersonalizadas;
     ControladoresTarjetasGenericas controladorTGenericas;
     
+    
     public ControladorPasajeroPersonalizado()
     {
     mi_fabrica = new FabricaObjetos();   
@@ -112,8 +113,18 @@ public class ControladorPasajeroPersonalizado {
             List lista;
             LinkedList listaPasajeros= new LinkedList();       
         
-       
-                      
+        if(pasajero.equals(" ")){
+                   lista=dao.findPasajerosPersonalizadasEntities();
+                   
+                   for(int i=0;i<lista.size();i++)
+            {
+                PasajerosPersonalizadas p = (PasajerosPersonalizadas) lista.get(i);
+               
+                
+                listaPasajeros.add(p);}
+            
+               }  
+        else{       
            
             lista = dao.findPasajerosPersonalizadasEntities();
            // else lista = manager.createQuery("SELECT p FROM Pasajeros p").getResultList();
@@ -126,6 +137,8 @@ public class ControladorPasajeroPersonalizado {
                 listaPasajeros.add(p);}
             }
             
+            
+        } 
             return listaPasajeros;
     }
         
